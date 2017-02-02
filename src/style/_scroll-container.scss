@@ -1,0 +1,17 @@
+.scroll-container {
+  position: absolute;
+  left: 50%;
+  height: auto;
+  max-width: 100%;
+  min-width: 90%;
+  transform: translateX(-50%);
+
+  .home-ph {
+    height: 88vh;
+  }
+
+  .scroll-body {
+    padding: 0 $layoutSpacing 0 $layoutSpacing;
+    background-color: $white;
+  }
+}

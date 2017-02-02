@@ -1,0 +1,30 @@
+.contact-section {
+  margin-left: -$layoutSpacing;
+  margin-right: -$layoutSpacing;
+  height: 100vh;
+  position: relative;
+
+  &--content {
+    padding: $layoutSpacing;
+    p {
+      margin: 20px auto;
+    }
+  }
+
+  &--social {
+    height: 30px;
+
+    svg {
+      width: 30px;
+      height: auto;
+      float: left;
+      transition: fill 300ms ease;
+      will-change: fill;
+
+      &:hover {
+        cursor: pointer;
+        fill: $green;
+      }
+    }
+  }
+}
