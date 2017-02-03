@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import HeadLine from '../components/head_line';
-// import '../style/menu.css';
 
 class MenuList extends Component {
   renderDescriptionList(array) {

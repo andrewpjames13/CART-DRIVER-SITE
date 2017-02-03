@@ -6,7 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import HeadLine from '../components/head_line';
 import PhotoBox from '../components/photo_box';
 import PhotoBackground from '../components/photo_background';
-// import '../style/photos.css';
+
 class Photos extends PureComponent {
   constructor(props) {
     super(props);

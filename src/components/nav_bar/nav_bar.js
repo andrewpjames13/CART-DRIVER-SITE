@@ -1,7 +1,6 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 import NavBarItem from './nav_bar_item';
-// import '../../style/nav-bar.css';
 
 class NavBar extends Component {
   constructor(props) {

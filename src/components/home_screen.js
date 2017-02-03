@@ -1,7 +1,6 @@
 /*jshint esversion: 6 */
 import React from 'react';
 import CountDown from './count_down';
-// import '../style/home-screen.scss';
 
 const HomeScreen = (props) => {
   return (

@@ -8,7 +8,6 @@ import Press from '../containers/press';
 import About from '../containers/about';
 import Contact from '../containers/contact';
 
-// import '../style/scroll-container.css';
 class ScrollContainer extends Component {
   constructor(props) {
     super(props);

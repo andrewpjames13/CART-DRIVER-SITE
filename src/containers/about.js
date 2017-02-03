@@ -1,7 +1,6 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 import HeadLine from '../components/head_line';
-// import '../style/about.css';
 
 class About extends Component {
   render() {
