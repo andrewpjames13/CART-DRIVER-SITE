@@ -16,7 +16,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  font-size: 16px;
+  font-size: 18px;
   overflow-x: hidden;
 }
 
@@ -43,9 +43,18 @@ ul {
 }
 
 h1 { font-size: 20vw; }
-h2 { font-size: 15vw; }
-h3 { font-size: 10vw; }
-h4 { font-size: 9vw; }
+h2 {
+  // font-size: 15vw;
+  font-size: 58px;
+ }
+h3 {
+  // font-size: 10vw;
+  font-size: 38px;
+}
+h4 {
+  // font-size: 9vw;
+  font-size: 34px;
+ }
 h6 { font-size: 6vw; }
 p, li { letter-spacing: 0.05rem; }
 li { margin: 5px 0;}
