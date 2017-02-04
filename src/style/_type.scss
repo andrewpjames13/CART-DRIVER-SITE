@@ -65,7 +65,10 @@ h6 {
   @include respond-above($large){ font-size: 4vw };
   @include respond-above(2000px){ font-size: 3vw };
  }
-p, li { letter-spacing: 0.05rem; }
+p, li {
+  letter-spacing: 0.05rem;
+  font-size: 1em;
+ }
 li { margin: 5px 0;}
 
 .bold {
