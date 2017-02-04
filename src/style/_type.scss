@@ -43,7 +43,11 @@ ul {
   padding-left: 1px;
 }
 
-h1 { font-size: 20vw; }
+h1 {
+  font-size: 20vw;
+  @include respond-above($large){ font-size: 15vw };
+  @include respond-above(2000px){ font-size: 12vw };
+ }
 h2 {
   // font-size: 15vw;
   font-size: 58px;
@@ -56,7 +60,11 @@ h4 {
   // font-size: 9vw;
   font-size: 34px;
  }
-h6 { font-size: 6vw; }
+h6 {
+  font-size: 6vw;
+  @include respond-above($large){ font-size: 4vw };
+  @include respond-above(2000px){ font-size: 3vw };
+ }
 p, li { letter-spacing: 0.05rem; }
 li { margin: 5px 0;}
 
