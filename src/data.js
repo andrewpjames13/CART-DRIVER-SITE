@@ -94,7 +94,7 @@ export function menuItems() {
       {
         "title": "Drinks",
         "sectionDescription": "",
-        "sectionPhoto": 'images/cart-driver-oysters.jpg',
+        "sectionPhoto": 'images/cart-driver-daisy.jpg',
         "menuItems": [
           {
             "name": "Draft Beer",
@@ -164,7 +164,7 @@ export function menuItems() {
       {
         "title": "After",
         "sectionDescription": "",
-        "sectionPhoto": 'images/cart-driver-oysters.jpg',
+        "sectionPhoto": 'images/cart-driver-vegy.jpg',
         "menuItems": [
           {
             "name": "3PM-6PM",
