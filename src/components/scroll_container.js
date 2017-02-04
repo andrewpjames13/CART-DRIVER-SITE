@@ -70,7 +70,7 @@ class ScrollContainer extends Component {
             <Photos />
           </Element>
 
-          <Element name="press" className="element">
+          <Element name="press" className="element press">
             <Press />
           </Element>
 
@@ -78,7 +78,7 @@ class ScrollContainer extends Component {
             <About />
           </Element>
 
-          <Element name="contact" className="element">
+          <Element name="contact" className="element contact">
             <Contact />
           </Element>
         </div>
