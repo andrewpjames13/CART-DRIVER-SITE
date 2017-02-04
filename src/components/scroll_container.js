@@ -22,23 +22,12 @@ class ScrollContainer extends Component {
     window.addEventListener('scroll', this.handleScroll.bind(this), false);
     window.dispatchEvent(scroll);
     window.addEventListener('resize', this.handleResize.bind(this), false);
-
-    // Events.scrollEvent.register('begin', function() {
-    //   console.log("begin", arguments);
-    // });
-    //
-    // Events.scrollEvent.register('end', function() {
-    //   console.log("end", arguments);
-    // });
-
     scrollSpy.update();
   }
 
   componentWillUnmount() {
       window.removeEventListener('scroll', this.handleScroll.bind(this));
       window.removeEventListener('resize', this.handleScroll.bind(this));
-      // Events.scrollEvent.remove('begin');
-      // Events.scrollEvent.remove('end');
   }
 
   handleScroll(event) {
