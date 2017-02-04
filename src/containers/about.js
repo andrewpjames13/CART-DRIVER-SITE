@@ -8,7 +8,7 @@ class About extends Component {
       <div className="about-section">
         <div className="hidden-tiny small-50 about-image">
           <div className="image-container">
-            <img src="images/cart-driver-hand.svg" />
+            <img src="images/cart-driver-hand.svg" alt="cart-driver-hand" />
           </div>
         </div>
         <div className="tiny-100 small-50">

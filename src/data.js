@@ -125,15 +125,15 @@ export function menuItems() {
               "SPARKLING - prosecco on tap; LAMBRUSCO",
               "casina di cornia, sangiovese",
               "WHITE - la liana, pinot grigio",
-              "FINO SHERRY - \“la guita\” manzanilla; palamino"
+              "FINO SHERRY - \"la guita\" manzanilla; palamino"
            ],
             "price": "9"
           },
           {
             "name": "Wine by the Bottle",
             "items": [
-              "feudo zirtari NERO D\’ AVOLA - $29",
-              "ettore germano BARBERA D\’ALBA - $42",
+              "feudo zirtari NERO D' AVOLA - $29",
+              "ettore germano BARBERA D' ALBA - $42",
               "cleto chiarli, sparkling LAMBRUSCO - $36"
            ],
             "price": ""
@@ -195,7 +195,7 @@ export function pressItems() {
   return [
     {
       headLine: 'Bloomberg Pursuits',
-      description: 'Your Guide to Denver\’s Booming Food Scene',
+      description: 'Your Guide to Denver\'s Booming Food Scene',
       link: 'https://www.bloomberg.com/news/articles/2016-10-13/guide-to-denver-s-booming-food-scene-best-restaurants-bars-coffee?cmpid=flipboard'
     },
     {

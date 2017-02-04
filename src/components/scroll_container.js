@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import { Element, Events, scrollSpy } from 'react-scroll';
+import { Element, scrollSpy } from 'react-scroll';
 
 import MenuList from '../containers/menu_list';
 import Photos from '../containers/photos';
