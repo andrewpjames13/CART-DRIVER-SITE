@@ -1,7 +1,9 @@
 @import "reset";
 @import "gnar-vars";
-@import "base";
+@import "mixins";
+@import "type";
 @import "grid";
+@import "global";
 @import "nav-bar";
 @import "home-screen";
 @import "scroll-container";

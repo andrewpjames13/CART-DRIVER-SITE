@@ -42,7 +42,7 @@ class Contact extends Component {
         </div>
 
         <GoogleMapLoader
-          containerElement={ <div style={{height: '55vh', width: '100%'}} /> }
+          containerElement={ <div style={{height: '80vh', width: '100%'}} /> }
           googleMapElement={
             <GoogleMap
               defaultZoom={12}
@@ -60,7 +60,7 @@ class Contact extends Component {
                 position={{ lat: 39.757643, lng: -104.986126 }}
                 key={"CART-DRIVER"}
                 defaultAnimation={2}
-                icon=""
+                icon="images/map-pointer.png"
               />
             </GoogleMap>
           }

@@ -71,17 +71,3 @@ hr {
   border-color: $green;
   margin-top: 1px;
 }
-
-.element {
-  display: block;
-}
-
-$media_480: 480px;
-$small: 768px;
-$media_1024: 1024px;
-$media_1220: 1220px;
-@mixin respond-above($min-size) {
-  @media all and (min-width: $min-size){
-    @content
-  }
-}

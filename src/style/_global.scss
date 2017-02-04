@@ -1,0 +1,10 @@
+.hidden-tiny {
+  display: none;
+  @include respond-above($small) {
+    display: inline-block;
+  };
+}
+
+.element {
+  display: inline-block;
+}

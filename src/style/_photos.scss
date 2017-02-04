@@ -11,6 +11,11 @@
     right: 0;
     bottom: 0;
     opacity: 0.2;
+    background: no-repeat center center absolute;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
     &.cross-fade-enter {
       transform: translate(100%);
@@ -36,24 +41,28 @@
 
     .tile {
       position: absolute;
-      left: 0;
+      top: 53%;
+      left: 50%;
       width: 84%;
-      height: 60%;
-      margin: 30% 30px;
+      height: auto;
+      transform: translate(-50%, -50%);
+      @include respond-above($small) { width: 70%; };
+      @include respond-above($large) { width: 60%; };
+      @include respond-above(1800px) { width: 40%; };
 
       &.tile-enter {
-        transform: translate(110%);
+        left: 150%;
         &.tile-enter-active {
-          transform: translate(0%);
-          transition: transform 1000ms ease;
+          left: 50%;
+          transition: left 1000ms ease;
         }
       }
 
       &.tile-leave {
-        transform: translate(0%);
+        left: 50%;
         &.tile-leave-active {
-          transform: translate(-110%);
-          transition: transform 1000ms ease;
+          left: -150%;
+          transition: left 1800ms ease;
         }
       }
 

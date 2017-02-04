@@ -64,7 +64,7 @@ class Photos extends PureComponent {
           <ReactCSSTransitionGroup
             transitionName="tile"
             transitionEnterTimeout={1000}
-            transitionLeaveTimeout={1000}>
+            transitionLeaveTimeout={800}>
               <PhotoBox
                 photoSrc={this.props.photos[this.state.activePhotoIndex].photoSrc}
                 key={this.props.photos[this.state.activePhotoIndex].photoSrc}

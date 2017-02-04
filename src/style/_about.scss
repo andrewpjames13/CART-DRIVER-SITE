@@ -1,6 +1,7 @@
 .about-section {
   padding: $layoutSpacing $layoutSpacing 0 $layoutSpacing;
   height: 80vh;
+  @include respond-above($small) { height: 45vh; };
 
   hr {
     margin-bottom: 30px;
@@ -8,5 +9,22 @@
 
   p {
     margin: 20px 0;
+  }
+  .about-image {
+    height: 100%;
+
+    .image-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      img {
+        position: absolute;
+        top: 0;
+        left:50%;
+        transform: translateX(-50%);
+        width: 55%;
+        @include respond-above(1800px) { width: 45%; };
+      }
+    }
   }
 }
