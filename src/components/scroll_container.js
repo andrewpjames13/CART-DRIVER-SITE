@@ -18,9 +18,7 @@ class ScrollContainer extends Component {
   }
 
   componentDidMount() {
-    let scroll = new Event('scroll');
     window.addEventListener('scroll', this.handleScroll.bind(this), false);
-    window.dispatchEvent(scroll);
     window.addEventListener('resize', this.handleResize.bind(this), false);
     scrollSpy.update();
   }
