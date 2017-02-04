@@ -1,6 +1,4 @@
 .photo-section {
-  margin-left: -$layoutSpacing;
-  margin-right: -$layoutSpacing;
   height: 100vh;
   width: 100vw;
   position: relative;
@@ -12,12 +10,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    // -webkit-filter: blur(10px);
-    // -moz-filter: blur(10px);
-    // -o-filter: blur(10px);
-    // -ms-filter: blur(10px);
-    // filter: blur(10px);
-    // transition: opacity 800ms ease-in;
     opacity: 0.2;
 
     &.cross-fade-enter {

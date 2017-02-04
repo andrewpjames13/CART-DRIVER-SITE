@@ -2,9 +2,10 @@
 export function menuItems() {
   return  {
     "sections": [
-      {
+      [{
         "title": "Pizza",
         "sectionDescription": "substitute chick pea crust cooked in cast iron $3",
+        "sectionPhoto": '',
         "menuItems": [
           {
             "name": "Daisy",
@@ -49,8 +50,51 @@ export function menuItems() {
         ]
       },
       {
+        "title": "Antipasti",
+        "sectionDescription": "",
+        "sectionPhoto": 'images/cart-driver-oysters.jpg',
+        "menuItems": [
+          {
+            "name": "OYSTER*",
+            "items": [ "daily selection - market price" ],
+            "price": ""
+          },
+          {
+            "name": "PIADA",
+            "items": [ "seafood conserva - market price" ],
+            "price": ""
+          },
+          {
+            "name": "FOCCACIA",
+            "items": [ "chicken liver mousse, mushroom" ],
+            "price": "7"
+          },
+          {
+            "name": "Shrimp",
+            "items": [ "New Caledonia Shrimp, nduja, shishitos" ],
+            "price": "13"
+          },
+          {
+            "name": "Speck",
+            "items": [ "a Quercia Speck, giardiniera" ],
+            "price": "9"
+          },
+          {
+            "name": "Salad",
+            "items": [ "chopped salad, favas, olive, cherries, yogurt" ],
+            "price": "8"
+          },
+          {
+            "name": "Pudding",
+            "items": [ "chocolate pudding, whipped cream" ],
+            "price": "5"
+          }
+        ]
+      }],[
+      {
         "title": "Drinks",
         "sectionDescription": "",
+        "sectionPhoto": 'images/cart-driver-oysters.jpg',
         "menuItems": [
           {
             "name": "Draft Beer",
@@ -81,15 +125,15 @@ export function menuItems() {
               "SPARKLING - prosecco on tap; LAMBRUSCO",
               "casina di cornia, sangiovese",
               "WHITE - la liana, pinot grigio",
-              "FINO SHERRY - “la guita” manzanilla; palamino"
+              "FINO SHERRY - \“la guita\” manzanilla; palamino"
            ],
             "price": "9"
           },
           {
             "name": "Wine by the Bottle",
             "items": [
-              "feudo zirtari NERO D’ AVOLA - $29",
-              "ettore germano BARBERA D’ALBA - $42",
+              "feudo zirtari NERO D\’ AVOLA - $29",
+              "ettore germano BARBERA D\’ALBA - $42",
               "cleto chiarli, sparkling LAMBRUSCO - $36"
            ],
             "price": ""
@@ -118,49 +162,9 @@ export function menuItems() {
         ]
       },
       {
-        "title": "Antipasti",
-        "sectionDescription": "Items marked MP are items whos price changes based on the Market Price",
-        "menuItems": [
-          {
-            "name": "OYSTER*",
-            "items": [ "daily selection - market price" ],
-            "price": "MP"
-          },
-          {
-            "name": "PIADA",
-            "items": [ "seafood conserva - market price" ],
-            "price": "MP"
-          },
-          {
-            "name": "FOCCACIA",
-            "items": [ "chicken liver mousse, mushroom" ],
-            "price": "7"
-          },
-          {
-            "name": "Shrimp",
-            "items": [ "New Caledonia Shrimp, nduja, shishitos" ],
-            "price": "13"
-          },
-          {
-            "name": "Speck",
-            "items": [ "a Quercia Speck, giardiniera" ],
-            "price": "9"
-          },
-          {
-            "name": "Salad",
-            "items": [ "chopped salad, favas, olive, cherries, yogurt" ],
-            "price": "8"
-          },
-          {
-            "name": "Pudding",
-            "items": [ "chocolate pudding, whipped cream" ],
-            "price": "5"
-          }
-        ]
-      },
-      {
         "title": "After",
         "sectionDescription": "",
+        "sectionPhoto": 'images/cart-driver-oysters.jpg',
         "menuItems": [
           {
             "name": "3PM-6PM",
@@ -182,7 +186,7 @@ export function menuItems() {
             "price": "5"
           }
         ]
-      }
+      }]
     ]
   };
 }
@@ -191,7 +195,7 @@ export function pressItems() {
   return [
     {
       headLine: 'Bloomberg Pursuits',
-      description: 'Your Guide to Denver’s Booming Food Scene',
+      description: 'Your Guide to Denver\’s Booming Food Scene',
       link: 'https://www.bloomberg.com/news/articles/2016-10-13/guide-to-denver-s-booming-food-scene-best-restaurants-bars-coffee?cmpid=flipboard'
     },
     {

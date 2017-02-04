@@ -42,22 +42,43 @@ class MenuList extends Component {
     });
   }
 
-  renderMenus() {
-    return this.props.menuItems.sections.map((section) => {
+  renderPhotos(index, photo) {
+    if(index !== 0 && photo.length > 0) {
       return (
-        <div key={section.title} className="menu-section">
-          <HeadLine title={section.title} />
-          <p className="section-description">{ section.sectionDescription }</p>
-          { this.renderMenuItemsList(section.menuItems) }
+        <img className="menu-image" src={photo} alt={'image'+index}/>
+      )
+    }
+  }
+
+  renderMenus(section, menuSectionIndex) {
+    return section.map((menuSection, index) => {
+      return (
+        <div key={menuSection.title+index}>
+          { this.renderPhotos(index + menuSectionIndex, menuSection.sectionPhoto) }
+          <div key={menuSection.title} className="menu-section">
+            <HeadLine title={menuSection.title} />
+            <p className="section-description">{ menuSection.sectionDescription }</p>
+            { this.renderMenuItemsList(menuSection.menuItems) }
+          </div>
         </div>
       );
+    });
+  }
+
+  renderMenuSections() {
+    return this.props.menuItems.sections.map((section, index) => {
+      return (
+        <div key={`${section.title}+${index}`} className="tiny-100 small-50">
+          { this.renderMenus(section, index) }
+        </div>
+      )
     });
   }
 
   render() {
     return (
       <div>
-        { this.renderMenus() }
+        { this.renderMenuSections() }
       </div>
     );
   }

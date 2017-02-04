@@ -1,7 +1,7 @@
 .menu-section {
   overflow: hidden;
   margin-bottom: 20px;
-  padding-top: 30px;
+  padding: $layoutSpacing $layoutSpacing 0 $layoutSpacing;
 
   .section-description {
     margin-bottom: 10px;
@@ -23,4 +23,9 @@
       }
     }
   }
+}
+
+.menu-image {
+  width: 100%;
+  height: auto;
 }

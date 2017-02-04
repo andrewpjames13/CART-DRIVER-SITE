@@ -1,4 +1,4 @@
-[class*='tiny-'] { float: left; }
+[class*='tiny-'], [class*='small-'] { float: left; }
 
 .tiny-100 { width: 100%;}
 
@@ -9,3 +9,7 @@
 .tiny-25 { width: 25%; }
 
 .tiny-20 { width: 20%; }
+
+@include respond-above($small) {
+  .small-50 { width: 50%;}
+};

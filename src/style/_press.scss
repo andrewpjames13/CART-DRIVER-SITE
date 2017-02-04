@@ -1,5 +1,5 @@
 .press-section {
-  padding-top: $layoutSpacing;
+  padding: $layoutSpacing $layoutSpacing 0 $layoutSpacing;
   height: 40vh;
 
   hr {
@@ -38,7 +38,9 @@
       bottom: 0;
       padding: 0 20px;
       p {
-        white-space: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
