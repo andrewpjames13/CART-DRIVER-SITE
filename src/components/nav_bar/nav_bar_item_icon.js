@@ -20,7 +20,7 @@ class NavBarItemIcon extends Component {
 
     if (section.name === 'call' ) {
       el = (
-        <a href={"#"+section.name} className={listClasses} onClick={this.handleClick.bind(this)}>
+        <a href="tel:303.292.3553" className={listClasses} onClick={this.handleClick.bind(this)}>
           <div className="call-me">
             <img role="presentation" src="images/callCircle.png"></img>
             <div className="svg-container">
