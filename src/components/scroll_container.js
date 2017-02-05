@@ -72,7 +72,7 @@ class ScrollContainer extends Component {
             <Press />
           </Element>
 
-          <Element name="about" className="element">
+          <Element name="about" className="element about">
             <About />
           </Element>
 

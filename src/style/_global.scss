@@ -7,7 +7,7 @@
 
 .element {
   display: inline-block;
-  &.press, &.contact {
+  &.press, &.contact, &.about {
     display: block;
   }
 }
