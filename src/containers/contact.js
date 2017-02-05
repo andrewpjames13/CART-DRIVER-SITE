@@ -45,7 +45,7 @@ class Contact extends Component {
           containerElement={ <div style={{height: '80vh', width: '100%'}} /> }
           googleMapElement={
             <GoogleMap
-              defaultZoom={12}
+              defaultZoom={14}
               defaultCenter={{lat: 39.757643, lng: -104.986126}}
               defaultOptions={{
                 styles: mapOptions,
