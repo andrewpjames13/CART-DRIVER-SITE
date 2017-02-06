@@ -42,7 +42,7 @@ class Contact extends Component {
         </div>
 
         <GoogleMapLoader
-          containerElement={ <div style={{height: '80vh', width: '100%'}} /> }
+          containerElement={ <div style={{height: '70vh', width: '100%'}} /> }
           googleMapElement={
             <GoogleMap
               defaultZoom={14}
