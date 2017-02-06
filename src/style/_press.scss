@@ -1,6 +1,6 @@
 .press-section {
   padding: $layoutSpacing $layoutSpacing 60px $layoutSpacing;
-  height: 40vh;
+  height: 325px;
   @include respond-above($small) {
     height: auto;
   };
