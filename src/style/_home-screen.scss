@@ -1,17 +1,31 @@
 .home-container {
   position: fixed;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
-  width: 100%;
-  height: 100%;
-  background: no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   color: $white;
+  background: $black;
+
+  @include respond-above($small) {
+    background: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  .home-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: auto;
+    transform: translate(-50%, -50%);
+    @include respond-above($small) {
+      display: none;
+    }
+  }
 
   .home-content {
     position: absolute;

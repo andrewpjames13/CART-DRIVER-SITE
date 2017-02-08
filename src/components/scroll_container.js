@@ -13,14 +13,14 @@ class ScrollContainer extends Component {
     super(props);
 
     this.state = {
-      containerWidth: 100
+      containerWidth: 90
     };
   }
 
   componentDidMount() {
-    if (window.innerWidth <= 768) {
-      this.setState({ containerWidth: 90 });
-    }
+    // if (window.innerWidth <= 768) {
+    //   this.setState({ containerWidth: 90 });
+    // }
 
     window.addEventListener('scroll', this.handleScroll.bind(this), false);
     window.addEventListener('resize', this.handleResize.bind(this), false);
@@ -36,7 +36,7 @@ class ScrollContainer extends Component {
     const innerHeight = window.innerHeight-100;
     let currentLocation = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (window.innerWidth >= 768) {
+    // if (window.innerWidth >= 768) {
       if (currentLocation === 0) {
         this.setState({
           containerWidth: 90
@@ -51,10 +51,11 @@ class ScrollContainer extends Component {
           containerWidth: percent
         });
       }
-    } else {
-      this.setState({ containerWidth: 100 });
-    }
+    //} else {
+    //   this.setState({ containerWidth: 100 });
+    // }
   }
+
 
   handleResize(event) {
     this.handleScroll();
