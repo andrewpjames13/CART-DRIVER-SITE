@@ -1,5 +1,5 @@
 .about-section {
-  padding: $layoutSpacing $layoutSpacing 0 $layoutSpacing;
+  padding: $layoutSpacing;
   height: 80vh;
   @include respond-above($small) { height: 45vh; };
 
