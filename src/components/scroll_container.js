@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 import { Element, scrollSpy } from 'react-scroll';
 
 import MenuList from '../containers/menu_list';
-import Photos from '../containers/photos';
+// import Photos from '../containers/photos';
+import PhotoGrid from '../containers/photo_grid';
 import Press from '../containers/press';
 import About from '../containers/about';
 import Contact from '../containers/contact';
@@ -74,7 +75,8 @@ class ScrollContainer extends Component {
           </Element>
 
           <Element name="photos" className="element">
-            <Photos />
+            {/* <Photos /> */}
+            <PhotoGrid />
           </Element>
 
           <Element name="press" className="element press">

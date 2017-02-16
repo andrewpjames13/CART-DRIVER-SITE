@@ -268,10 +268,17 @@ export function pressItems() {
 
 export function photos() {
   return [
+    { photoSrc: 'images/cart-driver-pizza-three.jpg' },
     { photoSrc: 'images/cart-driver-patio.jpg' },
-    { photoSrc: 'images/cart-driver-oven-pizza.jpg' },
-    { photoSrc: 'images/cart-driver-patio.jpg' },
-    { photoSrc: 'images/cart-driver-oven-pizza.jpg' },
-    { photoSrc: 'images/cart-driver-patio.jpg' }
+    { photoSrc: 'images/cart-driver-oyster-one.jpg' },
+    { photoSrc: 'images/cart-driver-cocktail.jpg' },
+    { photoSrc: 'images/cart-driver-meats-two.jpg' },
+    { photoSrc: 'images/cart-driver-pizza-four.jpg' },
+    { photoSrc: 'images/cart-driver-dish.jpg' },
+    { photoSrc: 'images/cart-driver-veggies.jpg' },
+    { photoSrc: 'images/cart-driver-pizza-two.jpg' },
+    { photoSrc: 'images/cart-driver-veggies-two.jpg' },
+    { photoSrc: 'images/cart-driver-oyster-two.jpg' },
+    { photoSrc: 'images/cart-driver-hand.jpg' }
   ];
 }

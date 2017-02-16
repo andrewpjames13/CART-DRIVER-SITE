@@ -46,3 +46,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+button {
+	outline: none;
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}

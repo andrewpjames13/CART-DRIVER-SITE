@@ -11,5 +11,7 @@
 .tiny-20 { width: 20%; }
 
 @include respond-above($small) {
-  .small-50 { width: 50%;}
+  .small-50 { width: 50%; }
+
+  .small-25 { width: 25%; }
 };
