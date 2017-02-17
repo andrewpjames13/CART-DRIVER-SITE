@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Element, scrollSpy } from 'react-scroll';
 
 import MenuList from '../containers/menu_list';
-// import Photos from '../containers/photos';
 import PhotoGrid from '../containers/photo_grid';
 import Press from '../containers/press';
 import About from '../containers/about';
@@ -19,47 +18,31 @@ class ScrollContainer extends Component {
   }
 
   componentDidMount() {
-    // if (window.innerWidth <= 768) {
-    //   this.setState({ containerWidth: 90 });
-    // }
-
     window.addEventListener('scroll', this.handleScroll.bind(this), false);
-    window.addEventListener('resize', this.handleResize.bind(this), false);
     scrollSpy.update();
   }
 
   componentWillUnmount() {
       window.removeEventListener('scroll', this.handleScroll.bind(this));
-      window.removeEventListener('resize', this.handleScroll.bind(this));
   }
 
   handleScroll(event) {
     const innerHeight = window.innerHeight-100;
     let currentLocation = window.pageYOffset || document.documentElement.scrollTop;
-
-    // if (window.innerWidth >= 768) {
-      if (currentLocation === 0) {
-        this.setState({
-          containerWidth: 90
-        });
-      } else if (currentLocation >= innerHeight) {
-        this.setState({
-          containerWidth: 100
-        });
-      } else {
-        let percent = (90 + (currentLocation / innerHeight) * 10);
-        this.setState({
-          containerWidth: percent
-        });
-      }
-    //} else {
-    //   this.setState({ containerWidth: 100 });
-    // }
-  }
-
-
-  handleResize(event) {
-    this.handleScroll();
+    if (currentLocation === 0) {
+      this.setState({
+        containerWidth: 90
+      });
+    } else if (currentLocation >= innerHeight) {
+      this.setState({
+        containerWidth: 100
+      });
+    } else {
+      let percent = (90 + (currentLocation / innerHeight) * 10);
+      this.setState({
+        containerWidth: percent
+      });
+    }
   }
 
   render() {
@@ -75,7 +58,6 @@ class ScrollContainer extends Component {
           </Element>
 
           <Element name="photos" className="element">
-            {/* <Photos /> */}
             <PhotoGrid />
           </Element>
 
