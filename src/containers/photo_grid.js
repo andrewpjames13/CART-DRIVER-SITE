@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import HeadLine from '../components/head_line';
 import * as actions from '../actions';
 import classNames from 'classnames';
 
@@ -28,19 +29,22 @@ class PhotoGrid extends PureComponent {
       'show': this.state.selectedImage.length > 0,
     });
     return(
-      <div className="tiny-100 photo-grid-section">
-        {this.props.photos.map((photo, index) => (
-          <button
-            className="tiny-100 small-25 photo-button"
-            key={index}
-            onClick={ () => {this.handlePhotoClick(photo.photoSrc)}}
-          >
-            <img className="tiny-100 photo" src={photo.photoSrc} role="presentation"/>
-          </button>
-        ))}
+      <div className="photo-grid-section">
+        <HeadLine title="Photos"/>
+        <div className="photo-scroll">
+          {this.props.photos.map((photo, index) => (
+            <button
+              className="photo-button"
+              key={index}
+              onClick={ () => {this.handlePhotoClick(photo.photoSrc)}}
+            >
+              <img className="photo" src={photo.photoSrc} role="presentation"/>
+            </button>
+          ))}
+        </div>
         <button className={classes} onClick={this.closePhotoLightBox}>
-          <button className="close">X</button>
           <img className="display-photo" src={this.state.selectedImage} role="presentation" />
+          <p className="close bold">CLICK ON PHOTO TO CLOSE</p>
         </button>
       </div>
     );

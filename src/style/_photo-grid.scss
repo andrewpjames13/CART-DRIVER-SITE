@@ -1,16 +1,75 @@
 .photo-grid-section {
   height: auto;
-  background-color: $black;
-  margin: $layoutSpacing 0;
+  width: 100vw;
+  padding: $layoutSpacing;
   position: relative;
+  overflow: hidden;
+  @include respond-above($small) {
+    height: auto;
+    background-color: $black;
+    margin: $layoutSpacing 0;
+    padding: 0;
+
+    h3 {
+      display: none;
+    }
+  };
+
+  hr {
+    margin-bottom: 30px;
+    @include respond-above($small) {
+      display: none;
+    }
+  }
+
+  .photo-scroll {
+    width: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    margin: 0 -30px;
+
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include respond-above($small) {
+      white-space: normal;
+      margin: 0;
+      overflow: hidden;
+    };
+  }
 
   .photo-button {
     height: auto;
-    opacity: 0.8;
-    transition: opacity 500ms ease-in-out;
+    width: 265px;
+    opacity: 1;
+    margin-left: 30px;
+
+    &:last-of-type {
+      margin-right: 30px;
+    }
+
+    @include respond-above($small) {
+      width: 25vw;
+      height: 25vw;
+      float: left;
+      margin: 0;
+      opacity: 0.8;
+      transition: opacity 500ms ease-in-out;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    };
 
     &:hover {
       opacity: 1;
+    }
+
+    .photo {
+      width: 100%;
     }
   }
 
@@ -45,12 +104,16 @@
 
       .close {
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 60px;
-        height: 60px;
-        color: $white;
+        bottom: 2%;
+        width: 100%;
+        color: $green;
         font-size: 20px;
+        opacity: 0.4;
+        font-family: Ostrich Sans;
+
+        @include respond-above($small) {
+          bottom: 4%;
+        };
       }
     }
   }
