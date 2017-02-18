@@ -1,7 +1,5 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
 import HeadLine from '../components/head_line';
 
 class Press extends Component {
@@ -30,10 +28,4 @@ class Press extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    pressItems: state.pressItems
-  }
-}
-
-export default connect(mapStateToProps, actions)(Press);
+export default Press;

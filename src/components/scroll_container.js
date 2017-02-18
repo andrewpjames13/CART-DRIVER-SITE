@@ -1,6 +1,9 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Element, scrollSpy } from 'react-scroll';
+import * as actions from '../actions';
 
 import MenuList from '../containers/menu_list';
 import PhotoGrid from '../containers/photo_grid';
@@ -15,6 +18,10 @@ class ScrollContainer extends Component {
     this.state = {
       containerWidth: 90
     };
+  }
+
+  componentWillMount() {
+    this.props.fetchData();
   }
 
   componentDidMount() {
@@ -54,15 +61,15 @@ class ScrollContainer extends Component {
 
         <div className="scroll-body">
           <Element name="menu" className="element">
-            <MenuList />
+            <MenuList menuItems={this.props.menuItems}/>
           </Element>
 
           <Element name="photos" className="element">
-            <PhotoGrid />
+            <PhotoGrid photos={this.props.photos}/>
           </Element>
 
           <Element name="press" className="element press">
-            <Press />
+            <Press pressItems={this.props.pressItems}/>
           </Element>
 
           <Element name="about" className="element about">
@@ -78,4 +85,16 @@ class ScrollContainer extends Component {
   }
 };
 
-export default ScrollContainer;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchData: actions.fetchData }, dispatch)
+}
+
+function mapStateToProps(state) {
+  return {
+    pressItems: state.pressItems,
+    photos: state.photos,
+    menuItems: state.menuItems
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ScrollContainer);

@@ -1,6 +1,19 @@
 /*jshint esversion: 6 */
-export function fetchData() {
+import axios from 'axios';
+import { FETCH_DATA_SUCCESS } from '../constants/ActionTypes';
+
+function fetchDataSuccess(data) {
   return {
-    type: 'Fetch_DATA'
+    type: FETCH_DATA_SUCCESS,
+    payload: data
+  };
+}
+
+export function fetchData() {
+  return dispatch => {
+    axios.get('/data.json')
+      .then((response) => {
+        dispatch(fetchDataSuccess(response.data));
+      });
   };
 }

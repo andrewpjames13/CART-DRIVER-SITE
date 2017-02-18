@@ -1,7 +1,5 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
 import HeadLine from '../components/head_line';
 
 class MenuList extends Component {
@@ -66,7 +64,7 @@ class MenuList extends Component {
   }
 
   renderMenuSections() {
-    return this.props.menuItems.sections.map((section, index) => {
+    return this.props.menuItems.map((section, index) => {
       return (
         <div key={`${section.title}+${index}`} className="tiny-100 small-50">
           { this.renderMenus(section, index) }
@@ -84,10 +82,4 @@ class MenuList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    menuItems: state.menuItems
-  };
-}
-
-export default connect(mapStateToProps, actions)(MenuList);
+export default MenuList;

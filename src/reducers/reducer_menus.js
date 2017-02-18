@@ -1,6 +1,11 @@
 /*jshint esversion: 6 */
-import { menuItems } from '../data';
+import { FETCH_DATA_SUCCESS } from '../constants/ActionTypes';
 
-export default function() {
-  return menuItems();
+export default function(state = [], action) {
+  switch (action.type) {
+    case FETCH_DATA_SUCCESS:
+      return action.payload.sections;
+    default:
+      return state;
+  }
 }

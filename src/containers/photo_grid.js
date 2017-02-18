@@ -1,8 +1,6 @@
 /*jshint esversion: 6 */
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import HeadLine from '../components/head_line';
-import * as actions from '../actions';
 import classNames from 'classnames';
 
 class PhotoGrid extends PureComponent {
@@ -51,10 +49,4 @@ class PhotoGrid extends PureComponent {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    photos: state.photos
-  }
-}
-
-export default connect(mapStateToProps, actions)(PhotoGrid);
+export default PhotoGrid;
