@@ -1,9 +1,7 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Element, scrollSpy } from 'react-scroll';
-import * as actions from '../actions';
 
 import MenuList from '../components/menu_list';
 import PhotoGrid from '../components/photo_grid';
@@ -18,10 +16,6 @@ class ScrollContainer extends Component {
     this.state = {
       containerWidth: 90
     };
-  }
-
-  componentWillMount() {
-    this.props.fetchData();
   }
 
   componentDidMount() {
@@ -85,10 +79,6 @@ class ScrollContainer extends Component {
   }
 };
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchData: actions.fetchData }, dispatch)
-}
-
 function mapStateToProps(state) {
   return {
     pressItems: state.pressItems,
@@ -97,4 +87,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScrollContainer);
+export default connect(mapStateToProps)(ScrollContainer);
