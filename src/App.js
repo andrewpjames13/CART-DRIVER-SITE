@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import NavBar from './components/nav_bar/nav_bar';
 import HomeScreen from './components/home_screen';
-import ScrollContainer from './components/scroll_container';
+import ScrollContainer from './containers/scroll_container';
 
 export default class App extends Component {
   constructor(props) {
