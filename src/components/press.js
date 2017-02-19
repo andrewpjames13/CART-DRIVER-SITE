@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import HeadLine from '../components/head_line';
+import HeadLine from './head_line';
 
 class Press extends Component {
   renderPressItems() {

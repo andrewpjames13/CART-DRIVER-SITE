@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 import React, { PureComponent } from 'react';
-import HeadLine from '../components/head_line';
+import HeadLine from './head_line';
 import classNames from 'classnames';
 
 class PhotoGrid extends PureComponent {

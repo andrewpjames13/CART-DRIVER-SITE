@@ -5,11 +5,11 @@ import { bindActionCreators } from 'redux';
 import { Element, scrollSpy } from 'react-scroll';
 import * as actions from '../actions';
 
-import MenuList from '../containers/menu_list';
-import PhotoGrid from '../containers/photo_grid';
-import Press from '../containers/press';
-import About from '../containers/about';
-import Contact from '../containers/contact';
+import MenuList from '../components/menu_list';
+import PhotoGrid from '../components/photo_grid';
+import Press from '../components/press';
+import About from '../components/about';
+import Contact from '../components/contact';
 
 class ScrollContainer extends Component {
   constructor(props) {
