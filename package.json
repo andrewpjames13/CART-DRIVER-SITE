@@ -4,7 +4,6 @@
   "private": true,
   "devDependencies": {
     "autoprefixer": "6.5.1",
-    "axios": "^0.15.3",
     "babel-core": "6.17.0",
     "babel-eslint": "7.1.1",
     "babel-jest": "17.0.2",
@@ -59,6 +58,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "firebase": "^3.6.9",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "redux-thunk": "^2.2.0"
