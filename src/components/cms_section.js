@@ -1,12 +1,12 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 
-class Cms extends Component {
+class CmsSection extends Component {
   render() {
     return (
-      <div>Cms</div>
+
     );
   }
 }
 
-export default Cms;
+export default CmsSection;

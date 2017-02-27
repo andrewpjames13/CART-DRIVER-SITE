@@ -8,7 +8,7 @@ import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 import App from './App';
-import Cms from './components/cms';
+import Cms from './containers/cms';
 // Stylesheets
 import './style/App.scss';
 
@@ -21,7 +21,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App} />
-      <Route path="/cms" component={Cms} />
+      <Route path="/admin" component={Cms} />
     </Router>
   </Provider>
   , document.getElementById('root')

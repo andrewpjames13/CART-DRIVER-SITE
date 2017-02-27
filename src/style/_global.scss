@@ -1,3 +1,7 @@
+#root {
+  height: 100%;
+}
+
 .hidden-tiny {
   display: none;
   @include respond-above($small) {

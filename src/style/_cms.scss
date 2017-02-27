@@ -1,0 +1,104 @@
+.cms-container {
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  overflow: hidden;
+  position: relative;
+
+  .section {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $white;
+    -webkit-box-shadow: 0px -10px 22px -8px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px -10px 22px -8px rgba(0,0,0,0.29);
+    box-shadow: 0px -10px 22px -8px rgba(0,0,0,0.29);
+    transition: top 500ms ease-in-out, height 500ms ease-in-out;
+
+    .section-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    button { width: 100%; }
+
+    .title {
+      padding: 50px 30px 0 30px;
+      text-align: left;
+      font-family: Ostrich Sans;
+      width: 100%;
+      font-size: 18vw;
+
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: none;
+      transition: padding 500ms ease-in-out, font-size 500ms ease-in-out;
+
+      &.white {
+        color: $white;
+      }
+    }
+
+    &:hover {
+      color: $green;
+    }
+
+    &:nth-child(1) {
+      top: 0;
+      color: $white;
+      background-color: $black
+     }
+    &:nth-child(2) {
+      top: 25%;
+     }
+    &:nth-child(3) { top: 50%; }
+    &:nth-child(4) { top: 75%; }
+    &.pizza, &.anti, &.drinks, &.happy { top: 100%; }
+
+    &.active {
+      top: 5%;
+      height: 95%;
+      &:hover {
+        color: unset;
+        cursor: unset;
+      }
+
+      .title { padding-top: 30px; }
+      .pizza { top: 20%; }
+      .anti { top: 40%; }
+      .drinks { top: 60%; }
+      .happy { top: 80%; }
+
+      .activeMenuSection {
+        top: 5%;
+      }
+
+      &.inactiveWithMenuSection {
+        .title {
+          padding-top: 10px;
+          font-size: 5vw;
+        }
+      }
+    }
+
+    &.inactive {
+      top: 110%;
+
+      &.pizza { top: 110%; }
+      &.anti { top: 110%; }
+      &.drinks { top: 110%; }
+      &.happy { top: 110%; }
+    }
+
+    &.home {
+      &.inactive {
+        top: 0;
+        .title {
+          padding-top: 10px;
+          font-size: 5vw;
+        }
+      }
+    }
+  }
+}
