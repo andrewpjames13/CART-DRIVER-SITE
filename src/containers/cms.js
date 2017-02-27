@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
-import CmsMenuList from '../components/cms_menu_list';
-import classNames from 'classnames';
+import CmsSection from '../components/cms_section';
 
 class Cms extends Component {
   componentWillMount() {
@@ -84,30 +83,16 @@ class Cms extends Component {
               </div>
             </div>
         </div>
-        <div
-          className={`section photos
-            ${this.state.activeSection === 'photos' ? 'active' : ''}
-            ${this.state.activeSection.length > 0 && this.state.activeSection !== 'photos' ? 'inactive' : ''}`
-          }
-          >
-          <div className="section-content">
-            <button onClick={() => this.openEditableSection('photos')}>
-              <h1 className="bold title">Photos</h1>
-            </button>
-          </div>
-        </div>
-        <div
-          className={`section press
-            ${this.state.activeSection === 'press' ? 'active' : ''}
-            ${this.state.activeSection.length > 0 && this.state.activeSection !== 'press' ? 'inactive' : ''}`
-          }
-          onClick={() => this.openEditableSection('press')}>
-          <div className="section-content">
-            <button onClick={() => this.openEditableSection('press')}>
-              <h1 className="bold title">Press</h1>
-            </button>
-          </div>
-        </div>
+        <CmsSection
+          sectionName="photos"
+          openEditableSection={this.openEditableSection}
+          activeSection={this.state.activeSection}
+        />
+        <CmsSection
+          sectionName="press"
+          openEditableSection={this.openEditableSection}
+          activeSection={this.state.activeSection}
+        />
 
         {/* <CmsMenuList menuItems={this.props.menuItems} /> */}
         {/* <div>
