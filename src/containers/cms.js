@@ -18,7 +18,11 @@ class Cms extends Component {
   }
 
   openEditableSection(section, e) {
-    this.setState({ activeSection: section, activeMenuSection: '' });
+    if (section === 'home') {
+      this.setState({ activeSection: '', activeMenuSection: '' });
+    } else {
+      this.setState({ activeSection: section, activeMenuSection: '' });
+    }
   }
 
   openEditableMenuSection(section) {
@@ -30,10 +34,10 @@ class Cms extends Component {
       <div className="cms-container">
         <div
           className={`section home ${this.state.activeSection.length > 0 ? 'inactive' : ''}`}
-          onClick={() => this.openEditableSection('')}
+          onClick={() => this.openEditableSection('home')}
           >
             <div className="section-content">
-              <button onClick={() => this.openEditableSection('')}>
+              <button onClick={() => this.openEditableSection('home')}>
                 <h1 className="bold title white">CART-DRIVER</h1>
               </button>
             </div>
@@ -42,40 +46,27 @@ class Cms extends Component {
           sectionName="menu"
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
-          inactiveWithMenuSection={this.state.activeMenuSection.length > 0}
         >
-          <div className={`section pizza
-              ${this.state.activeMenuSection === 'pizza' ? 'activeMenuSection' : ''}
-              ${this.state.activeMenuSection.length > 0 && this.state.activeMenuSection !== 'pizza' ? 'inactive' : ''}
-            `}>
-            <button onClick={() => this.openEditableMenuSection('pizza')}>
-              <h1 className="bold title">Pizza</h1>
-            </button>
-          </div>
-          <div className={`section anti
-              ${this.state.activeMenuSection === 'anti' ? 'activeMenuSection' : ''}
-              ${this.state.activeMenuSection.length > 0 && this.state.activeMenuSection !== 'anti' ? 'inactive' : ''}
-            `}>
-            <button onClick={() => this.openEditableMenuSection('anti')}>
-              <h1 className="bold title">Antipasta</h1>
-            </button>
-          </div>
-          <div className={`section drinks
-              ${this.state.activeMenuSection === 'drinks' ? 'activeMenuSection' : ''}
-              ${this.state.activeMenuSection.length > 0 && this.state.activeMenuSection !== 'drinks' ? 'inactive' : ''}
-            `}>
-            <button onClick={() => this.openEditableMenuSection('drinks')}>
-              <h1 className="bold title">Drinks</h1>
-            </button>
-          </div>
-          <div className={`section happy
-              ${this.state.activeMenuSection === 'happy' ? 'activeMenuSection' : ''}
-              ${this.state.activeMenuSection.length > 0 && this.state.activeMenuSection !== 'happy' ? 'inactive' : ''}
-            `}>
-            <button onClick={() => this.openEditableMenuSection('happy')}>
-              <h1 className="bold title">Happy Hour</h1>
-            </button>
-          </div>
+          <CmsSection
+            sectionName="pizza"
+            openEditableSection={this.openEditableMenuSection}
+            activeSection={this.state.activeMenuSection}
+          />
+          <CmsSection
+            sectionName="anti"
+            openEditableSection={this.openEditableMenuSection}
+            activeSection={this.state.activeMenuSection}
+          />
+          <CmsSection
+            sectionName="drinks"
+            openEditableSection={this.openEditableMenuSection}
+            activeSection={this.state.activeMenuSection}
+          />
+          <CmsSection
+            sectionName="happy"
+            openEditableSection={this.openEditableMenuSection}
+            activeSection={this.state.activeMenuSection}
+          />
         </CmsSection>
         <CmsSection
           sectionName="photos"

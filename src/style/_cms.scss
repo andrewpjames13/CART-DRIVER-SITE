@@ -65,21 +65,10 @@
       }
 
       .title { padding-top: 30px; }
-      .pizza { top: 20%; }
-      .anti { top: 40%; }
-      .drinks { top: 60%; }
-      .happy { top: 80%; }
-
-      .activeMenuSection {
-        top: 5%;
-      }
-
-      &.inactiveWithMenuSection {
-        .title {
-          padding-top: 10px;
-          font-size: 5vw;
-        }
-      }
+      .pizza { top: 20%; &.active { top: 5%; }}
+      .anti { top: 40%; &.active { top: 5%; }}
+      .drinks { top: 60%; &.active { top: 5%; }}
+      .happy { top: 80%; &.active { top: 5%; }}
     }
 
     &.inactive {

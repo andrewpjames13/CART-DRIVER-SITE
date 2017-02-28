@@ -8,7 +8,6 @@ class CmsSection extends Component {
         className={`section ${this.props.sectionName}
           ${this.props.activeSection === `${this.props.sectionName}` ? 'active' : ''}
           ${this.props.activeSection.length > 0 && this.props.activeSection !== `${this.props.sectionName}` ? 'inactive' : ''}
-          ${this.props.activeMenuSection ? 'inactiveWithMenuSection' : ''}
         `}>
         <div className="section-content">
           <button onClick={() => this.props.openEditableSection(this.props.sectionName)}>
