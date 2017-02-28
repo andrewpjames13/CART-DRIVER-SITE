@@ -10,6 +10,9 @@ class Cms extends Component {
     this.props.fetchData();
     this.openEditableSection = this.openEditableSection.bind(this);
     this.openEditableMenuSection = this.openEditableMenuSection.bind(this);
+    this.renderMenuSections = this.renderMenuSections.bind(this);
+    this.renderMenus = this.renderMenus.bind(this);
+    this.renderMenuItemsList = this.renderMenuItemsList.bind(this);
 
     this.state = {
       activeSection: '',
@@ -27,6 +30,41 @@ class Cms extends Component {
 
   openEditableMenuSection(section) {
     this.setState({ activeMenuSection: section });
+  }
+
+  renderMenuItemsList(array) {
+    return array.map((item) => {
+      return (
+        <h4 className="bold" key={item.name}>
+          {item.name}
+        </h4>
+      );
+    });
+  }
+
+  renderMenus(section, menuSectionIndex) {
+    return section.map((menuSection, index) => {
+      return (
+        <CmsSection
+          sectionName={menuSection.title}
+          activeSection={this.state.activeMenuSection}
+          openEditableSection={this.openEditableMenuSection}
+          key={menuSection.title+index}
+        >
+          {this.renderMenuItemsList(menuSection.menuItems)}
+        </CmsSection>
+      );
+    });
+  }
+
+  renderMenuSections() {
+    return this.props.menuItems.map((section, index) => {
+      return (
+        <div key={`${section.title}+${index}`} >
+          { this.renderMenus(section, index) }
+        </div>
+      )
+    });
   }
 
   render() {
@@ -47,26 +85,7 @@ class Cms extends Component {
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
         >
-          <CmsSection
-            sectionName="pizza"
-            openEditableSection={this.openEditableMenuSection}
-            activeSection={this.state.activeMenuSection}
-          />
-          <CmsSection
-            sectionName="anti"
-            openEditableSection={this.openEditableMenuSection}
-            activeSection={this.state.activeMenuSection}
-          />
-          <CmsSection
-            sectionName="drinks"
-            openEditableSection={this.openEditableMenuSection}
-            activeSection={this.state.activeMenuSection}
-          />
-          <CmsSection
-            sectionName="happy"
-            openEditableSection={this.openEditableMenuSection}
-            activeSection={this.state.activeMenuSection}
-          />
+          { this.renderMenuSections() }
         </CmsSection>
         <CmsSection
           sectionName="photos"

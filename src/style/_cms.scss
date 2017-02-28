@@ -44,17 +44,15 @@
       color: $green;
     }
 
-    &:nth-child(1) {
+    &.home {
       top: 0;
       color: $white;
       background-color: $black
-     }
-    &:nth-child(2) {
-      top: 25%;
-     }
+    }
+    &:nth-child(2) { top: 25%; }
     &:nth-child(3) { top: 50%; }
     &:nth-child(4) { top: 75%; }
-    &.pizza, &.anti, &.drinks, &.happy { top: 100%; }
+    &.Pizza, &.Antipasti, &.Drinks, &.After { top: 100%; }
 
     &.active {
       top: 5%;
@@ -65,19 +63,19 @@
       }
 
       .title { padding-top: 30px; }
-      .pizza { top: 20%; &.active { top: 5%; }}
-      .anti { top: 40%; &.active { top: 5%; }}
-      .drinks { top: 60%; &.active { top: 5%; }}
-      .happy { top: 80%; &.active { top: 5%; }}
+      .Pizza { top: 20%; &.active { top: 5%; }}
+      .Antipasti { top: 40%; &.active { top: 5%; }}
+      .Drinks { top: 60%; &.active { top: 5%; }}
+      .After { top: 80%; &.active { top: 5%; }}
     }
 
     &.inactive {
       top: 110%;
 
-      &.pizza { top: 110%; }
-      &.anti { top: 110%; }
-      &.drinks { top: 110%; }
-      &.happy { top: 110%; }
+      &.Pizza { top: 110%; }
+      &.Antipasti { top: 110%; }
+      &.Drinks { top: 110%; }
+      &.After { top: 110%; }
     }
 
     &.home {
