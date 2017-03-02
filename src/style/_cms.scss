@@ -24,7 +24,7 @@
     button { width: 100%; }
 
     .title {
-      padding: 50px 30px 0 30px;
+      padding: 50px 30px 30px 30px;
       text-align: left;
       font-family: Ostrich Sans;
       width: 100%;
@@ -63,7 +63,7 @@
       }
 
       .title { padding-top: 30px; }
-      .Pizza { top: 20%; &.active { top: 5%; }}
+      .Pizza { top: 20%; &.active { top: 5%; overflow-y: scroll; }}
       .Antipasti { top: 40%; &.active { top: 5%; }}
       .Drinks { top: 60%; &.active { top: 5%; }}
       .After { top: 80%; &.active { top: 5%; }}
@@ -84,6 +84,44 @@
         .title {
           padding-top: 10px;
           font-size: 5vw;
+        }
+      }
+    }
+
+    .cms-item {
+      position: relative;
+      border-top: 5px $black solid;
+      padding: 30px 0px 12px 30px;
+      transition: transform 500ms ease-in-out;
+
+      .more-menu {
+        position: absolute;
+        top: -5px;
+        bottom: 0;
+        right: -225px;
+        width: 300px;
+        background-color: red;
+        border-top: 5px black solid;
+
+        .cta {
+          width:  75px;
+          height: 100%;
+          background-color: $white;
+
+          &.edit {
+            background-color: $green;
+            fill: $white;
+          }
+
+          &.delete {
+            background-color: $red;
+            fill: $white;
+          }
+
+          &.move {
+            background-color: $black;
+            fill: $white;
+          }
         }
       }
     }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 import CmsSection from '../components/cms_section';
+import CmsItem from '../components/cms_item';
 
 class Cms extends Component {
   componentWillMount() {
@@ -35,9 +36,7 @@ class Cms extends Component {
   renderMenuItemsList(array) {
     return array.map((item) => {
       return (
-        <h4 className="bold" key={item.name}>
-          {item.name}
-        </h4>
+        <CmsItem item={item} />
       );
     });
   }
@@ -97,8 +96,6 @@ class Cms extends Component {
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
         />
-
-        {/* <CmsMenuList menuItems={this.props.menuItems} /> */}
         {/* <div>
           <button
             style={{"width": "100px", "height": "100px", "backgroundColor": "green"}}
