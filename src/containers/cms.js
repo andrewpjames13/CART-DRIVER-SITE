@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 import CmsSection from '../components/cms_section';
 import CmsItem from '../components/cms_item';
+import CmsBottomNav from '../components/cms_bottom_nav';
 
 class Cms extends Component {
   componentWillMount() {
@@ -33,10 +34,16 @@ class Cms extends Component {
     this.setState({ activeMenuSection: section });
   }
 
-  renderMenuItemsList(array) {
-    return array.map((item) => {
+  renderMenuItemsList(obj) {
+    return Object.keys(obj).map((key, index) => {
       return (
-        <CmsItem item={item} />
+        <CmsItem
+          key={index}
+          item={obj[key]}
+          index={key}
+          selectedMenu='pizzaMenu'
+          deleteMenuItem={this.props.deleteMenuItem}
+        />
       );
     });
   }
@@ -107,6 +114,7 @@ class Cms extends Component {
             style={{"width": "100px", "height": "100px", "backgroundColor": "purple"}}
             onClick={() => this.props.updateMenuItem('8')}/>
         </div> */}
+        <CmsBottomNav createMenuItem={this.props.createMenuItem}/>
       </div>
     );
   }

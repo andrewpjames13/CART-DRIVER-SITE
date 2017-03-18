@@ -14,12 +14,12 @@ const Data = firebase.database().ref();
 
 export function createMenuItem(menu, menuItem) {
   return dispatch => {
-    firebase.database().ref('/pizzaMenu/menuItems').push({items: ['this is a menu item'], name: 'menuItem', price: '0'});
+    firebase.database().ref(`/${menu}/menuItems`).push({items: [menuItem.items], name: menuItem.name, price: menuItem.price});
   };
 }
 
-export function deleteMenuItem(key) {
-  return dispatch => firebase.database().ref('/test/here').remove();
+export function deleteMenuItem(menu, key) {
+  return dispatch => firebase.database().ref(`/${menu}/menuItems/${key}`).remove();
 }
 
 export function updateMenuItem(key) {

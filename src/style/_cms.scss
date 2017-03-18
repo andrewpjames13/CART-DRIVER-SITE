@@ -19,6 +19,7 @@
       position: relative;
       width: 100%;
       height: 100%;
+      margin-bottom: 50px;
     }
 
     button { width: 100%; }
@@ -63,7 +64,15 @@
       }
 
       .title { padding-top: 30px; }
-      .Pizza { top: 20%; &.active { top: 5%; overflow-y: scroll; }}
+      .Pizza {
+        top: 20%;
+        &.active {
+          top: 5%; overflow-y: scroll;
+          .section-content {
+            overflow-x: hidden;
+          }
+        }
+      }
       .Antipasti { top: 40%; &.active { top: 5%; }}
       .Drinks { top: 60%; &.active { top: 5%; }}
       .After { top: 80%; &.active { top: 5%; }}
@@ -98,7 +107,7 @@
         position: absolute;
         top: -5px;
         bottom: 0;
-        right: -225px;
+        right: -226px;
         width: 300px;
         background-color: red;
         border-top: 5px black solid;

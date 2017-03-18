@@ -8,8 +8,7 @@ export default function(state = [], action) {
         [action.payload.pizzaMenu, action.payload.antipastiMenu],
         [action.payload.drinksMenu, action.payload.happyHourMenu]
       ];
-      console.log(menuArray,'menuArray');
-      return action.payload.sections;
+      return menuArray;
     default:
       return state;
   }
