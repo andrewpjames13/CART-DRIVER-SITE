@@ -50,7 +50,8 @@ class CmsBottomNav extends Component {
   render() {
     let navClass = classNames({
       'bottom-nav': true,
-      'open': this.state.open
+      'open': this.state.open,
+      'active': this.props.active
     });
     console.log(this.state.description > 0);
     return (

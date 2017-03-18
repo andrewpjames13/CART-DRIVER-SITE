@@ -1,6 +1,6 @@
 .bottom-nav {
   position: fixed;
-  top: 93vh;
+  top: 102vh;
   left: 0;
   right: 0;
   height: 100vh;
@@ -32,6 +32,9 @@
 
   .cta {
     height: 7vh;
+  }
+  &.active {
+    top: 93vh;
   }
 
   &.open {

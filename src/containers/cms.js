@@ -114,7 +114,10 @@ class Cms extends Component {
             style={{"width": "100px", "height": "100px", "backgroundColor": "purple"}}
             onClick={() => this.props.updateMenuItem('8')}/>
         </div> */}
-        <CmsBottomNav createMenuItem={this.props.createMenuItem}/>
+        <CmsBottomNav
+          active={this.state.activeMenuSection.length !== 0}
+          createMenuItem={this.props.createMenuItem}
+        />
       </div>
     );
   }
