@@ -43,6 +43,7 @@ class Cms extends Component {
           index={key}
           selectedMenu='pizzaMenu'
           deleteMenuItem={this.props.deleteMenuItem}
+          updateMenuItem={this.props.updateMenuItem}
         />
       );
     });
@@ -103,11 +104,6 @@ class Cms extends Component {
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
         />
-        {/*
-          <button
-            style={{"width": "100px", "height": "100px", "backgroundColor": "purple"}}
-            onClick={() => this.props.updateMenuItem('8')}/>
-        */}
         <CmsBottomNav
           active={this.state.activeMenuSection.length !== 0}
           createMenuItem={this.props.createMenuItem}

@@ -1,6 +1,5 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import classNames from 'classnames';
 
 class CmsForm extends Component {
   constructor(props) {
@@ -9,17 +8,19 @@ class CmsForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
-      name: '',
-      price: '',
-      description: ''
+      name: (props.itemData && props.itemData.name) || '',
+      price: (props.itemData && props.itemData.price) || '',
+      description: (props.itemData && props.itemData.items[0]) || '',
+      disabled: true
     };
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.createMenuItem(
+    this.props.submit(
       'pizzaMenu',
       {
+        index: this.props.itemIndex,
         name: this.state.name,
         price: this.state.price,
         items:[this.state.description]
@@ -32,11 +33,31 @@ class CmsForm extends Component {
     const value = event.target.value;
 
     if (name === 'name') {
-      this.setState({name: value});
+      this.setState({
+        name: value,
+        disabled: (
+          this.props.itemData &&
+          this.props.itemData.name.toLowerCase() === value.toLowerCase()) ||
+          (!this.props.itemData && value.length === 0)
+
+      });
     } else if (name === 'price') {
-      this.setState({price: value});
+      console.log(this.state.name);
+      this.setState({
+        price: value,
+        disabled: (
+          this.props.itemData &&
+          this.props.itemData.price.toLowerCase() === value.toLowerCase()) ||
+          (!this.props.itemData && value.length === 0)
+      });
     } else if (name === 'description') {
-      this.setState({description: value});
+      this.setState({
+        description: value,
+        disabled: (
+          this.props.itemData &&
+          this.props.itemData.items[0][0][0].toLowerCase() === value.toLowerCase()) ||
+          (!this.props.itemData && value.length === 0)
+      });
     }
   }
 
@@ -84,7 +105,7 @@ class CmsForm extends Component {
           onChange={this.handleChange}
           placeholder="DESCRIPTION"
         />
-        <button type="submit" value="Submit" className="tiny-100 submit">
+        <button type="submit" value="Submit" className="tiny-100 submit" disabled={this.state.disabled}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z"/>
           </svg>

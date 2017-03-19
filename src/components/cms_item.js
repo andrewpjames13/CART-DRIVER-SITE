@@ -14,9 +14,16 @@ class CmsItem extends Component {
   }
 
   animateMenu() {
-    this.setState({
-      animate: this.state.animate === '0' ? '-225px' : '0'
-    });
+    if (this.state.openUpdate) {
+      this.setState({
+        animate: this.state.animate === '0' ? '-225px' : '0',
+        openUpdate: false
+      });
+    } else {
+      this.setState({
+        animate: this.state.animate === '0' ? '-225px' : '0'
+      });
+    }
   }
 
   openUpdateItem() {
@@ -61,7 +68,7 @@ class CmsItem extends Component {
           </div>
         </div>
         <div className={styles}>
-          <CmsForm />
+          <CmsForm itemData={this.props.item} itemIndex={this.props.index} submit={this.props.updateMenuItem}/>
         </div>
       </div>
     );

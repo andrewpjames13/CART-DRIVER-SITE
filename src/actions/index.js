@@ -14,20 +14,27 @@ const Data = firebase.database().ref();
 
 export function createMenuItem(menu, menuItem) {
   return dispatch => {
-    firebase.database().ref(`/${menu}/menuItems`).push({items: [menuItem.items], name: menuItem.name, price: menuItem.price});
+    firebase.database().ref(`/${menu}/menuItems`).push(
+      {items: [menuItem.items], name: menuItem.name, price: menuItem.price}
+    );
   };
 }
 
 export function deleteMenuItem(menu, key) {
-  return dispatch => firebase.database().ref(`/${menu}/menuItems/${key}`).remove();
+  return dispatch => firebase.database().ref(
+    `/${menu}/menuItems/${key}`
+  ).remove();
 }
 
-export function updateMenuItem(key) {
-  return dispatch => firebase.database().ref('/test/another').update({items: ['this is a menu item'], name: 'menuItem', price: '2'});
+export function updateMenuItem(menu, menuItem) {
+  return dispatch => firebase.database().ref(
+    `/${menu}/menuItems/${menuItem.index}`
+  ).update(
+    {items: [menuItem.items], name: menuItem.name, price: menuItem.price}
+  );
 }
 
 export function fetchData() {
-  const data = [];
   return dispatch => {
     Data.on('value', snapshot => {
       console.log(snapshot.val(), 'snapshot');
