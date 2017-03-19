@@ -103,17 +103,11 @@ class Cms extends Component {
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
         />
-        {/* <div>
-          <button
-            style={{"width": "100px", "height": "100px", "backgroundColor": "green"}}
-            onClick={() => this.props.createMenuItem(this.props.menuItems)}/>
-          <button
-            style={{"width": "100px", "height": "100px", "backgroundColor": "red"}}
-            onClick={() => this.props.deleteMenuItem('8')}/>
+        {/*
           <button
             style={{"width": "100px", "height": "100px", "backgroundColor": "purple"}}
             onClick={() => this.props.updateMenuItem('8')}/>
-        </div> */}
+        */}
         <CmsBottomNav
           active={this.state.activeMenuSection.length !== 0}
           createMenuItem={this.props.createMenuItem}

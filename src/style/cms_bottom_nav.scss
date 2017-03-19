@@ -33,6 +33,7 @@
   .cta {
     height: 7vh;
   }
+
   &.active {
     top: 93vh;
   }
@@ -43,6 +44,11 @@
       -webkit-box-shadow: 0px -10px 22px 8px rgba(0,0,0,0.29);
       -moz-box-shadow: 0px -10px 22px 8px rgba(0,0,0,0.29);
       box-shadow: 0px -10px 22px 8px rgba(0,0,0,0.29);
+    }
+    .new {
+      svg {
+        transform: rotate(45deg);
+      }
     }
   }
 }
