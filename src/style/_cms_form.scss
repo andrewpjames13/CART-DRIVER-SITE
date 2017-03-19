@@ -1,0 +1,9 @@
+.form-container {
+  height: 0;
+  overflow: hidden;
+  transition: height 300ms ease-in-out;
+
+  &.open {
+    height: 50vh;
+  }
+}
