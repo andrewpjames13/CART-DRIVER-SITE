@@ -77,9 +77,30 @@
           }
         }
       }
-      .Antipasti { top: 40%; &.active { top: 5%; }}
-      .Drinks { top: 60%; &.active { top: 5%; }}
-      .After { top: 80%; &.active { top: 5%; }}
+      .Antipasti {
+        top: 40%;
+        &.active {
+          top: 5%;
+          overflow-y: scroll;
+          .section-content { overflow-x: hidden; }
+        }
+      }
+      .Drinks {
+        top: 60%;
+        &.active {
+          top: 5%;
+          overflow-y: scroll;
+          .section-content { overflow-x: hidden; }
+        }
+      }
+      .After {
+        top: 80%;
+        &.active {
+          top: 5%;
+          overflow-y: scroll;
+          .section-content { overflow-x: hidden; }
+        }
+      }
     }
 
     &.inactive {
@@ -105,9 +126,6 @@
       position: relative;
       padding: 30px 0px 12px 30px;
       transition: transform 500ms ease-in-out;
-      // &:first-of-type {
-      //   border-top: 5px $black solid;
-      // }
 
       .more-menu {
         position: absolute;
