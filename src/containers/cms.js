@@ -8,8 +8,8 @@ import CmsItem from '../components/cms_item';
 import CmsBottomNav from '../components/cms_bottom_nav';
 
 class Cms extends Component {
-  componentWillMount() {
-    this.props.fetchData();
+  constructor(props) {
+    super(props);
     this.openEditableSection = this.openEditableSection.bind(this);
     this.openEditableMenuSection = this.openEditableMenuSection.bind(this);
     this.renderMenuSections = this.renderMenuSections.bind(this);
@@ -20,6 +20,10 @@ class Cms extends Component {
       activeSection: '',
       activeMenuSection: ''
     };
+  }
+
+  componentWillMount() {
+    this.props.fetchData();
   }
 
   openEditableSection(section, e) {
