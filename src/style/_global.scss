@@ -43,3 +43,21 @@ label {
   color: $gray;
   transition: opacity 300ms ease-in-out;
 }
+
+.error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  background-color: $red;
+  color: $white;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
+}

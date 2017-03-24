@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import classNames from 'classnames';
 import Cms from '../containers/cms';
+import LoginForm from './login_form';
 
 class Admin extends Component {
   constructor(props) {
     super(props);
     this.renderContent = this.renderContent.bind(this);
+    this.errorMessageHandler = this.errorMessageHandler.bind(this);
 
-    this.state = { loggedIn: null };
+    this.state = {
+      loggedIn: false,
+      errorMessage: ''
+     };
   }
 
   componentWillMount() {
-    const email = 'andrewpjames87@gmail.com'
-    const password = 'pass123'
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(error, 'error');
-    });
-
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ loggedIn: true });
-        console.log(user, 'signed-in');
       } else {
-        console.log('not logged in');
         this.setState({ loggedIn: false });
       }
     });
+  }
+
+  errorMessageHandler(message) {
+    this.setState({ errorMessage: message });
   }
 
   renderContent() {
@@ -36,19 +36,24 @@ class Admin extends Component {
         return (
           <Cms />
         );
-      case false:
-        // return <LoginForm />;
-        return (
-          <h1>LoginForm</h1>
-        );
       default:
-        return <h1>LoginForm</h1>;
+        return (
+          <div className="tiny-100 login-container">
+            <h2>Welcome to the CART-DRIVER CMS</h2>
+            <LoginForm errorMessageHandler={this.errorMessageHandler}/>
+          </div>
+        );
     }
   }
 
   render() {
+    const errorStyles = classNames({
+      'error': true,
+      'active': this.state.errorMessage.length > 0
+    });
     return (
-      <div style={{height: '100%'}}>
+      <div className="admin">
+        <div className={errorStyles}>{this.state.errorMessage}</div>
         {this.renderContent()}
       </div>
     );
