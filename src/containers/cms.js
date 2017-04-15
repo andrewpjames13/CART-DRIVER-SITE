@@ -6,23 +6,51 @@ import * as actions from '../actions';
 import CmsSection from '../components/cms_section';
 import CmsItem from '../components/cms_item';
 import CmsBottomNav from '../components/cms_bottom_nav';
+import CmsAddNewItem from '../components/cms_add_new_item';
+import Dragula from 'react-dragula';
 
 class Cms extends Component {
   constructor(props) {
     super(props);
     this.openEditableSection = this.openEditableSection.bind(this);
     this.openEditableMenuSection = this.openEditableMenuSection.bind(this);
+    this.sortAndSave = this.sortAndSave.bind(this);
     this.renderMenuSections = this.renderMenuSections.bind(this);
     this.renderMenus = this.renderMenus.bind(this);
     this.renderMenuItemsList = this.renderMenuItemsList.bind(this);
+    this.dragulaDecorator = this.dragulaDecorator.bind(this);
+    this.resetItems = this.resetItems.bind(this);
 
     this.state = {
       activeSection: '',
-      activeMenuSection: ''
+      activeMenuSection: '',
+      sortAndSave: false
     };
   }
 
   componentWillMount() {
+    this.props.fetchData();
+    window.addEventListener("mouseup", () => {
+      const menuArray = document.getElementsByClassName("moving Pizza")[0].childNodes;
+      const pizzaMenuItems = this.props.menuItems[0][0].menuItems;
+        Object.keys(pizzaMenuItems).map((key, index) => {
+          if (key !== menuArray[index].className) {
+            this.setState({ sortAndSave: true });
+          }
+        });
+
+    });
+  }
+
+  dragulaDecorator(componentBackingInstance) {
+    if (componentBackingInstance) {
+      let options = { };
+      Dragula([componentBackingInstance], options);
+    }
+
+  }
+
+  resetItems() {
     this.props.fetchData();
   }
 
@@ -36,6 +64,20 @@ class Cms extends Component {
 
   openEditableMenuSection(section) {
     this.setState({ activeMenuSection: section });
+  }
+
+  sortAndSave() {
+    console.log('in');
+    const menuArray = document.getElementsByClassName("moving Pizza")[0].childNodes;
+    const pizzaMenuItems = this.props.menuItems[0][0].menuItems;
+    let newMenuOrder = [];
+
+    menuArray.forEach(menu => {
+      newMenuOrder.push(pizzaMenuItems[menu.className]);
+    });
+
+    this.props.updateMenuItemPositions('pizzaMenu', newMenuOrder);
+    this.setState({ sortAndSave: false })
   }
 
   renderMenuItemsList(obj) {
@@ -61,8 +103,14 @@ class Cms extends Component {
           activeSection={this.state.activeMenuSection}
           openEditableSection={this.openEditableMenuSection}
           key={menuSection.title+index}
+          sortAndSave={this.sortAndSave}
         >
-          {this.renderMenuItemsList(menuSection.menuItems)}
+          <div className={`moving ${menuSection.title}`} ref={this.dragulaDecorator}>
+            {this.renderMenuItemsList(menuSection.menuItems)}
+          </div>
+          <CmsAddNewItem
+            createMenuItem={this.props.createMenuItem}
+          />
         </CmsSection>
       );
     });
@@ -109,8 +157,9 @@ class Cms extends Component {
           activeSection={this.state.activeSection}
         />
         <CmsBottomNav
-          active={this.state.activeMenuSection.length !== 0}
-          createMenuItem={this.props.createMenuItem}
+          active={this.state.sortAndSave}
+          sortAndSave={this.sortAndSave}
+          reset={this.resetItems}
         />
       </div>
     );
@@ -122,7 +171,8 @@ function mapDispatchToProps(dispatch) {
     fetchData: actions.fetchData,
     createMenuItem: actions.createMenuItem,
     deleteMenuItem: actions.deleteMenuItem,
-    updateMenuItem: actions.updateMenuItem
+    updateMenuItem: actions.updateMenuItem,
+    updateMenuItemPositions: actions.updateMenuItemPositions
    }, dispatch)
 }
 

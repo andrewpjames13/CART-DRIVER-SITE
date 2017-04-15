@@ -34,6 +34,14 @@ export function updateMenuItem(menu, menuItem) {
   );
 }
 
+export function updateMenuItemPositions(menu, newMenuOrder) {
+  return dispatch => firebase.database().ref(
+    `/${menu}/`
+  ).update(
+    {menuItems: newMenuOrder}
+  );
+}
+
 export function fetchData() {
   return dispatch => {
     Data.on('value', snapshot => {

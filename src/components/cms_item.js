@@ -39,7 +39,7 @@ class CmsItem extends Component {
     });
 
     return (
-      <div>
+      <div className={this.props.index}>
         <div className="cms-item" style={{transform: `translateX(${this.state.animate})`}}>
           <h2 className="bold" key={this.props.item.name}>
             {this.props.item.name}
