@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 import CmsSection from '../components/cms_section';
 import CmsItem from '../components/cms_item';
-import CmsBottomNav from '../components/cms_bottom_nav';
 import CmsAddNewItem from '../components/cms_add_new_item';
 import Dragula from 'react-dragula';
 
@@ -24,8 +23,7 @@ class Cms extends Component {
 
     this.state = {
       activeSection: '',
-      activeMenuSection: '',
-      sortAndSave: false
+      activeMenuSection: ''
     };
   }
 
@@ -37,13 +35,10 @@ class Cms extends Component {
 
       Object.keys(menuItems).map((key, index) => {
         if (key !== menuArray[index].className) {
-          this.setState({ sortAndSave: true });
+          this.sortAndSave(menuArray, menuItems);
         }
       });
     });
-  }
-  componentShouldUpdate() {
-    console.log(this.props.menuItems, 'update');
   }
 
   dragulaDecorator(componentBackingInstance) {
@@ -79,17 +74,15 @@ class Cms extends Component {
     this.setState({ activeMenuSection: section });
   }
 
-  sortAndSave() {
-    const menuArray = document.getElementsByClassName(`moving ${this.state.activeMenuSection}`)[0].childNodes;
-    const menuItems = this.currentMenuItems();
+  sortAndSave(menuArray, menuItems) {
     let newMenuOrder = [];
+    console.log('init');
 
     menuArray.forEach(menu => {
       newMenuOrder.push(menuItems[menu.className]);
     });
 
     this.props.updateMenuItemPositions(`${this.state.activeMenuSection.toLowerCase()}Menu`, newMenuOrder);
-    this.setState({ sortAndSave: false });
   }
 
   renderMenuItemsList(obj) {
@@ -115,7 +108,6 @@ class Cms extends Component {
           activeSection={this.state.activeMenuSection}
           openEditableSection={this.openEditableMenuSection}
           key={menuSection.title+index}
-          sortAndSave={this.sortAndSave}
         >
           <div className={`moving ${menuSection.title}`} ref={this.dragulaDecorator}>
             {this.renderMenuItemsList(menuSection.menuItems)}
@@ -167,11 +159,6 @@ class Cms extends Component {
           sectionName="press"
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
-        />
-        <CmsBottomNav
-          active={this.state.sortAndSave}
-          sortAndSave={this.sortAndSave}
-          reset={this.resetItems}
         />
       </div>
     );
