@@ -6,7 +6,6 @@ import * as actions from '../actions';
 import CmsSection from '../components/cms_section';
 import CmsItem from '../components/cms_item';
 import CmsAddNewItem from '../components/cms_add_new_item';
-import Dragula from 'react-dragula';
 
 class Cms extends Component {
   constructor(props) {
@@ -17,9 +16,9 @@ class Cms extends Component {
     this.renderMenuSections = this.renderMenuSections.bind(this);
     this.renderMenus = this.renderMenus.bind(this);
     this.renderMenuItemsList = this.renderMenuItemsList.bind(this);
-    this.dragulaDecorator = this.dragulaDecorator.bind(this);
     this.resetItems = this.resetItems.bind(this);
     this.currentMenuItems = this.currentMenuItems.bind(this);
+    this.move = this.move.bind(this);
 
     this.state = {
       activeSection: '',
@@ -29,23 +28,6 @@ class Cms extends Component {
 
   componentWillMount() {
     this.props.fetchData();
-    window.addEventListener("mouseup", () => {
-      const menuArray = document.getElementsByClassName(`moving ${this.state.activeMenuSection}`)[0].childNodes;
-      const menuItems = this.currentMenuItems();
-
-      Object.keys(menuItems).map((key, index) => {
-        if (key !== menuArray[index].className) {
-          this.sortAndSave(menuArray, menuItems);
-        }
-      });
-    });
-  }
-
-  dragulaDecorator(componentBackingInstance) {
-    if (componentBackingInstance) {
-      let options = { };
-      Dragula([componentBackingInstance], options);
-    }
   }
 
   resetItems() {
@@ -70,17 +52,36 @@ class Cms extends Component {
   }
 
   openEditableMenuSection(section) {
-    console.log(section);
     this.setState({ activeMenuSection: section });
   }
 
-  sortAndSave(menuArray, menuItems) {
-    let newMenuOrder = [];
-    console.log('init');
+  move(array, oldIndex, newIndex) {
+      while (oldIndex < 0) { oldIndex += array.length; }
+      while (newIndex < 0) { newIndex += array.length; }
+      if (newIndex >= array.length) {
+          var k = newIndex - array.length;
+          while ((k--) + 1) {
+              array.push(undefined);
+          }
+      }
+      array.splice(newIndex, 0, array.splice(oldIndex, 1)[0]);
+      return array;
+  }
 
-    menuArray.forEach(menu => {
-      newMenuOrder.push(menuItems[menu.className]);
-    });
+  sortAndSave(key, direction) {
+    console.log('sortAndSave', this.props.menuItems[0][0].menuItems[0].name);
+    const oldIndex = parseInt(key, 10);
+    const currentArray = this.currentMenuItems();
+    let newMenuOrder = [];
+
+    if (direction === 'down' && oldIndex !== currentArray.length - 1) {
+      newMenuOrder = this.move(currentArray, oldIndex, oldIndex+1);
+    }
+
+    if (direction === 'up' && oldIndex !== 0) {
+      newMenuOrder = this.move(currentArray, oldIndex, oldIndex-1);
+    }
+    console.log(newMenuOrder[0].name);
 
     this.props.updateMenuItemPositions(`${this.state.activeMenuSection.toLowerCase()}Menu`, newMenuOrder);
   }
@@ -95,6 +96,7 @@ class Cms extends Component {
           selectedMenu='pizzaMenu'
           deleteMenuItem={this.props.deleteMenuItem}
           updateMenuItem={this.props.updateMenuItem}
+          moveMenuItem={this.sortAndSave}
         />
       );
     });
@@ -109,7 +111,7 @@ class Cms extends Component {
           openEditableSection={this.openEditableMenuSection}
           key={menuSection.title+index}
         >
-          <div className={`moving ${menuSection.title}`} ref={this.dragulaDecorator}>
+          <div className={`moving ${menuSection.title}`} >
             {this.renderMenuItemsList(menuSection.menuItems)}
           </div>
           <CmsAddNewItem

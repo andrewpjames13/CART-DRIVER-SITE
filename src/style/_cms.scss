@@ -132,7 +132,6 @@
         bottom: 0;
         right: -226px;
         width: 300px;
-        background-color: red;
         border-top: 4px black solid;
 
         .cta {
@@ -153,6 +152,11 @@
           &.move {
             background-color: $black;
             fill: $white;
+            float: right;
+
+            .up, .down {
+              height: 50%;
+            }
           }
         }
       }
