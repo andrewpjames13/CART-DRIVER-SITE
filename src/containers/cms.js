@@ -20,6 +20,7 @@ class Cms extends Component {
     this.renderMenuItemsList = this.renderMenuItemsList.bind(this);
     this.dragulaDecorator = this.dragulaDecorator.bind(this);
     this.resetItems = this.resetItems.bind(this);
+    this.currentMenuItems = this.currentMenuItems.bind(this);
 
     this.state = {
       activeSection: '',
@@ -31,15 +32,18 @@ class Cms extends Component {
   componentWillMount() {
     this.props.fetchData();
     window.addEventListener("mouseup", () => {
-      const menuArray = document.getElementsByClassName("moving Pizza")[0].childNodes;
-      const pizzaMenuItems = this.props.menuItems[0][0].menuItems;
-        Object.keys(pizzaMenuItems).map((key, index) => {
-          if (key !== menuArray[index].className) {
-            this.setState({ sortAndSave: true });
-          }
-        });
+      const menuArray = document.getElementsByClassName(`moving ${this.state.activeMenuSection}`)[0].childNodes;
+      const menuItems = this.currentMenuItems();
 
+      Object.keys(menuItems).map((key, index) => {
+        if (key !== menuArray[index].className) {
+          this.setState({ sortAndSave: true });
+        }
+      });
     });
+  }
+  componentShouldUpdate() {
+    console.log(this.props.menuItems, 'update');
   }
 
   dragulaDecorator(componentBackingInstance) {
@@ -47,11 +51,19 @@ class Cms extends Component {
       let options = { };
       Dragula([componentBackingInstance], options);
     }
-
   }
 
   resetItems() {
     this.props.fetchData();
+  }
+
+  currentMenuItems() {
+    let currentMenuItems = [];
+    if (this.state.activeMenuSection === 'Pizza') {currentMenuItems = this.props.menuItems[0][0].menuItems;}
+    if (this.state.activeMenuSection === 'Antipasti') {currentMenuItems = this.props.menuItems[0][1].menuItems;}
+    if (this.state.activeMenuSection === 'Drinks') {currentMenuItems = this.props.menuItems[1][0].menuItems;}
+    if (this.state.activeMenuSection === 'After') {currentMenuItems = this.props.menuItems[1][1].menuItems;}
+    return currentMenuItems;
   }
 
   openEditableSection(section, e) {
@@ -63,21 +75,21 @@ class Cms extends Component {
   }
 
   openEditableMenuSection(section) {
+    console.log(section);
     this.setState({ activeMenuSection: section });
   }
 
   sortAndSave() {
-    console.log('in');
-    const menuArray = document.getElementsByClassName("moving Pizza")[0].childNodes;
-    const pizzaMenuItems = this.props.menuItems[0][0].menuItems;
+    const menuArray = document.getElementsByClassName(`moving ${this.state.activeMenuSection}`)[0].childNodes;
+    const menuItems = this.currentMenuItems();
     let newMenuOrder = [];
 
     menuArray.forEach(menu => {
-      newMenuOrder.push(pizzaMenuItems[menu.className]);
+      newMenuOrder.push(menuItems[menu.className]);
     });
 
-    this.props.updateMenuItemPositions('pizzaMenu', newMenuOrder);
-    this.setState({ sortAndSave: false })
+    this.props.updateMenuItemPositions(`${this.state.activeMenuSection.toLowerCase()}Menu`, newMenuOrder);
+    this.setState({ sortAndSave: false });
   }
 
   renderMenuItemsList(obj) {
