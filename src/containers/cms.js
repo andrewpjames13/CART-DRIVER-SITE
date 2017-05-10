@@ -19,10 +19,12 @@ class Cms extends Component {
     this.resetItems = this.resetItems.bind(this);
     this.currentMenuItems = this.currentMenuItems.bind(this);
     this.move = this.move.bind(this);
+    this.openItem = this.openItem.bind(this);
 
     this.state = {
       activeSection: '',
-      activeMenuSection: ''
+      activeMenuSection: '',
+      activeItem: null
     };
   }
 
@@ -69,7 +71,6 @@ class Cms extends Component {
   }
 
   sortAndSave(key, direction) {
-    console.log('sortAndSave', this.props.menuItems[0][0].menuItems[0].name);
     const oldIndex = parseInt(key, 10);
     const currentArray = this.currentMenuItems();
     let newMenuOrder = [];
@@ -81,22 +82,31 @@ class Cms extends Component {
     if (direction === 'up' && oldIndex !== 0) {
       newMenuOrder = this.move(currentArray, oldIndex, oldIndex-1);
     }
-    console.log(newMenuOrder[0].name);
 
     this.props.updateMenuItemPositions(`${this.state.activeMenuSection.toLowerCase()}Menu`, newMenuOrder);
+  }
+
+  openItem(openItem) {
+    if (this.state.activeItem === openItem) {
+      this.setState({activeItem: null});
+    } else {
+      this.setState({activeItem: openItem});
+    }
   }
 
   renderMenuItemsList(obj) {
     return Object.keys(obj).map((key, index) => {
       return (
         <CmsItem
-          key={index}
+          key={obj[key].name}
           item={obj[key]}
           index={key}
           selectedMenu='pizzaMenu'
           deleteMenuItem={this.props.deleteMenuItem}
           updateMenuItem={this.props.updateMenuItem}
           moveMenuItem={this.sortAndSave}
+          openItem={this.openItem}
+          isOpen={this.state.activeItem === obj[key].name}
         />
       );
     });

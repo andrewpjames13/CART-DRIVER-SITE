@@ -45,7 +45,6 @@ export function updateMenuItemPositions(menu, newMenuOrder) {
 export function fetchData() {
   return dispatch => {
     Data.on('value', snapshot => {
-      console.log(snapshot.val(), 'snapshot');
       dispatch({
         type: FETCH_DATA_SUCCESS,
         payload: snapshot.val()

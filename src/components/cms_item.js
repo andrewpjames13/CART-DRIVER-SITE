@@ -8,22 +8,8 @@ class CmsItem extends Component {
     super(props);
 
     this.state = {
-      animate: '0',
       openUpdate: false
     };
-  }
-
-  animateMenu() {
-    if (this.state.openUpdate) {
-      this.setState({
-        animate: this.state.animate === '0' ? '-225px' : '0',
-        openUpdate: false
-      });
-    } else {
-      this.setState({
-        animate: this.state.animate === '0' ? '-225px' : '0'
-      });
-    }
   }
 
   openUpdateItem() {
@@ -40,12 +26,12 @@ class CmsItem extends Component {
 
     return (
       <div className={this.props.index}>
-        <div className="cms-item" style={{transform: `translateX(${this.state.animate})`}}>
+        <div className="cms-item" style={{transform: `${this.props.isOpen ? 'translateX(-225px)' : 'translateX(0)'}`}}>
           <h2 className="bold" key={this.props.item.name}>
             {this.props.item.name}
           </h2>
           <div className="more-menu">
-            <button className="cta more" onClick={() => this.animateMenu()}>
+            <button className="cta more" onClick={() => this.props.openItem(this.props.item.name)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M12 18c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zm0-9c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3z"/>
               </svg>
@@ -64,7 +50,6 @@ class CmsItem extends Component {
               <button
                 className="up"
                 onClick={() => {
-                  this.animateMenu();
                   this.props.moveMenuItem(this.props.index, 'up')
                 }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -74,7 +59,6 @@ class CmsItem extends Component {
               <button
                 className="down"
                 onClick={() => {
-                  this.animateMenu();
                   this.props.moveMenuItem(this.props.index, 'down')
                 }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

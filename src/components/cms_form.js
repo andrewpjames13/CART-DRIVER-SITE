@@ -42,7 +42,6 @@ class CmsForm extends Component {
 
       });
     } else if (name === 'price') {
-      console.log(this.state.name);
       this.setState({
         price: value,
         disabled: (
