@@ -41,7 +41,7 @@
     }
 
     &:hover {
-      color: $green;
+      color: $red;
     }
 
     &.home {
@@ -140,7 +140,7 @@
           background-color: $white;
 
           &.edit {
-            background-color: $green;
+            background-color: $red;
             fill: $white;
           }
 

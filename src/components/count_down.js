@@ -63,7 +63,7 @@ class CountDown extends PureComponent {
         <h6 className="clock-letters">MIN</h6>
         <h1 className="bold clock-numbers">{this.state.seconds}</h1>
         <h6 className="clock-letters">SEC</h6>
-        <h6 className="bold green open-times">OPEN 12PM - 12AM SEVEN DAYS A WEEK</h6>
+        <h6 className="bold open-times">OPEN 12PM - 12AM SEVEN DAYS A WEEK</h6>
       </div>
     );
   }

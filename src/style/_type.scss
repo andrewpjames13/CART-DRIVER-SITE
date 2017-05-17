@@ -4,12 +4,12 @@
 
 // Highlights
 ::selection {
-  background: $green;
+  background: $red;
   color: $white;
 }
 
 ::-moz-selection {
-  background: $green;
+  background: $red;
   color: $white;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 a {
-  color: $green;
+  color: $red;
   font-weight: 900;
   text-decoration: none;
 
@@ -76,10 +76,10 @@ li { margin: 5px 0;}
 }
 
 .green {
-  color: $green;
+  color: $red;
 }
 
 hr {
-  border-color: $green;
+  border-color: $red;
   margin-top: 3px;
 }
