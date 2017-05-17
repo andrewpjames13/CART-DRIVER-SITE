@@ -39,6 +39,10 @@
       @include background-gradient(0.8);
     };
 
+    svg {
+      fill: $white;
+    }
+
     .clock-numbers {
       display: inline-block;
     }
