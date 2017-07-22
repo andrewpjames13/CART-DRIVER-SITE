@@ -19,7 +19,7 @@ class MenuList extends Component {
     return array.map((item) => {
       if (item.price) {
         itemPrice = (
-          <h2 className="item-price">{ item.price }</h2>
+          <h5 className="item-price">{ item.price }</h5>
         )
       } else {
         itemPrice = ''
@@ -27,13 +27,42 @@ class MenuList extends Component {
       return (
         <div key={item.name} className="menu-item tiny-100">
           <div className="tiny-80">
-            <h4 className="bold">{item.name}</h4>
+            <h5 className="red">{item.name}</h5>
             <ul>
               { this.renderDescriptionList(item.items) }
             </ul>
           </div>
-          <div className="tiny-20">
+          <div className="tiny-20 red">
             { itemPrice }
+          </div>
+        </div>
+      );
+    });
+  }
+
+  renderHappyMenuItemsList(array) {
+    let itemPrice = null;
+
+    return array.map((item) => {
+      if (item.price) {
+        itemPrice = (
+          <h5 className="item-price">{ item.price }</h5>
+        )
+      } else {
+        itemPrice = ''
+      }
+      return (
+        <div key={item.name} className="menu-section tiny-100 small-50">
+          <div className="menu-item tiny-100">
+            <div className="tiny-80">
+              <h5 className="red">{item.name}</h5>
+              <ul>
+                { this.renderDescriptionList(item.items) }
+              </ul>
+            </div>
+            <div className="tiny-20 red">
+              { itemPrice }
+            </div>
           </div>
         </div>
       );
@@ -55,8 +84,24 @@ class MenuList extends Component {
           { this.renderPhotos(index + menuSectionIndex, menuSection.sectionPhoto) }
           <div key={menuSection.title} className="menu-section">
             <HeadLine title={menuSection.title} />
-            <p className="section-description">{ menuSection.sectionDescription }</p>
             { this.renderMenuItemsList(menuSection.menuItems) }
+            <p className="section-description red">{ menuSection.sectionDescription }</p>
+          </div>
+        </div>
+      );
+    });
+  }
+
+  renderHappyHourMenu(section, menuSectionIndex) {
+    return section.map((menuSection, index) => {
+      return (
+        <div key={menuSection.title+index}>
+          <div key={menuSection.title} className="menu-section">
+            <HeadLine title={menuSection.title} />
+          </div>
+          <div className="happyHourMenu">
+            { this.renderHappyMenuItemsList(menuSection.menuItems) }
+            <p className="section-description red">{ menuSection.sectionDescription }</p>
           </div>
         </div>
       );
@@ -65,11 +110,24 @@ class MenuList extends Component {
 
   renderMenuSections() {
     return this.props.menuItems.map((section, index) => {
-      return (
-        <div key={`${section.title}+${index}`} className="tiny-100 small-50">
-          { this.renderMenus(section, index) }
-        </div>
-      )
+      if ( index === 2 ) {
+        return (
+          <div key={`${section.title}+${index}`}>
+            <div className="tiny-100 small-50">
+              <img className="menu-image" src={`/${section[0].sectionPhoto}`} alt={'image'+index}/>
+            </div>
+            <div className="tiny-100">
+              { this.renderHappyHourMenu(section, index) }
+            </div>
+          </div>
+        )
+      } else {
+        return (
+          <div key={`${section.title}+${index}`} className="tiny-100 small-50">
+            { this.renderMenus(section, index) }
+          </div>
+        )
+      }
     });
   }
 

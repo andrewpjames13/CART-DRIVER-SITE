@@ -6,7 +6,8 @@ export default function(state = [], action) {
     case FETCH_DATA_SUCCESS:
       const menuArray = [
         [action.payload.pizzaMenu, action.payload.antipastiMenu],
-        [action.payload.drinksMenu, action.payload.happyHourMenu]
+        [action.payload.drinksMenu],
+        [action.payload.happyHourMenu]
       ];
       return menuArray;
     default:

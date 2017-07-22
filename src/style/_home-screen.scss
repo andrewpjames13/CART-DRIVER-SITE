@@ -32,6 +32,7 @@
     padding: 5%;
     top: 40%;
     transform: translateY(-50%);
+    text-align: center;
     @include background-gradient(0.5);
 
     @include respond-above($small) {
@@ -39,9 +40,12 @@
       @include background-gradient(0.8);
     };
 
+    h6 {
+      text-shadow: 1px 1px 8px $black;
+    }
+
     svg {
       fill: $white;
-      margin-left: -5%;
       width: 95%;
     }
 
@@ -56,6 +60,12 @@
 
     .open-times {
       text-shadow: 2px 2px 8px $black;
+      margin-bottom: 0.8em;
     }
+
+    // .count-down {
+    //   @include respond-above($small) {
+    //     font-size: 3vw;
+    // };
   }
 }

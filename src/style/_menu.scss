@@ -13,19 +13,38 @@
     .item-price {
       position: relative;
       float: right;
+      letter-spacing: -3px;
       &:after {
         position: absolute;
         content: "$";
-        top: 3px;
-        left: -13px;
-        color: $gray;
-        font-size: 2rem;
+        top: 5px;
+        left: -12px;
+        color: $black;
+        font-size: .6em;
       }
     }
+  }
+
+  .headline {
+    border: 7px solid $black;
+    color: $red;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  hr {
+    display: none;
   }
 }
 
 .menu-image {
   width: 100%;
   height: auto;
+}
+
+.happyHourMenu {
+  .menu-section {
+    padding-top: 0;
+  }
 }

@@ -13,7 +13,7 @@
   color: $white;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300|Roboto:300,400');
 
 html, body {
   height: 100%;
@@ -46,8 +46,9 @@ ul {
   padding-left: 1px;
 }
 
-h1, h2, h3, h4, h6 {
-  font-family: Ostrich Sans;
+h1, h2, h3, h4, h5, h6 {
+  // font-family: Ostrich Sans;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -67,14 +68,19 @@ h4 {
   // font-size: 9vw;
   font-size: 34px;
  }
+h5 {
+  // font-size: 9vw;
+  font-size: 28px;
+ }
 h6 {
-  font-size: 6vw;
+  font-size: 4.5vw;
   @include respond-above($large){ font-size: 4vw };
   @include respond-above(2000px){ font-size: 3vw };
  }
 p, li {
   letter-spacing: 0.05rem;
   font-size: 1em;
+  line-height: 1.2rem;
  }
 li { margin: 5px 0;}
 
@@ -83,6 +89,10 @@ li { margin: 5px 0;}
 }
 
 .green {
+  color: $green;
+}
+
+.red {
   color: $red;
 }
 
