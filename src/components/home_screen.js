@@ -3,12 +3,12 @@ import React from 'react';
 import CountDown from './count_down';
 
 const HomeScreen = (props) => {
-    let backgroundImage;
-    if (window.innerWidth >= 768) {
-      backgroundImage = 'url(images/cart-driver-oven-pizza.jpg)';
-    } else {
-      backgroundImage = '';
-    }
+  let backgroundImage;
+  if (window.innerWidth >= 768) {
+    backgroundImage = 'url(images/cart-driver-oven-pizza.jpg)';
+  } else {
+    backgroundImage = '';
+  }
 
   return (
     <div className="home-container" style={{"backgroundImage" : backgroundImage}}>

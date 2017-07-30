@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 import NavBar from './components/nav_bar/nav_bar';
+import DeskNavBar from './components/desk_nav_bar';
 import HomeScreen from './components/home_screen';
 import ScrollContainer from './containers/scroll_container';
 
@@ -48,6 +49,7 @@ export default class App extends Component {
       <div>
         <HomeScreen />
         <ScrollContainer />
+        <DeskNavBar />
         <NavBar sections={this.state.sections} activeSection={this.state.activeSection} />
       </div>
     );
