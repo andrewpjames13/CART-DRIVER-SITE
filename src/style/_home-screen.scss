@@ -61,6 +61,23 @@
     .open-times {
       text-shadow: 2px 2px 8px $black;
       margin-bottom: 0.8em;
+      text-align: center;
+      font-size: 4vw;
+
+      @include respond-above($small) {
+        margin-bottom: 0;
+        font-size: 2vw;
+      };
+    }
+
+    .homeText {
+      font-size: 4vw;
+      max-width: 800px;
+      margin: 0 auto;
+
+      @include respond-above($small) {
+        font-size: 25px;
+      };
     }
 
     // .count-down {
