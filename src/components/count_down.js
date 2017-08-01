@@ -50,19 +50,19 @@ class CountDown extends PureComponent {
 
   render() {
     return(
-      <div>
+      <div className="countDown">
         <ReactInterval
           timeout={1000}
           enabled={true}
           callback={() => this.startIt()}
          />
-        <h6>{this.state.openCloseTxt}</h6>
-        <h1 className="bold clock-numbers">{this.state.hours}</h1>
-        <h6 className="clock-letters">HR</h6>
-        <h1 className="bold clock-numbers">{this.state.minutes}</h1>
-        <h6 className="clock-letters">MIN</h6>
-        <h1 className="bold clock-numbers">{this.state.seconds}</h1>
-        <h6 className="clock-letters">SEC</h6>
+        <h6 className="bold open-times clock-letters">{this.state.openCloseTxt}</h6>
+        <h6 className="bold clock-numbers open-times">{this.state.hours}</h6>
+        <h6 className="bold open-times clock-letters">HR</h6>
+        <h6 className="bold clock-numbers open-times">{this.state.minutes}</h6>
+        <h6 className="bold open-times clock-letters">MIN</h6>
+        <h6 className="bold clock-numbers open-times">{this.state.seconds}</h6>
+        <h6 className="bold open-times clock-letters">SEC</h6>
       </div>
     );
   }

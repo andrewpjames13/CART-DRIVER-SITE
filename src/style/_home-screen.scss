@@ -49,15 +49,6 @@
       width: 95%;
     }
 
-    .clock-numbers {
-      display: inline-block;
-    }
-
-    .clock-letters {
-      display: inline-block;
-      margin-right: 15px;
-    }
-
     .open-times {
       text-shadow: 2px 2px 8px $black;
       margin-bottom: 0.8em;
@@ -70,13 +61,35 @@
       };
     }
 
+    .clock-numbers {
+      display: inline-block;
+    }
+
+    .clock-letters {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 3.25vw;
+      @include respond-above($small) {
+        font-size: 1.25vw;
+      };
+    }
+
+    .countDown {
+      @include respond-above($small) {
+        margin-bottom: 15px;
+      };
+    }
+
     .homeText {
       font-size: 4vw;
       max-width: 800px;
       margin: 0 auto;
+      margin-top: 10px;
+      text-shadow: 2px 2px 8px $black;
 
       @include respond-above($small) {
         font-size: 25px;
+        margin-top: 0px;
       };
     }
 
