@@ -1,7 +1,12 @@
 /*jshint esversion: 6 */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+// import { Router, Route, browserHistory } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import promise from 'redux-promise';
@@ -19,9 +24,11 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App} />
-      <Route path="/admin" component={Admin} />
+    <Router>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route exact path="/admin" component={Admin} />
+      </Switch>
     </Router>
   </Provider>
   , document.getElementById('root')
