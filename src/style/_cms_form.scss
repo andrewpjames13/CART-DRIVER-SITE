@@ -8,9 +8,12 @@
   position: relative;
 
   &.open {
-    height: 60vh;
+    min-height: 60vh;
     border-top: 4px solid $black;
     border-bottom: 4px solid $black;
+    height: auto;
+    overflow: auto;
+    padding-bottom: 6rem;
   }
 
   form {
@@ -26,6 +29,14 @@
 
   input {
     margin-bottom: 40px;
+  }
+
+  .item-inputs {
+    margin: 10px 0;
+
+    &:last-of-type {
+      margin-bottom: 130px;
+    }
   }
 }
 

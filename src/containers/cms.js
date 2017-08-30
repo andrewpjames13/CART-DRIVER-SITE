@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 import CmsSection from '../components/cms_section';
 import CmsItem from '../components/cms_item';
+import CmsDrinkItem from '../components/cms_drink_item';
 import CmsAddNewItem from '../components/cms_add_new_item';
 
 class Cms extends Component {
@@ -16,13 +17,14 @@ class Cms extends Component {
     this.renderMenuSections = this.renderMenuSections.bind(this);
     this.renderMenus = this.renderMenus.bind(this);
     this.renderMenuItemsList = this.renderMenuItemsList.bind(this);
+    this.renderDrinkMenuItemsList = this.renderDrinkMenuItemsList.bind(this);
     this.resetItems = this.resetItems.bind(this);
     this.currentMenuItems = this.currentMenuItems.bind(this);
     this.move = this.move.bind(this);
     this.openItem = this.openItem.bind(this);
 
     this.state = {
-      activeSection: '',
+      activeSection: 'Menu',
       activeMenuSection: '',
       activeItem: null
     };
@@ -94,14 +96,32 @@ class Cms extends Component {
     }
   }
 
-  renderMenuItemsList(obj) {
+  renderMenuItemsList(obj, menu) {
     return Object.keys(obj).map((key, index) => {
       return (
         <CmsItem
           key={obj[key].name}
           item={obj[key]}
           index={key}
-          selectedMenu='pizzaMenu'
+          selectedMenu={menu}
+          deleteMenuItem={this.props.deleteMenuItem}
+          updateMenuItem={this.props.updateMenuItem}
+          moveMenuItem={this.sortAndSave}
+          openItem={this.openItem}
+          isOpen={this.state.activeItem === obj[key].name}
+        />
+      );
+    });
+  }
+
+  renderDrinkMenuItemsList(obj, menu) {
+    return Object.keys(obj).map((key, index) => {
+      return (
+        <CmsDrinkItem
+          key={obj[key].name}
+          item={obj[key]}
+          index={key}
+          selectedMenu={menu}
           deleteMenuItem={this.props.deleteMenuItem}
           updateMenuItem={this.props.updateMenuItem}
           moveMenuItem={this.sortAndSave}
@@ -114,21 +134,38 @@ class Cms extends Component {
 
   renderMenus(section, menuSectionIndex) {
     return section.map((menuSection, index) => {
-      return (
-        <CmsSection
-          sectionName={menuSection.title}
-          activeSection={this.state.activeMenuSection}
-          openEditableSection={this.openEditableMenuSection}
-          key={menuSection.title+index}
-        >
-          <div className={`moving ${menuSection.title}`} >
-            {this.renderMenuItemsList(menuSection.menuItems)}
-          </div>
-          <CmsAddNewItem
-            createMenuItem={this.props.createMenuItem}
-          />
-        </CmsSection>
-      );
+      let menu = menuSection.title === 'Pizza' ? 'pizzaMenu' : 'antipastiMenu';
+      if(menuSection.title === 'Happy Hour' || menuSection.title === 'Drinks') {
+        menu = menuSection.title === 'Happy Hour' ? 'happyHourMenu' : 'drinksMenu';
+        return (
+          <CmsSection
+            sectionName={menuSection.title}
+            activeSection={this.state.activeMenuSection}
+            openEditableSection={this.openEditableMenuSection}
+            key={menuSection.title+index}
+            >
+              <div className={`moving ${menuSection.title}`} >
+                {this.renderDrinkMenuItemsList(menuSection.menuItems, menu)}
+              </div>
+            </CmsSection>
+          );
+        }
+
+        return (
+          <CmsSection
+            sectionName={menuSection.title}
+            activeSection={this.state.activeMenuSection}
+            openEditableSection={this.openEditableMenuSection}
+            key={menuSection.title+index}
+            >
+              <div className={`moving ${menuSection.title}`} >
+                {this.renderMenuItemsList(menuSection.menuItems, menu)}
+              </div>
+              <CmsAddNewItem
+                createMenuItem={this.props.createMenuItem}
+              />
+            </CmsSection>
+          );
     });
   }
 
@@ -156,13 +193,13 @@ class Cms extends Component {
             </div>
         </div>
         <CmsSection
-          sectionName="menu"
+          sectionName="Menu"
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
         >
           { this.renderMenuSections() }
         </CmsSection>
-        <CmsSection
+{/* {        <CmsSection
           sectionName="photos"
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
@@ -171,7 +208,7 @@ class Cms extends Component {
           sectionName="press"
           openEditableSection={this.openEditableSection}
           activeSection={this.state.activeSection}
-        />
+        />} */}
       </div>
     );
   }

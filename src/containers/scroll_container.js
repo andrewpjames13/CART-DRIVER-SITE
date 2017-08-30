@@ -68,12 +68,12 @@ class ScrollContainer extends Component {
             <PhotoGrid photos={this.props.photos}/>
           </Element>
 
-          <Element name="press" className="element press">
-            <Press pressItems={this.props.pressItems}/>
-          </Element>
-
           <Element name="about" className="element about">
             <About />
+          </Element>
+
+          <Element name="press" className="element press">
+            <Press pressItems={this.props.pressItems}/>
           </Element>
 
           <Element name="contact" className="element contact">

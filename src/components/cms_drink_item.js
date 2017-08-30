@@ -1,9 +1,9 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import CmsForm from './cms_form';
+import CmsDrinkForm from './cms_drink_form';
 import classNames from 'classnames';
 
-class CmsItem extends Component {
+class CmsDrinkItem extends Component {
   constructor(props) {
     super(props);
 
@@ -56,7 +56,7 @@ class CmsItem extends Component {
                   this.props.moveMenuItem(this.props.index, 'up')
                 }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path d="M14 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm-3-3.858c.321-.083.653-.142 1-.142s.679.059 1 .142v-2.142h4l-5-6-5 6h4v2.142zm2 7.716c-.321.083-.653.142-1 .142s-.679-.059-1-.142v2.142h-4l5 6 5-6h-4v-2.142z"/>
+                  <path d="M1,11l2.8,2.8L10,7.6V24h4V7.6l6.2,6.2L23,11L12,0L1,11z"/>
                 </svg>
               </button>
               <button
@@ -65,14 +65,14 @@ class CmsItem extends Component {
                   this.props.moveMenuItem(this.props.index, 'down')
                 }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                  <path d="M14 12c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zm-3-3.858c.321-.083.653-.142 1-.142s.679.059 1 .142v-2.142h4l-5-6-5 6h4v2.142zm2 7.716c-.321.083-.653.142-1 .142s-.679-.059-1-.142v2.142h-4l5 6 5-6h-4v-2.142z"/>
+                  <path d="M23,13l-2.8-2.8L14,16.4V0h-4v16.4l-6.2-6.2L1,13l11,11L23,13z"/>
                 </svg>
               </button>
             </div>
           </div>
         </div>
         <div className={styles}>
-          <CmsForm
+          <CmsDrinkForm
             itemData={this.props.item}
             itemIndex={this.props.index}
             submit={this.props.updateMenuItem}
@@ -84,4 +84,4 @@ class CmsItem extends Component {
   }
 }
 
-export default CmsItem;
+export default CmsDrinkItem;

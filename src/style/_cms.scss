@@ -26,9 +26,8 @@
     .title {
       padding: 50px 30px 30px 30px;
       text-align: left;
-      font-family: Ostrich Sans;
       width: 100%;
-      font-size: 18vw;
+      font-size: 10vw;
 
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-font-smoothing: antialiased;
@@ -52,7 +51,7 @@
     &:nth-child(2) { top: 25%; }
     &:nth-child(3) { top: 50%; }
     &:nth-child(4) { top: 75%; }
-    &.Pizza, &.Antipasti, &.Drinks, &.After { top: 100%; }
+    &.Pizza, &.Antipasti, &.Drinks, &.Happy { top: 100%; }
 
     &.active {
       top: 5%;
@@ -63,7 +62,7 @@
       }
 
       .title {
-        padding-top: 30px;
+        padding-top: 0px;
         border-bottom: 4px black solid;
       }
 
@@ -92,7 +91,7 @@
           .section-content { overflow-x: hidden; }
         }
       }
-      .After {
+      .Happy {
         top: 80%;
         &.active {
           top: 5%;
@@ -108,7 +107,7 @@
       &.Pizza { top: 110%; }
       &.Antipasti { top: 110%; }
       &.Drinks { top: 110%; }
-      &.After { top: 110%; }
+      &.Happy { top: 110%; }
     }
 
     &.home {
@@ -123,7 +122,7 @@
 
     .cms-item {
       position: relative;
-      padding: 30px 0px 12px 30px;
+      padding: 20px 0px 20px 30px;
       transition: transform 500ms ease-in-out;
 
       .more-menu {

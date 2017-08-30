@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
 
-class CmsForm extends Component {
+class CmsDrinkForm extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -10,7 +10,7 @@ class CmsForm extends Component {
     this.state = {
       name: (props.itemData && props.itemData.name) || '',
       price: (props.itemData && props.itemData.price) || '',
-      description: (props.itemData && props.itemData.items[0]) || '',
+      description: (props.itemData && props.itemData.items) || '',
       disabled: true
     };
   }
@@ -23,7 +23,7 @@ class CmsForm extends Component {
         index: this.props.itemIndex,
         name: this.state.name,
         price: this.state.price,
-        items:[this.state.description]
+        items: this.state.description
       }
     )
   }
@@ -49,9 +49,11 @@ class CmsForm extends Component {
           this.props.itemData.price.toLowerCase() === value.toLowerCase()) ||
           (!this.props.itemData && value.length === 0)
       });
-    } else if (name === 'description') {
+    } else {
+      const test = this.state.description;
+      test[name] = value;
       this.setState({
-        description: value,
+        description: test,
         disabled: (
           this.props.itemData &&
           this.props.itemData.items[0][0][0].toLowerCase() === value.toLowerCase()) ||
@@ -96,14 +98,19 @@ class CmsForm extends Component {
           htmlFor="description"
           className="tiny-100 label">description
         </label>
-        <input
-          className="tiny-100"
-          type="text"
-          name="description"
-          value={this.state.description}
-          onChange={this.handleChange}
-          placeholder="DESCRIPTION"
-        />
+        {
+          this.props.itemData.items.map((item, index) => (
+            <input
+              key={`${item}_${index}`}
+              className="tiny-100 item-inputs"
+              type="text"
+              name={index}
+              value={this.state.description[index]}
+              onChange={this.handleChange}
+              placeholder="DESCRIPTION"
+            />
+          ))
+        }
         <button type="submit" value="Submit" className="tiny-100 submit" disabled={this.state.disabled}>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M14 3h2.997v5h-2.997v-5zm9 1v20h-22v-24h17.997l4.003 4zm-17 5h12v-7h-12v7zm14 4h-16v9h16v-9z"/>
@@ -114,4 +121,4 @@ class CmsForm extends Component {
   }
 }
 
-export default CmsForm;
+export default CmsDrinkForm;

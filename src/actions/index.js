@@ -27,10 +27,16 @@ export function deleteMenuItem(menu, key) {
 }
 
 export function updateMenuItem(menu, menuItem) {
+  console.log(menu, menuItem);
+  let menuItems = [menuItem.items];
+  if (menu === 'drinksMenu' || menu === 'happyHourMenu') {
+    menuItems = menuItem.items;
+  }
+
   return dispatch => firebase.database().ref(
     `/${menu}/menuItems/${menuItem.index}`
   ).update(
-    {items: [menuItem.items], name: menuItem.name, price: menuItem.price}
+    {items: menuItems, name: menuItem.name, price: menuItem.price}
   );
 }
 
