@@ -163,6 +163,7 @@ class Cms extends Component {
               </div>
               <CmsAddNewItem
                 createMenuItem={this.props.createMenuItem}
+                selectedMenu={menu}
               />
             </CmsSection>
           );
