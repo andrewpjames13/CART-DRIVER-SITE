@@ -1,7 +1,6 @@
 /*jshint esversion: 6 */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 
 const validate = (values) => {
   const errors = {};
@@ -14,7 +13,11 @@ const validate = (values) => {
   return errors;
 };
 
-class CmsForm extends Component {
+const afterSubmit = (result, dispatch) => {
+  dispatch(reset('cmsFormCreate'));
+}
+
+class CmsFormCreate extends Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit}>
@@ -68,13 +71,8 @@ class CmsForm extends Component {
   }
 }
 
-CmsForm = reduxForm({
-  form: 'cmsForm',
+export default reduxForm({
+  form: 'cmsFormCreate',
+  onSubmitSuccess: afterSubmit,
   validate,
-})(CmsForm)
-
-export default connect(
-  state => ({
-    initialValues: state.currentItem.data
-  }),
-)(CmsForm);
+})(CmsFormCreate)

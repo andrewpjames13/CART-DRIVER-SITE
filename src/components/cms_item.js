@@ -6,16 +6,37 @@ import classNames from 'classnames';
 class CmsItem extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       openUpdate: false
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.isOpen) {
+      this.setState({
+        openUpdate: false,
+      });
+    }
+  }
+
   openUpdateItem() {
     this.setState({
       openUpdate: !this.state.openUpdate
     });
+  }
+
+  handleSubmit(data) {
+    this.props.updateMenuItem(
+      this.props.selectedMenu,
+      {
+        index: this.props.index,
+        name: data.name,
+        price: data.price ? data.price : '',
+        items:[data.description]
+      }
+    )
   }
 
   render() {
@@ -32,6 +53,11 @@ class CmsItem extends Component {
           </h2>
           <div className="more-menu">
             <button className="cta more" onClick={() => {
+              this.props.load({
+                name: this.props.item.name,
+                price: this.props.item.price,
+                description: this.props.item.items[0],
+              })
               this.setState({ openUpdate: false });
               this.props.openItem(this.props.item.name);
             }}>
@@ -72,12 +98,15 @@ class CmsItem extends Component {
           </div>
         </div>
         <div className={styles}>
-          <CmsForm
-            itemData={this.props.item}
-            itemIndex={this.props.index}
-            submit={this.props.updateMenuItem}
-            selectedMenu={this.props.selectedMenu}
-          />
+          { this.state.openUpdate ?
+            <CmsForm
+              load={this.props.load}
+              itemData={this.props.item}
+              itemIndex={this.props.index}
+              onSubmit={this.handleSubmit}
+              selectedMenu={this.props.selectedMenu}
+            /> : null
+          }
         </div>
       </div>
     );

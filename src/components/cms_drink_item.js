@@ -77,6 +77,7 @@ class CmsDrinkItem extends Component {
             itemIndex={this.props.index}
             submit={this.props.updateMenuItem}
             selectedMenu={this.props.selectedMenu}
+            load={this.props.load}
           />
         </div>
       </div>

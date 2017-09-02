@@ -109,6 +109,7 @@ class Cms extends Component {
           moveMenuItem={this.sortAndSave}
           openItem={this.openItem}
           isOpen={this.state.activeItem === obj[key].name}
+          load={this.props.load}
         />
       );
     });
@@ -127,6 +128,7 @@ class Cms extends Component {
           moveMenuItem={this.sortAndSave}
           openItem={this.openItem}
           isOpen={this.state.activeItem === obj[key].name}
+          load={this.props.load}
         />
       );
     });
@@ -164,6 +166,7 @@ class Cms extends Component {
               <CmsAddNewItem
                 createMenuItem={this.props.createMenuItem}
                 selectedMenu={menu}
+                load={this.props.load}
               />
             </CmsSection>
           );
@@ -221,7 +224,8 @@ function mapDispatchToProps(dispatch) {
     createMenuItem: actions.createMenuItem,
     deleteMenuItem: actions.deleteMenuItem,
     updateMenuItem: actions.updateMenuItem,
-    updateMenuItemPositions: actions.updateMenuItemPositions
+    updateMenuItemPositions: actions.updateMenuItemPositions,
+    load: actions.load,
    }, dispatch)
 }
 

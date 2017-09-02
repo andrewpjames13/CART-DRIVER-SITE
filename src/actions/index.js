@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 import * as firebase from 'firebase';
-import { FETCH_DATA_SUCCESS } from '../constants/ActionTypes';
+import { FETCH_DATA_SUCCESS, LOAD } from '../constants/ActionTypes';
 
 firebase.initializeApp({
   apiKey: "AIzaSyDQqxKxGV_0cxpi0AxStdMJ2xQV0wBRMhk",
@@ -16,7 +16,7 @@ export function createMenuItem(menu, menuItem) {
   return dispatch => {
     firebase.database().ref(`/${menu}/menuItems`).push(
       {items: [menuItem.items], name: menuItem.name, price: menuItem.price}
-    );
+    )
   };
 }
 
@@ -27,7 +27,6 @@ export function deleteMenuItem(menu, key) {
 }
 
 export function updateMenuItem(menu, menuItem) {
-  console.log(menu, menuItem);
   let menuItems = [menuItem.items];
   if (menu === 'drinksMenu' || menu === 'happyHourMenu') {
     menuItems = menuItem.items;
@@ -55,6 +54,15 @@ export function fetchData() {
         type: FETCH_DATA_SUCCESS,
         payload: snapshot.val()
       });
+    });
+  };
+}
+
+export function load(data) {
+  return dispatch => {
+    dispatch({
+      type: LOAD,
+      data,
     });
   };
 }
