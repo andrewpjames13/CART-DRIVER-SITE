@@ -40,8 +40,8 @@ class Cms extends Component {
 
   currentMenuItems() {
     let currentMenuItems = [];
-    if (this.state.activeMenuSection === 'Pizza') {currentMenuItems = this.props.menuItems[0][0].menuItems;}
-    if (this.state.activeMenuSection === 'Antipasti') {currentMenuItems = this.props.menuItems[0][1].menuItems;}
+    if (this.state.activeMenuSection === 'Pizza') {currentMenuItems = this.props.menuItems[0][1].menuItems;}
+    if (this.state.activeMenuSection === 'Antipasti') {currentMenuItems = this.props.menuItems[0][0].menuItems;}
     if (this.state.activeMenuSection === 'Drinks') {currentMenuItems = this.props.menuItems[1][0].menuItems;}
     if (this.state.activeMenuSection === 'After') {currentMenuItems = this.props.menuItems[1][1].menuItems;}
     return currentMenuItems;

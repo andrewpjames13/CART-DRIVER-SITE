@@ -67,7 +67,7 @@
       }
 
       .Pizza {
-        top: 20%;
+        top: 40%;
         &.active {
           top: 5%; overflow-y: scroll;
           .section-content {
@@ -76,7 +76,7 @@
         }
       }
       .Antipasti {
-        top: 40%;
+        top: 20%;
         &.active {
           top: 5%;
           overflow-y: scroll;

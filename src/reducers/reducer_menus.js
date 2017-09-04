@@ -5,7 +5,7 @@ export default function(state = [], action) {
   switch (action.type) {
     case FETCH_DATA_SUCCESS:
       const menuArray = [
-        [action.payload.pizzaMenu, action.payload.antipastiMenu],
+        [action.payload.antipastiMenu, action.payload.pizzaMenu],
         [action.payload.drinksMenu],
         [action.payload.happyHourMenu]
       ];
