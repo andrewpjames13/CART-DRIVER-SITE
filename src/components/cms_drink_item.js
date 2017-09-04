@@ -7,11 +7,24 @@ import classNames from 'classnames';
 class CmsDrinkItem extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       openUpdate: false,
       showDialog: false,
     };
+  }
+
+  handleSubmit(data) {
+    this.props.updateMenuItem(
+      this.props.selectedMenu,
+      {
+        index: this.props.index,
+        name: data.name,
+        price: data.price ? data.price : '',
+        items: data.description,
+      }
+    )
   }
 
   openUpdateItem() {
@@ -45,6 +58,11 @@ class CmsDrinkItem extends Component {
           </h2>
           <div className="more-menu">
             <button className="cta more" onClick={() => {
+              this.props.load({
+                name: this.props.item.name,
+                price: this.props.item.price,
+                description: this.props.item.items,
+              })
               this.setState({ openUpdate: false });
               this.props.openItem(this.props.item.name);
             }}>
@@ -87,13 +105,15 @@ class CmsDrinkItem extends Component {
           </div>
         </div>
         <div className={styles}>
-          <CmsDrinkForm
-            itemData={this.props.item}
-            itemIndex={this.props.index}
-            submit={this.props.updateMenuItem}
-            selectedMenu={this.props.selectedMenu}
-            load={this.props.load}
-          />
+          { this.state.openUpdate ?
+            <CmsDrinkForm
+              itemData={this.props.item}
+              itemIndex={this.props.index}
+              onSubmit={this.handleSubmit}
+              selectedMenu={this.props.selectedMenu}
+              load={this.props.load}
+            /> : null
+          }
         </div>
       </div>
     );
