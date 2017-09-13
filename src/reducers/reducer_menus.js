@@ -4,7 +4,12 @@ import { FETCH_DATA_SUCCESS } from '../constants/ActionTypes';
 export default function(state = [], action) {
   switch (action.type) {
     case FETCH_DATA_SUCCESS:
-      return action.payload.sections;
+      const menuArray = [
+        [action.payload.antipastiMenu, action.payload.pizzaMenu],
+        [action.payload.drinksMenu],
+        [action.payload.happyHourMenu]
+      ];
+      return menuArray;
     default:
       return state;
   }

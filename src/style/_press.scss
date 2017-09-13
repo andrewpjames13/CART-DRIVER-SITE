@@ -45,10 +45,17 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
+
+      h4 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 44px;
+      }
     }
 
     &:hover {
-      color: $green;
+      color: $red;
     }
   }
 }

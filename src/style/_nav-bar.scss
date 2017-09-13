@@ -9,6 +9,9 @@
   -webkit-box-shadow: 0px -3px 7px 0px rgba(0,0,0,0.17);
   -moz-box-shadow: 0px -3px 7px 0px rgba(0,0,0,0.17);
   box-shadow: 0px -3px 7px 0px rgba(0,0,0,0.17);
+  @include respond-above($medium) {
+    display: none;
+  };
 
   &.open {
     bottom: 0;
@@ -25,8 +28,8 @@
     transition: color 300ms ease-in-out;
 
     &.active {
-      color: $green;
-      fill: $green;
+      color: $red;
+      fill: $red;
     }
 
     .svg-container {

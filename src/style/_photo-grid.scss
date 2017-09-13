@@ -90,7 +90,7 @@
 
     &.show {
       visibility: visible;
-      opacity: 0.9;
+      opacity: 0.95;
       transform: scale(1.0) translate3d(0,0,0);
       transition: opacity 500ms ease-in-out, transform 300ms ease-in-out;
 
@@ -106,10 +106,9 @@
         position: absolute;
         bottom: 2%;
         width: 100%;
-        color: $green;
+        color: $red;
         font-size: 20px;
         opacity: 0.4;
-        font-family: Ostrich Sans;
 
         @include respond-above($small) {
           bottom: 4%;

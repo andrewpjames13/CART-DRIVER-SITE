@@ -30,14 +30,36 @@
   .home-content {
     position: absolute;
     padding: 5%;
-    top: 40%;
+    top: 45%;
     transform: translateY(-50%);
+    text-align: center;
     @include background-gradient(0.5);
 
     @include respond-above($small) {
       top: 45%;
       @include background-gradient(0.8);
     };
+
+    h6 {
+      text-shadow: 1px 1px 8px $black;
+    }
+
+    svg {
+      fill: $white;
+      width: 95%;
+    }
+
+    .open-times {
+      text-shadow: 2px 2px 8px $black;
+      margin-bottom: 0.8em;
+      text-align: center;
+      font-size: 4vw;
+
+      @include respond-above($small) {
+        margin-bottom: 0;
+        font-size: 2vw;
+      };
+    }
 
     .clock-numbers {
       display: inline-block;
@@ -46,10 +68,35 @@
     .clock-letters {
       display: inline-block;
       margin-right: 15px;
+      font-size: 3.25vw;
+      @include respond-above($small) {
+        font-size: 1.25vw;
+      };
     }
 
-    .open-times {
-      text-shadow: 2px 2px 8px $black;
+    .countDown {
+      @include respond-above($small) {
+        margin-bottom: 15px;
+      };
     }
+
+    .homeText {
+      font-size: 4vw;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 10px;
+      text-shadow: 2px 2px 8px $black;
+      padding: 0 10px;
+
+      @include respond-above($small) {
+        font-size: 25px;
+        margin-top: 0px;
+      };
+    }
+
+    // .count-down {
+    //   @include respond-above($small) {
+    //     font-size: 3vw;
+    // };
   }
 }

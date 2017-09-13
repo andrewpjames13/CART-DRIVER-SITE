@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 import * as firebase from 'firebase';
-import { FETCH_DATA_SUCCESS } from '../constants/ActionTypes';
+import { FETCH_DATA_SUCCESS, LOAD } from '../constants/ActionTypes';
 
 firebase.initializeApp({
   apiKey: "AIzaSyDQqxKxGV_0cxpi0AxStdMJ2xQV0wBRMhk",
@@ -12,14 +12,57 @@ firebase.initializeApp({
 
 const Data = firebase.database().ref();
 
+export function createMenuItem(menu, menuItem) {
+  return dispatch => {
+    firebase.database().ref(`/${menu}/menuItems`).push(
+      {items: [menuItem.items], name: menuItem.name, price: menuItem.price}
+    )
+  };
+}
+
+export function deleteMenuItem(menu, key) {
+  return dispatch => firebase.database().ref(
+    `/${menu}/menuItems/${key}`
+  ).remove();
+}
+
+export function updateMenuItem(menu, menuItem) {
+  let menuItems = [menuItem.items];
+  if (menu === 'drinksMenu' || menu === 'happyHourMenu') {
+    menuItems = menuItem.items;
+  }
+
+  return dispatch => firebase.database().ref(
+    `/${menu}/menuItems/${menuItem.index}`
+  ).update(
+    {items: menuItems, name: menuItem.name, price: menuItem.price}
+  );
+}
+
+export function updateMenuItemPositions(menu, newMenuOrder) {
+  return dispatch => firebase.database().ref(
+    `/${menu}/`
+  ).update(
+    {menuItems: newMenuOrder}
+  );
+}
+
 export function fetchData() {
   return dispatch => {
     Data.on('value', snapshot => {
-      console.log(snapshot.val(), 'snapshot');
       dispatch({
         type: FETCH_DATA_SUCCESS,
         payload: snapshot.val()
       });
+    });
+  };
+}
+
+export function load(data) {
+  return dispatch => {
+    dispatch({
+      type: LOAD,
+      data,
     });
   };
 }

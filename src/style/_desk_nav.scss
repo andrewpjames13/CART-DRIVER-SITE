@@ -1,0 +1,100 @@
+.desk-nav {
+  position: fixed;
+  top: 0;
+  right: -24vw;
+  width: 15vw;
+  height: 50px;
+  background-color: $white;
+  text-align: center;
+  padding-top: 13px;
+  border: 4px solid $black;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  display: none;
+
+  &.one {
+    top: 57px;
+    transition-delay: 0ms;
+  }
+  &.two {
+    top: 103px;
+    transition-delay: 50ms;
+  }
+  &.three {
+    top: 149px;
+    transition-delay: 100ms;
+  }
+  &.four {
+    top: 195px;
+    transition-delay: 150ms;
+  }
+  &.five {
+    top: 240px;
+    transition-delay: 200ms;
+  }
+  &.six {
+    top: 285px;
+    transition-delay: 250ms;
+  }
+
+  @include respond-above($medium) {
+    display: block;
+  }
+
+  &.open {
+    right: 16px;
+    opacity: 1;
+  }
+}
+
+.desk-svg-container {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  background-color: $white;
+  display: none;
+  border: 4px solid $black;
+  @include respond-above($medium) {
+    display: block;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: $black;
+  }
+
+  .deskNavHam {
+    transition: all 300ms linear;
+    opacity: 1;
+  }
+
+  .deskNavX {
+    opacity: 0;
+    transform: rotate(0deg) scale(0, 0);
+    position: absolute;
+    top: 11px;
+    width: 15px;
+    height: 15px;
+    left: 11px;
+    transition: all 300ms linear;
+  }
+
+  &.open {
+    .deskNavHam {
+      transform: rotate(180deg) scale(0, 0);
+      opacity: 0;
+    }
+    .deskNavX {
+      transform: rotate(180deg) scale(1, 1);
+      opacity: 1;
+    }
+  }
+}

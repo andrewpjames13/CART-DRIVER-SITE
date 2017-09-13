@@ -1,0 +1,170 @@
+.cms-container {
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  overflow: hidden;
+  position: relative;
+
+  .section {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $white;
+    -webkit-box-shadow: 0px -10px 22px -8px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px -10px 22px -8px rgba(0,0,0,0.29);
+    box-shadow: 0px -10px 22px -8px rgba(0,0,0,0.29);
+    transition: top 500ms ease-in-out, height 500ms ease-in-out;
+
+    .section-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    button { width: 100%; }
+
+    .title {
+      padding: 50px 30px 30px 30px;
+      text-align: left;
+      width: 100%;
+      font-size: 10vw;
+
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: none;
+      transition: padding 500ms ease-in-out, font-size 500ms ease-in-out;
+
+      &.white {
+        color: $white;
+      }
+    }
+
+    &:hover {
+      color: $red;
+    }
+
+    &.home {
+      top: 0;
+      color: $white;
+      background-color: $black
+    }
+    &:nth-child(2) { top: 25%; }
+    &:nth-child(3) { top: 50%; }
+    &:nth-child(4) { top: 75%; }
+    &.Pizza, &.Antipasti, &.Drinks, &.Happy { top: 100%; }
+
+    &.active {
+      top: 5%;
+      height: 95%;
+      &:hover {
+        color: unset;
+        cursor: unset;
+      }
+
+      .title {
+        padding-top: 0px;
+        border-bottom: 4px black solid;
+      }
+
+      .Pizza {
+        top: 40%;
+        &.active {
+          top: 5%; overflow-y: scroll;
+          .section-content {
+            overflow-x: hidden;
+          }
+        }
+      }
+      .Antipasti {
+        top: 20%;
+        &.active {
+          top: 5%;
+          overflow-y: scroll;
+          .section-content { overflow-x: hidden; }
+        }
+      }
+      .Drinks {
+        top: 60%;
+        &.active {
+          top: 5%;
+          overflow-y: scroll;
+          .section-content { overflow-x: hidden; }
+        }
+      }
+      .Happy {
+        top: 80%;
+        &.active {
+          top: 5%;
+          overflow-y: scroll;
+          .section-content { overflow-x: hidden; }
+        }
+      }
+    }
+
+    &.inactive {
+      top: 110%;
+
+      &.Pizza { top: 110%; }
+      &.Antipasti { top: 110%; }
+      &.Drinks { top: 110%; }
+      &.Happy { top: 110%; }
+    }
+
+    &.home {
+      &.inactive {
+        top: 0;
+        .title {
+          padding-top: 10px;
+          font-size: 5vw;
+        }
+      }
+    }
+
+    .cms-item {
+      position: relative;
+      padding: 20px 0px 20px 30px;
+      transition: transform 500ms ease-in-out;
+
+      .more-menu {
+        position: absolute;
+        top: -4px;
+        bottom: 0;
+        right: -226px;
+        width: 300px;
+        border-top: 4px black solid;
+
+        .cta {
+          width:  75px;
+          height: 100%;
+          background-color: $white;
+
+          &.edit {
+            background-color: $green;
+            fill: $white;
+          }
+
+          &.delete {
+            background-color: $red;
+            fill: $white;
+          }
+
+          &.move {
+            background-color: $black;
+            fill: $white;
+            float: right;
+
+            .up, .down {
+              height: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.react-confirm-alert {
+  h1 {
+    font-size: 2rem;
+  }
+}

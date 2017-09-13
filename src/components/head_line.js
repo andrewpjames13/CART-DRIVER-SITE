@@ -4,7 +4,7 @@ import React from 'react';
 const HeadLine = (props) => {
   return (
     <div key={props.title}>
-      <h3>
+      <h3 className="headline">
         {props.title}
       </h3>
       <hr></hr>

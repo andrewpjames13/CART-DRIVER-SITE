@@ -4,14 +4,16 @@
 
 // Highlights
 ::selection {
-  background: $green;
+  background: $red;
   color: $white;
 }
 
 ::-moz-selection {
-  background: $green;
+  background: $red;
   color: $white;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300|Roboto:300,400');
 
 html, body {
   height: 100%;
@@ -21,7 +23,7 @@ html, body {
 }
 
 body {
-  font-family: Ostrich Sans;
+  font-family: 'Source Sans Pro', sans-serif;
 
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-font-smoothing: antialiased;
@@ -29,7 +31,7 @@ body {
 }
 
 a {
-  color: $green;
+  color: $red;
   font-weight: 900;
   text-decoration: none;
 
@@ -41,6 +43,10 @@ a {
 
 ul {
   padding-left: 1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
@@ -60,14 +66,19 @@ h4 {
   // font-size: 9vw;
   font-size: 34px;
  }
+h5 {
+  // font-size: 9vw;
+  font-size: 28px;
+ }
 h6 {
-  font-size: 6vw;
+  font-size: 4.5vw;
   @include respond-above($large){ font-size: 4vw };
   @include respond-above(2000px){ font-size: 3vw };
  }
 p, li {
   letter-spacing: 0.05rem;
   font-size: 1em;
+  line-height: 1.2rem;
  }
 li { margin: 5px 0;}
 
@@ -79,7 +90,11 @@ li { margin: 5px 0;}
   color: $green;
 }
 
+.red {
+  color: $red;
+}
+
 hr {
-  border-color: $green;
+  border-color: $red;
   margin-top: 3px;
 }
