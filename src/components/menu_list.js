@@ -98,10 +98,13 @@ class MenuList extends Component {
         <div key={menuSection.title+index}>
           <div key={menuSection.title} className="menu-section">
             <HeadLine title={menuSection.title} />
-          </div>
-          <div className="happyHourMenu">
-            { this.renderHappyMenuItemsList(menuSection.menuItems) }
+            <div className="happyHourMenu">
+              { this.renderHappyMenuItemsList(menuSection.menuItems) }
+            </div>
             <p className="section-description red">{ menuSection.sectionDescription }</p>
+            <p className="section-description red">
+              {"* These items may be served raw or undercooked based on your specifications or contain raw or undercooked ingredients. Consuming raw or undercooked seafood or shellfish may increase your risk of foodborne illness, especially if you have certain medical conditions."}
+            </p>
           </div>
         </div>
       );
