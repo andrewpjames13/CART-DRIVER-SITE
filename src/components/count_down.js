@@ -21,7 +21,7 @@ class CountDown extends PureComponent {
 
   startIt(now = new Date()) {
     const currentHour = now.getHours();
-    const newDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), currentHour > 12 ? 24 : 0);
+    const newDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), currentHour >= 12 ? 24 : 12);
     const distance = newDate - now;
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -32,7 +32,7 @@ class CountDown extends PureComponent {
       hours,
       minutes,
       seconds,
-      openCloseTxt: currentHour > 12 ? 'CLOSES IN' : 'OPENS IN',
+      openCloseTxt: currentHour >= 12 ? 'CLOSES IN' : 'OPENS IN',
     });
   }
 
