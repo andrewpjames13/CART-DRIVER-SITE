@@ -1,6 +1,5 @@
 /*jshint esversion: 6 */
 import React, { PureComponent } from 'react';
-import moment from 'moment';
 import ReactInterval from 'react-interval';
 
 class CountDown extends PureComponent {
@@ -20,31 +19,20 @@ class CountDown extends PureComponent {
     this.startIt();
   }
 
-  startIt() {
-    let hours = moment().format('h');
-    let minutes = moment().format('mm');
-    let seconds = moment().format('ss');
-    let amPm = moment().format('A');
-    let displayHour;
-    let openCloseTxt;
+  startIt(now = new Date()) {
+    const currentHour = now.getHours();
+    const newDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), currentHour > 12 ? 24 : 0);
+    const distance = newDate - now;
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (11 - hours === -1) {
-      displayHour = 0;
-    } else {
-      displayHour = 11 - hours;
-    }
-
-    if (amPm === 'PM') {
-      openCloseTxt = 'CLOSES IN';
-    } else {
-      openCloseTxt = 'OPENS IN';
-    }
 
     this.setState({
-      hours: displayHour,
-      minutes: 60 - minutes,
-      seconds: 60 - seconds,
-      openCloseTxt
+      hours,
+      minutes,
+      seconds,
+      openCloseTxt: currentHour > 12 ? 'CLOSES IN' : 'OPENS IN',
     });
   }
 
