@@ -13,23 +13,23 @@ class MenuList extends Component {
     });
   }
 
-  renderMenuItemsList(array) {
+  renderMenuItemsList(obj) {
     let itemPrice = null;
 
-    return array.map((item) => {
-      if (item.price) {
+    return Object.keys(obj).map((key) => {
+      if (obj[key].price) {
         itemPrice = (
-          <h5 className="item-price">{ item.price }</h5>
+          <h5 className="item-price">{ obj[key].price }</h5>
         )
       } else {
         itemPrice = ''
       }
       return (
-        <div key={item.name} className="menu-item tiny-100">
+        <div key={obj[key].name} className="menu-item tiny-100">
           <div className="tiny-80">
-            <h5 className="red">{item.name}</h5>
+            <h5 className="red">{obj[key].name}</h5>
             <ul>
-              { this.renderDescriptionList(item.items) }
+              { this.renderDescriptionList(obj[key].items) }
             </ul>
           </div>
           <div className="tiny-20 red">
