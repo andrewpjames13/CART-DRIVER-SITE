@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Element, scrollSpy } from 'react-scroll';
 import * as actions from '../actions';
-
 import MenuList from '../components/menu_list';
 import PhotoGrid from '../components/photo_grid';
 import Press from '../components/press';
