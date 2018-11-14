@@ -47,9 +47,7 @@
     opacity: 1;
     margin-left: 30px;
 
-    &:last-of-type {
-      margin-right: 30px;
-    }
+    &:last-of-type { margin-right: 30px; }
 
     @include respond-above($small) {
       width: 25vw;
@@ -59,18 +57,10 @@
       opacity: 0.8;
       transition: opacity 500ms ease-in-out;
 
-      &:last-of-type {
-        margin-right: 0;
-      }
+      &:last-of-type { margin-right: 0; }
     };
 
-    &:hover {
-      opacity: 1;
-    }
-
-    .photo {
-      width: 100%;
-    }
+    &:hover { opacity: 1; }
   }
 
   .photo-light-box {
