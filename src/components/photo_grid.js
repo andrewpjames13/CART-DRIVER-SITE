@@ -4,22 +4,11 @@ import HeadLine from './head_line';
 import classNames from 'classnames';
 
 class PhotoGrid extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.handlePhotoClick = this.handlePhotoClick.bind(this);
-    this.closePhotoLightBox = this.closePhotoLightBox.bind(this);
-    this.state = {
-      selectedImage: ''
-    };
-  }
+  state = { selectedImage: '' };
 
-  handlePhotoClick(selectedImage) {
-    this.setState({selectedImage});
-  }
+  handlePhotoClick = (selectedImage) => this.setState({selectedImage});
 
-  closePhotoLightBox() {
-    this.setState({selectedImage: ''});
-  }
+  closePhotoLightBox = () => this.setState({selectedImage: ''});
 
   render() {
     let classes = classNames({
@@ -35,9 +24,8 @@ class PhotoGrid extends PureComponent {
               className="photo-button"
               key={index}
               onClick={ () => {this.handlePhotoClick(photo.photoSrc)}}
-            >
-              <img className="photo" src={photo.photoSrc} role="presentation"/>
-            </button>
+              style={{ backgroundImage: `url(${photo.photoSrc})`}}
+            />
           ))}
         </div>
         <button className={classes} onClick={this.closePhotoLightBox}>

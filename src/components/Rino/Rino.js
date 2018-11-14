@@ -2,10 +2,10 @@ import React from 'react';
 import ScrollContainer from 'containers/scroll_container';
 import Content from './components/Content/Content';
 
-const LoHi = () => (
+const Rino = () => (
   <ScrollContainer>
     <Content />
   </ScrollContainer>
 );
 
-export default LoHi;
+export default Rino;

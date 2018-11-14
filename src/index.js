@@ -13,7 +13,6 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 import App from './App';
 import Admin from './components/admin';
-import Highlands from 'components/Highlands/Highlands';
 // Stylesheets
 import './style/App.scss';
 import * as serviceWorker from './serviceWorker';
@@ -28,9 +27,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path="/" component={App} />
         <Route exact path="/admin" component={Admin} />
-        <Route exact path="/highlands" component={Highlands} />
+        <Route path="/" component={App} />
       </Switch>
     </Router>
   </Provider>
