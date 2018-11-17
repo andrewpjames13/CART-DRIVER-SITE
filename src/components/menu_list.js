@@ -44,6 +44,15 @@ function renderMenuSections(section) {
   );
 }
 
+function image(photo) {
+  return (
+    <div
+      className="menu-image"
+      style={{ backgroundImage: `url(${photo})`}}
+    />
+  )
+}
+
 const MenuList = ({ menuItems }) => {
   if (!menuItems[0]) return null;
   const anti = menuItems[0][0]
@@ -55,13 +64,13 @@ const MenuList = ({ menuItems }) => {
     <Fragment>
       <div className="tiny-100 small-50">
         {renderMenuSections(anti)}
-        <img className="menu-image" src="images/cart-driver-oysters.jpg" alt="oysters" />
+        {image('images/menu/antipasti-menu.jpg')}
         {renderMenuSections(pizza)}
       </div>
       <div className="tiny-100 small-50">
-        <img className="menu-image" src="images/cart-driver-oysters.jpg" alt="oysters" />
+        {image('images/menu/pizza-menu.jpg')}
         {renderMenuSections(drink)}
-        <img className="menu-image" src="images/cart-driver-oysters.jpg" alt="oysters" />
+        {image('images/menu/cocktails-menu.jpg')}
       </div>
       <div className="tiny-100">
         {renderHappyHourMenu(happy)}
