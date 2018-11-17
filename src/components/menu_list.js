@@ -1,118 +1,73 @@
-/*jshint esversion: 6 */
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import HeadLine from './head_line';
 
-class MenuList extends Component {
-  renderDescriptionList(array) {
-    return array.map((item) =>  (
-      <li key={item} >
-        { item }
-      </li>
-    ));
-  }
-
-  renderMenuItemsList(obj) {
-    return Object.keys(obj).map((key) => (
-      <div key={obj[key].name} className="menu-item tiny-100">
+function renderMenuItemsList(obj, happyHourMenu) {
+  return Object.keys(obj).map((key) => {
+    const { name, items, price } = obj[key];
+    const classes = happyHourMenu ? 'menu-section tiny-100 small-50' : 'menu-item tiny-100';
+    return (
+      <div key={name} className={classes}>
         <div className="tiny-80">
-          <h5 className="red">{obj[key].name}</h5>
-          <ul>
-            { this.renderDescriptionList(obj[key].items) }
-          </ul>
+          <h5 className="red">{name}</h5>
+          <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>
         </div>
         <div className="tiny-20 red">
-          { obj[key].price && <h5 className="item-price">{ obj[key].price }</h5> }
+          {price && <h5 className="item-price">{price}</h5>}
         </div>
-      </div>
-    ));
-  }
-
-  renderHappyMenuItemsList(obj) {
-    return Object.keys(obj).map((key) => (
-      <div key={obj[key].name} className="menu-section tiny-100 small-50">
-        <div className="menu-item tiny-100">
-          <div className="tiny-80">
-            <h5 className="red">{obj[key].name}</h5>
-            <ul>
-              { this.renderDescriptionList(obj[key].items) }
-            </ul>
-          </div>
-          <div className="tiny-20 red">
-            { obj[key].price && <h5 className="item-price">{ obj[key].price }</h5> }
-          </div>
-        </div>
-      </div>
-    ));
-  }
-
-  renderPhotos(index, photo) {
-    if(index !== 0 && photo.length > 0) {
-      return (
-        <img className="menu-image" src={photo} alt={'image'+index}/>
-      )
-    }
-  }
-
-  renderMenus(section, menuSectionIndex) {
-    return section.map((menuSection, index) => (
-      <div key={menuSection.title+index}>
-        { this.renderPhotos(index + menuSectionIndex, menuSection.sectionPhoto) }
-        <div key={menuSection.title} className="menu-section">
-          <HeadLine title={menuSection.title} />
-          { this.renderMenuItemsList(menuSection.menuItems) }
-          <p className="section-description red">{ menuSection.sectionDescription }</p>
-        </div>
-      </div>
-    ));
-  }
-
-  renderHappyHourMenu(section, menuSectionIndex) {
-    return section.map((menuSection, index) => (
-      <div key={menuSection.title+index}>
-        <div key={menuSection.title} className="menu-section">
-          <HeadLine title={menuSection.title} />
-          <div className="happyHourMenu">
-            { this.renderHappyMenuItemsList(menuSection.menuItems) }
-          </div>
-          <p className="section-description red">{ menuSection.sectionDescription }</p>
-          <p className="section-description red">
-            {"* These items may be served raw or undercooked based on your specifications or contain raw or undercooked ingredients. Consuming raw or undercooked seafood or shellfish may increase your risk of foodborne illness, especially if you have certain medical conditions."}
-          </p>
-        </div>
-      </div>
-    ));
-  }
-
-  renderMenuSections() {
-    return this.props.menuItems.map((section, index) => {
-      if ( index === 2 ) {
-        return (
-          <div key={`${section.title}+${index}`}>
-            <div className="tiny-100 small-50">
-              <img className="menu-image" src={`/${section[0].sectionPhoto}`} alt={'image'+index}/>
-            </div>
-            <div className="tiny-100">
-              { this.renderHappyHourMenu(section, index) }
-            </div>
-          </div>
-        )
-      } else {
-        return (
-          <div key={`${section.title}+${index}`} className="tiny-100 small-50">
-            { this.renderMenus(section, index) }
-          </div>
-        )
-      }
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        { this.renderMenuSections() }
       </div>
     );
-  }
+  });
+}
+
+function renderHappyHourMenu(section) {
+  return (
+      <div key={section.title} className="menu-section">
+        <HeadLine title={section.title} />
+        <div className="happyHourMenu">
+          {renderMenuItemsList(section.menuItems, true)}
+        </div>
+        <p className="section-description red">{section.sectionDescription}</p>
+        <p className="section-description red">
+          {"* These items may be served raw or undercooked based on your specifications or contain raw or undercooked ingredients. Consuming raw or undercooked seafood or shellfish may increase your risk of foodborne illness, especially if you have certain medical conditions."}
+        </p>
+      </div>
+  );
+}
+
+function renderMenuSections(section) {
+  return (
+    <div className="menu-section">
+      <HeadLine title={section.title} />
+      {renderMenuItemsList(section.menuItems)}
+      <p className="section-description red">{section.sectionDescription}</p>
+    </div>
+  );
+}
+
+const MenuList = ({ menuItems }) => {
+  if (!menuItems[0]) return null;
+  const anti = menuItems[0][0]
+  const pizza = menuItems[0][1]
+  const drink = menuItems[1][0]
+  const happy = menuItems[2][0]
+
+  return (
+    <Fragment>
+      <div className="tiny-100 small-50">
+        {renderMenuSections(anti)}
+        <img className="menu-image" src="images/cart-driver-oysters.jpg" alt="oysters" />
+        {renderMenuSections(pizza)}
+      </div>
+      <div className="tiny-100 small-50">
+        <img className="menu-image" src="images/cart-driver-oysters.jpg" alt="oysters" />
+        {renderMenuSections(drink)}
+        <img className="menu-image" src="images/cart-driver-oysters.jpg" alt="oysters" />
+      </div>
+      <div className="tiny-100">
+        {renderHappyHourMenu(happy)}
+      </div>
+    </Fragment>
+  );
 }
 
 export default MenuList;
