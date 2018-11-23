@@ -3,7 +3,7 @@ import CountDown from './count_down';
 
 const HomeScreen = () => {
   return (
-    <div className="home-container" style={{ backgroundImage: 'url(images/cart-driver-table-party.jpg)'}}>
+    <div className="home-container" style={{ backgroundImage: 'url(images/cart-driver-table-party-min.jpg)'}}>
       <div className="home-radial-grad" />
       <div className="tiny-100 home-content">
         <CountDown />

@@ -54,26 +54,22 @@ function image(photo) {
 }
 
 const MenuList = ({ menuItems }) => {
-  if (!menuItems[0]) return null;
-  const anti = menuItems[0][0]
-  const pizza = menuItems[0][1]
-  const drink = menuItems[1][0]
-  const happy = menuItems[2][0]
+  const loading = !menuItems[0];
 
   return (
     <Fragment>
       <div className="tiny-100 small-50">
-        {renderMenuSections(anti)}
-        {image('images/menu/antipasti-menu.jpg')}
-        {renderMenuSections(pizza)}
+        {!loading && renderMenuSections(menuItems[0][0])}
+        {image('images/menu/antipasti-menu-min.jpg')}
+        {!loading && renderMenuSections(menuItems[0][1])}
       </div>
       <div className="tiny-100 small-50">
-        {image('images/menu/pizza-menu.jpg')}
-        {renderMenuSections(drink)}
-        {image('images/menu/cocktails-menu.jpg')}
+        {image('images/menu/pizza-menu-min.jpg')}
+        {!loading && renderMenuSections(menuItems[1][0])}
+        {image('images/menu/cocktails-menu-min.jpg')}
       </div>
       <div className="tiny-100">
-        {renderHappyHourMenu(happy)}
+        {!loading && renderHappyHourMenu(menuItems[2][0])}
       </div>
     </Fragment>
   );

@@ -11,18 +11,33 @@ import About from 'components/about';
 import Contact from 'components/contact';
 
 const photos = [
-  { photoSrc: "images/grid/pizza_001.jpg" },
-  { photoSrc: "images/grid/patio_002.jpg" },
-  { photoSrc: "images/grid/Seafood_003.jpg" },
-  { photoSrc: "images/grid/Cocktails_004.jpg" },
-  { photoSrc: "images/grid/Antipasti_005.jpg" },
-  { photoSrc: "images/grid/Pizza_006.jpg" },
-  { photoSrc: "images/grid/Seafood_007.jpg" },
-  { photoSrc: "images/grid/TableParty_008.jpg" },
-  { photoSrc: "images/grid/HotSauce_009.jpg" },
-  { photoSrc: "images/grid/Cart-Driver-Pizza-Restaurant-Denver_010.jpg" },
-  { photoSrc: "images/grid/FoodSpread_011.jpg" },
-  { photoSrc: "images/grid/Cart-Driver-Pizza-Restaurant-Denver_012.jpg" },
+  { photoSrc: "images/grid/pizza_001-min.jpg" },
+  { photoSrc: "images/grid/patio_002-min.jpg" },
+  { photoSrc: "images/grid/Seafood_003-min.jpg" },
+  { photoSrc: "images/grid/Cocktails_004-min.jpg" },
+  { photoSrc: "images/grid/Antipasti_005-min.jpg" },
+  { photoSrc: "images/grid/Pizza_006-min.jpg" },
+  { photoSrc: "images/grid/Seafood_007-min.jpg" },
+  { photoSrc: "images/grid/TableParty_008-min.jpg" },
+  { photoSrc: "images/grid/HotSauce_009-min.jpg" },
+  { photoSrc: "images/grid/Cart-Driver-Pizza-Restaurant-Denver_010-min.jpg" },
+  { photoSrc: "images/grid/FoodSpread_011-min.jpg" },
+  { photoSrc: "images/grid/Cart-Driver-Pizza-Restaurant-Denver_012-min.jpg" },
+];
+
+const teamPhotos = [
+  { photoSrc: "images/team/group_001-min.jpg" },
+  { photoSrc: "images/team/party_002-min.jpg" },
+  { photoSrc: "images/team/cheers_003-min.jpg" },
+  { photoSrc: "images/team/Andrew_Van_Stee_004-min.jpg" },
+  { photoSrc: "images/team/cheers_005-min.jpg" },
+  { photoSrc: "images/team/head_shot_006-min.jpg" },
+  { photoSrc: "images/team/group_007-min.jpg" },
+  { photoSrc: "images/team/party_008-min.jpg" },
+  { photoSrc: "images/team/head_shot_009-min.jpg" },
+  { photoSrc: "images/team/owner_010-min.jpg" },
+  { photoSrc: "images/team/party_011-min.jpg" },
+  { photoSrc: "images/team/cheers_012-min.jpg" },
 ];
 
 class Content extends Component {
@@ -46,6 +61,9 @@ class Content extends Component {
           </Element>
           <Element name="about" className="element about">
             <About />
+          </Element>
+          <Element name="teamPhotos" className="element">
+            <PhotoGrid photos={teamPhotos}/>
           </Element>
           <Element name="press" className="element press">
             <Press pressItems={this.props.pressItems}/>
