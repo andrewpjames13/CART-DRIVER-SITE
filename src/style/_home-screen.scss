@@ -6,9 +6,12 @@
   bottom: 0;
   color: $white;
   background: $black;
-  filter: grayscale(85%) saturate(2) contrast(1.3);
-  background: no-repeat center center fixed;
-  background-size: cover;
+
+  &.image {
+    filter: grayscale(85%) saturate(2) contrast(1.3);
+    background: no-repeat center center fixed;
+    background-size: cover;
+  }
 
   .home-radial-grad {
     position: absolute;
@@ -19,8 +22,8 @@
     height: 100%;
     opacity: .7;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,1+100 */
-    background: -moz-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(center, ellipse cover, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: -moz-radial-gradient(center, ellipse farthest-corner, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(center, ellipse farthest-corner, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
@@ -92,9 +95,16 @@
       };
     }
 
-    // .count-down {
-    //   @include respond-above($small) {
-    //     font-size: 3vw;
-    // };
+    .home-topContent {
+      min-height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .home-bottomContent {
+      min-height: 125px;
+    }
   }
 }

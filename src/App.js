@@ -1,12 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { Route, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from 'actions';
+import { bindActionCreators } from 'redux';
 import NavBar from './components/nav_bar/nav_bar';
 import DeskNavBar from './components/desk_nav_bar';
-import HomeScreen from './components/home_screen';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Rino from 'components/Rino/Rino';
 import Highlands from 'components/Highlands/Highlands';
-import Home from 'components/Home/Home';
+import HomeScreen from 'components/home_screen';
+import CountDown from 'components/count_down';
+import ScrollContainer from 'containers/scroll_container';
 
 const sections = [
   {
@@ -41,17 +46,98 @@ const sections = [
   }
 ];
 
-const App = () => (
-  <Fragment>
-    <HomeScreen />
-    <Switch>
-      <Route exact path="/lohi" component={Highlands} />
-      <Route exact path="/rino" component={Rino} />
-      <Route exact path="/" component={Home} />
-    </Switch>
-    <DeskNavBar />
-    <NavBar sections={sections} />
-  </Fragment>
-);
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+    props.fetchData();
+  }
 
-export default App;
+  render() {
+    return (
+      <Fragment>
+        <HomeScreen
+          topContent={(
+            <Switch>
+              <Route
+                exact
+                path="/lohi"
+                render={() => (
+                  <h6 className="bold open-times">COMING SOON</h6>
+                )}
+              />
+              <Route
+                exact
+                path="/rino"
+                render={() => (
+                  <Fragment>
+                    <CountDown />
+                    <h6 className="bold open-times">OPEN 12PM - 12AM SEVEN DAYS A WEEK</h6>
+                  </Fragment>
+                )}
+              />
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <h5 className="homeText">Denver's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
+                )}
+              />
+            </Switch>
+          )}
+        >
+          <Switch>
+            <Route
+              exact
+              path="/lohi"
+              render={() => (
+                <h5 className="homeText">LoHi's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
+              )}
+            />
+            <Route
+              exact
+              path="/rino"
+              render={() => (
+                <h5 className="homeText">RiNo's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
+              )}
+            />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <Fragment>
+                  <h5 className="homeText">Select your location</h5>
+                  <div className="home-btn-container">
+                    <Link to="/rino" className="btn">
+                      Rino
+                    </Link>
+                    <Link to="/lohi" className="btn">
+                      LoHi
+                    </Link>
+                  </div>
+                </Fragment>
+              )}
+            />
+          </Switch>
+        </HomeScreen>
+        <ScrollContainer>
+          <Switch>
+            <Route exact path="/lohi" component={Highlands} />
+            <Route exact path="/rino" component={Rino} />
+          </Switch>
+        </ScrollContainer>
+        <DeskNavBar />
+        <NavBar sections={sections} />
+      </Fragment>
+    );
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchData: actions.fetchData }, dispatch)
+}
+
+function mapStateToProps() {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

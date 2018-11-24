@@ -1,0 +1,42 @@
+.btn {
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 13px 30px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  transition: all 0.3s;
+  border: 5px solid $black;
+  background-color: $white;
+  color: $black;
+  z-index: 0;
+
+  @include respond-above($small) {
+    padding: 15px 75px;
+  };
+
+  &:after {
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: $red;
+    content: '';
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    color: $white;
+
+    &:after { width: 100%; }
+  }
+}

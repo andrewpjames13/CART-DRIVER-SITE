@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
