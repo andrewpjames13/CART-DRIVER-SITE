@@ -11,7 +11,6 @@ import Rino from 'components/Rino/Rino';
 import Highlands from 'components/Highlands/Highlands';
 import HomeScreen from 'components/home_screen';
 import CountDown from 'components/count_down';
-import HomeContent from 'components/HomeContent/HomeContent';
 import ScrollContainer from 'containers/scroll_container';
 
 const sections = [
@@ -63,7 +62,7 @@ class App extends PureComponent {
                 exact
                 path="/lohi"
                 render={() => (
-                  <h2 className="bold">COMING SOON</h2>
+                  <h2 className="bold comingSoon">COMING SOON</h2>
                 )}
               />
               <Route

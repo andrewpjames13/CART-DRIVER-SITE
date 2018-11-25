@@ -1,4 +1,3 @@
-/*jshint esversion: 6 */
 import React, { Component } from 'react';
 import NavBarItem from './nav_bar_item';
 
