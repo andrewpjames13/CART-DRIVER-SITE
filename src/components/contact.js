@@ -11,7 +11,7 @@ const Contact = props => (
         <br/>
         <a href="mailto:info@cart-driver.com?Subject=I%20Need%20Some%20Info">info@cart-driver.com</a>
       </p>
-      <p>2500 Larimer St #100 <br/> Denver CO 80205</p>
+      <p>{props.street} <br/> {props.area}</p>
       <p>For all lunch and dinner buyouts, special events, or large groups, please email <a href="mailto:events@cart-driver.com?Subject=I%20Want%20To%20Party%20At%20Cart-Driver">events@cart-driver.com</a></p>
       <div className="contact-section--social">
         <a href="https://www.facebook.com/Cart-Driver-Denver-724432647583531/" target="_blank">
@@ -39,33 +39,15 @@ const Contact = props => (
     <Map
       containerElement={ <div style={{height: '70vh', width: '100%'}} /> }
       mapElement={ <div style={{height: '70vh', width: '100%'}} /> }
+      lat={props.lat}
+      lng={props.lng}
     />
   </div>
 );
 
-// <GoogleMapLoader
-//   containerElement={ <div style={{height: '70vh', width: '100%'}} /> }
-//   googleMapElement={
-//     <GoogleMap
-//       defaultZoom={14}
-//       defaultCenter={{lat: 39.757643, lng: -104.986126}}
-//       defaultOptions={{
-//         styles: mapOptions,
-//         draggable: false,
-//         zoomControl: false,
-//         scrollwheel: false,
-//         disableDoubleClickZoom: true,
-//         disableDefaultUI: true
-//       }}
-//     >
-//       <Marker
-//         position={{ lat: 39.757643, lng: -104.986126 }}
-//         key={"CART-DRIVER"}
-//         defaultAnimation={2}
-//         icon="images/map-pointer.png"
-//       />
-//     </GoogleMap>
-//   }
-// />
-
 export default Contact;
+
+Contact.defaultProps = {
+  street: '2500 Larimer St #100',
+  area: 'Denver CO 80205',
+}

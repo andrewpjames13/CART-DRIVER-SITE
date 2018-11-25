@@ -52,23 +52,28 @@ class Content extends Component {
           <div className="home-ph"></div>
         </Element>
         <div className="scroll-body">
-          <Element name="menu" className="element">
+          {/*<Element name="menu" className="element">
             <MenuList menuItems={this.props.menuItems}/>
           </Element>
           <Element name="photos" className="element">
             <PhotoGrid photos={photos}/>
-          </Element>
-          <Element name="about" className="element about">
+          </Element>*/}
+          {/*<Element name="about" className="element about">
             <About />
-          </Element>
-          <Element name="teamPhotos" className="element">
+          </Element>*/}
+          {/*<Element name="teamPhotos" className="element">
             <PhotoGrid photos={teamPhotos}/>
           </Element>
           <Element name="press" className="element press">
             <Press pressItems={this.props.pressItems}/>
-          </Element>
+          </Element>*/}
           <Element name="contact" className="element contact">
-            <Contact />
+            <Contact
+              lat={39.7598124}
+              lng={-105.0164476}
+              street="2239 W 30th Ave"
+              area="Denver, CO 80211"
+            />
           </Element>
         </div>
       </Fragment>

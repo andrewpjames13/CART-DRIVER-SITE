@@ -13,6 +13,10 @@
     background-size: cover;
   }
 
+  // &.unFix {
+  //   position: static;
+  // }
+
   .home-radial-grad {
     position: absolute;
     top: 0;
@@ -96,7 +100,8 @@
     }
 
     .home-topContent {
-      min-height: 75px;
+      overflow: hidden;
+      height: 75px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -106,5 +111,29 @@
     .home-bottomContent {
       min-height: 125px;
     }
+  }
+
+  .up-enter {
+    transform: translateY(100%);
+  }
+  .up-enter.up-enter-active {
+    transform: translateY(0%);
+    transition: transform 500ms linear;
+  }
+  .up-leave {
+    transform: translateY(0%);
+  }
+  .up-leave.up-leave-active {
+    transform: translateY(-100%);
+    transition: transform 500ms linear;
+  }
+
+  .up-appear {
+    transform: translateY(100%);
+  }
+
+  .up-appear.up-appear-active {
+    transform: translateY(0%);
+    transition: transform 500ms linear;
   }
 }

@@ -11,6 +11,7 @@ import Rino from 'components/Rino/Rino';
 import Highlands from 'components/Highlands/Highlands';
 import HomeScreen from 'components/home_screen';
 import CountDown from 'components/count_down';
+import HomeContent from 'components/HomeContent/HomeContent';
 import ScrollContainer from 'containers/scroll_container';
 
 const sections = [
@@ -57,12 +58,12 @@ class App extends PureComponent {
       <Fragment>
         <HomeScreen
           topContent={(
-            <Switch>
+            <Switch key={this.props.location.pathname}>
               <Route
                 exact
                 path="/lohi"
                 render={() => (
-                  <h6 className="bold open-times">COMING SOON</h6>
+                  <h2 className="bold">COMING SOON</h2>
                 )}
               />
               <Route
@@ -123,9 +124,14 @@ class App extends PureComponent {
           <Switch>
             <Route exact path="/lohi" component={Highlands} />
             <Route exact path="/rino" component={Rino} />
+            {/*<Route exact path="/" component={HomeContent} />*/}
           </Switch>
         </ScrollContainer>
-        <DeskNavBar />
+        <Switch>
+          <Route exact path="/lohi" component={DeskNavBar} />
+          <Route exact path="/rino" component={DeskNavBar} />
+          <Route exact path="/" render={() => <DeskNavBar home />} />
+        </Switch>
         <NavBar sections={sections} />
       </Fragment>
     );

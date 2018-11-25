@@ -17,6 +17,7 @@
   background-color: $white;
   color: $black;
   z-index: 0;
+  text-align: center;
 
   @include respond-above($small) {
     padding: 15px 75px;
