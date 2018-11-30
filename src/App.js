@@ -79,6 +79,16 @@ class App extends PureComponent {
                 exact
                 path="/"
                 render={() => (
+                  <Fragment>
+                    <CountDown />
+                    <h6 className="bold open-times">OPEN 12PM - 12AM SEVEN DAYS A WEEK</h6>
+                  </Fragment>
+                )}
+              />
+              <Route
+                exact
+                path="/home"
+                render={() => (
                   <h5 className="homeText">Denver's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
                 )}
               />
@@ -104,6 +114,13 @@ class App extends PureComponent {
               exact
               path="/"
               render={() => (
+                <h5 className="homeText">RiNo's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
+              )}
+            />
+            <Route
+              exact
+              path="/home"
+              render={() => (
                 <Fragment>
                   <h5 className="homeText">Select your location</h5>
                   <div className="home-btn-container">
@@ -123,13 +140,14 @@ class App extends PureComponent {
           <Switch>
             <Route exact path="/lohi" component={Highlands} />
             <Route exact path="/rino" component={Rino} />
-            {/*<Route exact path="/" component={HomeContent} />*/}
+            <Route exact path="/" component={Rino} />
           </Switch>
         </ScrollContainer>
         <Switch>
           <Route exact path="/lohi" component={DeskNavBar} />
           <Route exact path="/rino" component={DeskNavBar} />
-          <Route exact path="/" render={() => <DeskNavBar home />} />
+          <Route exact path="/" component={DeskNavBar} />
+          <Route exact path="/home" render={() => <DeskNavBar home />} />
         </Switch>
         <NavBar sections={sections} />
       </Fragment>
