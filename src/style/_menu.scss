@@ -7,22 +7,22 @@
     margin-bottom: 10px;
   }
 
+  .item-price {
+    position: relative;
+    float: right;
+    letter-spacing: -3px;
+    &:after {
+      position: absolute;
+      content: "$";
+      top: 5px;
+      left: -12px;
+      color: $black;
+      font-size: .6em;
+    }
+  }
+  
   .menu-item {
     margin: 12px 0;
-
-    .item-price {
-      position: relative;
-      float: right;
-      letter-spacing: -3px;
-      &:after {
-        position: absolute;
-        content: "$";
-        top: 5px;
-        left: -12px;
-        color: $black;
-        font-size: .6em;
-      }
-    }
   }
 
   .headline {
