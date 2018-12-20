@@ -11,6 +11,8 @@
     position: relative;
     float: right;
     letter-spacing: -3px;
+    padding-right: 3px;
+
     &:after {
       position: absolute;
       content: "$";
@@ -20,7 +22,7 @@
       font-size: .6em;
     }
   }
-  
+
   .menu-item {
     margin: 12px 0;
   }

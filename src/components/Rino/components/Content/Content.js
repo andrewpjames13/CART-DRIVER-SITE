@@ -62,7 +62,7 @@ class Content extends Component {
             <About />
           </Element>
           <Element name="teamPhotos" className="element">
-            <PhotoGrid photos={teamPhotos}/>
+            <PhotoGrid photos={teamPhotos} title="Team" />
           </Element>
           <Element name="press" className="element press">
             <Press pressItems={this.props.pressItems}/>

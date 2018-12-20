@@ -17,7 +17,7 @@ class PhotoGrid extends PureComponent {
     });
     return(
       <div className="photo-grid-section">
-        <HeadLine title="Photos"/>
+        <HeadLine title={this.props.title}/>
         <div className="photo-scroll">
           {this.props.photos.map((photo, index) => (
             <button
@@ -38,3 +38,7 @@ class PhotoGrid extends PureComponent {
 }
 
 export default PhotoGrid;
+
+PhotoGrid.defaultProps = {
+  title: 'Photos',
+};
