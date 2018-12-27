@@ -2,13 +2,15 @@ import React, { Fragment } from 'react';
 import HeadLine from './head_line';
 
 function renderMenuItemsList(obj, happyHourMenu) {
-  return Object.keys(obj).map((key) => {
+  return Object.keys(obj).map((key, i) => {
     const { name, items, price } = obj[key];
     const classes = happyHourMenu ? 'menu-section tiny-100 small-50' : 'menu-item tiny-100';
+    const headline = happyHourMenu ? <Fragment><span className="headerPre">{i === 0 ? 'BEFORE' : 'AFTER'}</span><span>{name}</span></Fragment> : name;
+
     return (
       <div key={name} className={classes}>
         <div className="tiny-80">
-          <h5 className="red">{name}</h5>
+          <h5 className="red">{headline}</h5>
           <ul>{items.map(item => <li key={item}>{item}</li>)}</ul>
         </div>
         <div className="tiny-20 red">

@@ -46,13 +46,14 @@
     width: 265px;
     opacity: 1;
     margin-left: 30px;
-    background-position: center;
+    background-position: top center;
     background-size: 152%;
     background-repeat: no-repeat;
 
     &:last-of-type { margin-right: 30px; }
 
     @include respond-above($small) {
+      background-position: center;
       width: 25vw;
       height: 25vw;
       float: left;

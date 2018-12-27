@@ -7,6 +7,14 @@
     margin-bottom: 10px;
   }
 
+  .headerPre {
+    display: none;
+    @include respond-above($small) {
+      margin-right: 15px;
+      display: inline;
+    };
+  }
+
   .item-price {
     position: relative;
     float: right;
@@ -25,6 +33,7 @@
 
   .menu-item {
     margin: 12px 0;
+    li { margin-bottom: 12px; }
   }
 
   .headline {
