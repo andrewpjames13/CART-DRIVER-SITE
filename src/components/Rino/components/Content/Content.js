@@ -25,18 +25,18 @@ const photos = [
 ];
 
 const teamPhotos = [
-  { photoSrc: "images/team/group_001-min.jpg" },
+  { photoSrc: "images/team/HeadShots-001-min.jpg" },
   { photoSrc: "images/team/party_002-min.jpg" },
   { photoSrc: "images/team/cheers_003-min.jpg" },
-  { photoSrc: "images/team/Andrew_Van_Stee_004-min.jpg" },
-  { photoSrc: "images/team/cheers_005-min.jpg" },
+  { photoSrc: "images/team/HeadShots-004-min.jpg" },
+  { photoSrc: "images/team/HeadShots-005-min.jpg" },
   { photoSrc: "images/team/head_shot_006-min.jpg" },
-  { photoSrc: "images/team/group_007-min.jpg" },
+  { photoSrc: "images/team/HeadShots-007-min.jpg" },
   { photoSrc: "images/team/party_008-min.jpg" },
   { photoSrc: "images/team/head_shot_009-min.jpg" },
   { photoSrc: "images/team/owner_010-min.jpg" },
   { photoSrc: "images/team/party_011-min.jpg" },
-  { photoSrc: "images/team/cheers_012-min.jpg" },
+  { photoSrc: "images/team/HeadShots-012-min.jpg" },
 ];
 
 class Content extends Component {
