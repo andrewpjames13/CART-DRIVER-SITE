@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import fetchStoryblok from 'actions/FetchStoryblok';
+import { bindActionCreators } from 'redux';
 import Content from './components/Content/Content';
 
-const Rino = () => (
-  <Content />
-);
+class Rino extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.props.fetchStoryblok('home')
+  }
 
-export default Rino;
+  render() {
+    return (
+      <Content />
+    );
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchStoryblok }, dispatch)
+}
+
+function mapStateToProps() {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Rino);

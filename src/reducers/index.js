@@ -5,6 +5,7 @@ import MenuItemsReducer from './reducer_menus';
 import PressItemsReducer from './reducer_press';
 import PhotosReducer from './reducer_photos';
 import LoadReducer from './reducer_load';
+import Storyblok from './StoryblokReducer';
 
 const rootReducer = combineReducers({
   form: reduxFormReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   pressItems: PressItemsReducer,
   photos: PhotosReducer,
   currentItem: LoadReducer,
+  Storyblok,
 });
 
 export default rootReducer;
