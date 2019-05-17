@@ -23,8 +23,8 @@ class PhotoGrid extends PureComponent {
             <button
               className="photo-button"
               key={index}
-              onClick={ () => {this.handlePhotoClick(photo.photoSrc)}}
-              style={{ backgroundImage: `url(${photo.photoSrc})`}}
+              onClick={ () => {this.handlePhotoClick(photo.image)}}
+              style={{ backgroundImage: `url(${photo.image})`}}
             />
           ))}
         </div>

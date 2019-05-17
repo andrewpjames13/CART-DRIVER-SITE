@@ -7,12 +7,17 @@ import Content from './components/Content/Content';
 class Rino extends PureComponent {
   constructor(props) {
     super(props);
-    this.props.fetchStoryblok('home')
+    if (
+      !props.data
+      || !props.data.content
+      || (props.data.content.length === 0 && !props.data.loading)
+    ) props.fetchStoryblok('rino');
   }
 
   render() {
+    console.log(this.props.data);
     return (
-      <Content />
+      <Content data={this.props.data} />
     );
   }
 }
@@ -21,8 +26,8 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchStoryblok }, dispatch)
 }
 
-function mapStateToProps() {
-  return {}
+function mapStateToProps(state) {
+  return { data: state.Storyblok.rino }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rino);

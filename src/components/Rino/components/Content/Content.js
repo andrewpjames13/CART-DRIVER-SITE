@@ -9,36 +9,6 @@ import Press from 'components/press';
 import About from 'components/about';
 import Contact from 'components/contact';
 
-const photos = [
-  { photoSrc: "images/grid/pizza_001-min.jpg" },
-  { photoSrc: "images/grid/patio_002-min.jpg" },
-  { photoSrc: "images/grid/Seafood_003-min.jpg" },
-  { photoSrc: "images/grid/Cocktails_004-min.jpg" },
-  { photoSrc: "images/grid/Antipasti_005-min.jpg" },
-  { photoSrc: "images/grid/Pizza_006-min.jpg" },
-  { photoSrc: "images/grid/Seafood_007-min.jpg" },
-  { photoSrc: "images/grid/TableParty_008-min.jpg" },
-  { photoSrc: "images/grid/HotSauce_009-min.jpg" },
-  { photoSrc: "images/grid/Cart-Driver-Pizza-Restaurant-Denver_010-min.jpg" },
-  { photoSrc: "images/grid/FoodSpread_011-min.jpg" },
-  { photoSrc: "images/grid/Cart-Driver-Pizza-Restaurant-Denver_012-min.jpg" },
-];
-
-const teamPhotos = [
-  { photoSrc: "images/team/HeadShots-001-min.jpg" },
-  { photoSrc: "images/team/party_002-min.jpg" },
-  { photoSrc: "images/team/cheers_003-min.jpg" },
-  { photoSrc: "images/team/HeadShots-004-min.jpg" },
-  { photoSrc: "images/team/HeadShots-005-min.jpg" },
-  { photoSrc: "images/team/head_shot_006-min.jpg" },
-  { photoSrc: "images/team/HeadShots-007-min.jpg" },
-  { photoSrc: "images/team/party_008-min.jpg" },
-  { photoSrc: "images/team/head_shot_009-min.jpg" },
-  { photoSrc: "images/team/owner_010-min.jpg" },
-  { photoSrc: "images/team/party_011-min.jpg" },
-  { photoSrc: "images/team/HeadShots-012-min.jpg" },
-];
-
 class Content extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +16,10 @@ class Content extends Component {
   }
 
   render() {
+    if (!this.props.data || this.props.data.loading) return null;
+    const [team] = this.props.data.content.filter(item => item.context === 'team' && item.component === 'PhotoGrid');
+    const [restaurant] = this.props.data.content.filter(item => item.context === 'restaurant' && item.component === 'PhotoGrid');
+
     return (
       <Fragment>
         <Element name="home" className="element">
@@ -56,19 +30,20 @@ class Content extends Component {
             <MenuList menuItems={this.props.menuItems}/>
           </Element>
           <Element name="photos" className="element">
-            <PhotoGrid photos={photos}/>
+            <PhotoGrid {...restaurant} />
           </Element>
           <Element name="about" className="element about">
             <About />
           </Element>
           <Element name="teamPhotos" className="element">
-            <PhotoGrid photos={teamPhotos} title="Team" />
+            <PhotoGrid {...team} />
           </Element>
           <Element name="press" className="element press">
             <Press pressItems={this.props.pressItems}/>
           </Element>
           <Element name="contact" className="element contact">
             <Contact />
+            <iframe title="Rino Tour" width='100%' height='640' allowFullScreen src='https://tourmkr.com/G1UJ4bBgxl/7209046p,2738354m,62.99h,89.85t'></iframe>
           </Element>
         </div>
       </Fragment>

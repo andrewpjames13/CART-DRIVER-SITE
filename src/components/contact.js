@@ -42,7 +42,6 @@ const Contact = props => (
       lat={props.lat}
       lng={props.lng}
     />
-    <iframe title="Rino Tour" width='100%' height='640' allowfullscreen src='https://tourmkr.com/G1UJ4bBgxl/7209046p,2738354m,62.99h,89.85t'></iframe>
   </div>
 );
 
