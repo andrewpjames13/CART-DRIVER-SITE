@@ -65,6 +65,7 @@ class Content extends Component {
     const [menuTwo] = this.props.data.content.filter(item => item.context === 'menu-2');
     const [menuThree] = this.props.data.content.filter(item => item.context === 'menu-3');
     const [menuFour] = this.props.data.content.filter(item => item.context === 'menu-4');
+    const [about] = this.props.data.content.filter(item => item.component === 'About');
 
     return (
       <Fragment>
@@ -95,13 +96,12 @@ class Content extends Component {
             <div className="tiny-100">
               {menuFour && renderHappyHourMenu(menuFour)}
             </div>
-            {/*<MenuList menuItems={this.props.menuItems}/>*/}
           </Element>
           <Element name="photos" className="element">
             <PhotoGrid {...restaurant} />
           </Element>
           <Element name="about" className="element about">
-            <About />
+            <About data={about} />
           </Element>
           <Element name="teamPhotos" className="element">
             <PhotoGrid {...team} />
