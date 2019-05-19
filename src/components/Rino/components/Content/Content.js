@@ -66,6 +66,7 @@ class Content extends Component {
     const [menuThree] = this.props.data.content.filter(item => item.context === 'menu-3');
     const [menuFour] = this.props.data.content.filter(item => item.context === 'menu-4');
     const [about] = this.props.data.content.filter(item => item.component === 'About');
+    const [press] = this.props.data.content.filter(item => item.component === 'Press');
 
     return (
       <Fragment>
@@ -107,7 +108,7 @@ class Content extends Component {
             <PhotoGrid {...team} />
           </Element>
           <Element name="press" className="element press">
-            <Press pressItems={this.props.pressItems}/>
+            <Press title={press.title} pressItems={press.pressItems}/>
           </Element>
           <Element name="contact" className="element contact">
             <Contact />

@@ -19,7 +19,7 @@ class Press extends Component {
   render() {
     return (
       <div className="press-section">
-        <HeadLine title="Press"/>
+        <HeadLine title={this.props.title}/>
         <div className="press-scroll">
           { this.renderPressItems() }
         </div>

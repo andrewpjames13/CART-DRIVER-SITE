@@ -15,7 +15,6 @@ class Rino extends PureComponent {
   }
 
   render() {
-    console.log(this.props.data);
     return (
       <Content data={this.props.data} />
     );
