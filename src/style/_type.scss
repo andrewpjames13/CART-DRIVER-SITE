@@ -31,13 +31,12 @@ body {
 }
 
 a {
-  color: $red;
+  // color: $red;
   font-weight: 900;
   text-decoration: none;
 
   &:hover {
     cursor: pointer;
-    color: $black;
   }
 }
 
@@ -95,6 +94,6 @@ li { margin: 5px 0;}
 }
 
 hr {
-  border-color: $red;
+  border: 1px solid currentColor;
   margin-top: 3px;
 }

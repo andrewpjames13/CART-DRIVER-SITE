@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
 import React, { PureComponent } from 'react';
+import withTheme from 'components/withTheme';
 import HeadLine from './head_line';
 import classNames from 'classnames';
 
@@ -30,14 +31,14 @@ class PhotoGrid extends PureComponent {
         </div>
         <button className={classes} onClick={this.closePhotoLightBox}>
           <img className="display-photo" src={this.state.selectedImage} role="presentation" />
-          <p className="close bold">CLICK ON PHOTO TO CLOSE</p>
+          <p className="close bold" style={{ color: this.props.Theme.primary }}>CLICK ON PHOTO TO CLOSE</p>
         </button>
       </div>
     );
   }
 }
 
-export default PhotoGrid;
+export default withTheme(PhotoGrid);
 
 PhotoGrid.defaultProps = {
   title: 'Photos',

@@ -2,6 +2,8 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
+import styled from 'styled-components';
+import withTheme from 'components/withTheme';
 
 class DeskNavBar extends Component {
   constructor(props) {
@@ -25,17 +27,30 @@ class DeskNavBar extends Component {
       'open': this.state.open
     });
 
+    const StyledRouterLink = styled(RouterLink)`
+      background-color: ${this.props.Theme.white};
+      border: 4px solid ${this.props.Theme.black};
+      &:after { background: ${this.props.Theme.primary} }
+      &:hover { color: ${this.props.Theme.white} }
+    `;
+    const StyledLink = styled(Link)`
+      background-color: ${this.props.Theme.white};
+      border: 4px solid ${this.props.Theme.black};
+      &:after { background: ${this.props.Theme.primary} }
+      &:hover { color: ${this.props.Theme.white} }
+    `;
+
     return (
       <Fragment>
         { this.props.home ?
           <Fragment>
-            <RouterLink to="/rino" className={`one ${listClasses}`}>
+            <StyledRouterLink to="/rino" className={`one ${listClasses}`}>
               RiNo
-            </RouterLink>
-            <RouterLink to="/lohi" className={`two ${listClasses}`}>
+            </StyledRouterLink>
+            <StyledRouterLink to="/lohi" className={`two ${listClasses}`}>
               LoHi
-            </RouterLink>
-            <Link
+            </StyledRouterLink>
+            <StyledLink
               className={`three ${listClasses}`}
               to="about"
               spy={true}
@@ -43,8 +58,8 @@ class DeskNavBar extends Component {
               duration={500}
               >
               About
-            </Link>
-            <Link
+            </StyledLink>
+            <StyledLink
               className={`four ${listClasses}`}
               to="press"
               spy={true}
@@ -52,8 +67,8 @@ class DeskNavBar extends Component {
               duration={500}
               >
               Press
-            </Link>
-            <Link
+            </StyledLink>
+            <StyledLink
               className={`five ${listClasses}`}
               to="contact"
               spy={true}
@@ -61,11 +76,11 @@ class DeskNavBar extends Component {
               duration={500}
               >
               Contact
-            </Link>
+            </StyledLink>
           </Fragment>
           :
           <Fragment>
-            <Link
+            <StyledLink
               className={`six ${listClasses}`}
               to="contact"
               spy={true}
@@ -73,8 +88,8 @@ class DeskNavBar extends Component {
               duration={500}
               >
               Contact
-            </Link>
-            <Link
+            </StyledLink>
+            <StyledLink
               className={`five ${listClasses}`}
               to="press"
               spy={true}
@@ -82,8 +97,8 @@ class DeskNavBar extends Component {
               duration={500}
               >
               Press
-            </Link>
-            <Link
+            </StyledLink>
+            <StyledLink
               className={`four ${listClasses}`}
               to="about"
               spy={true}
@@ -91,8 +106,8 @@ class DeskNavBar extends Component {
               duration={500}
               >
               About
-            </Link>
-            <Link
+            </StyledLink>
+            <StyledLink
               className={`three ${listClasses}`}
               to="photos"
               spy={true}
@@ -100,8 +115,8 @@ class DeskNavBar extends Component {
               duration={500}
               >
               Photos
-            </Link>
-            <Link
+            </StyledLink>
+            <StyledLink
               className={`two ${listClasses}`}
               to="menu"
               spy={true}
@@ -109,16 +124,16 @@ class DeskNavBar extends Component {
               duration={500}
               >
               Menu
-            </Link>
-            <RouterLink
+            </StyledLink>
+            <StyledRouterLink
               className={`one ${listClasses}`}
               to="/"
               >
               Home
-            </RouterLink>
+            </StyledRouterLink>
           </Fragment>
         }
-        <button className={`desk-svg-container ${this.state.open ? 'open' : ''}`} onClick={this.handleClick}>
+        <button style={{ fill: this.props.Theme.black }} className={`desk-svg-container ${this.state.open ? 'open' : ''}`} onClick={this.handleClick}>
           <svg className="deskNavHam" x="0px" y="0px" viewBox="0 0 24 24">
             <rect className="rects" y="2" width="24" height="4"/>
             <rect className="rects" y="10" width="24" height="4"/>
@@ -133,4 +148,4 @@ class DeskNavBar extends Component {
   }
 };
 
-export default DeskNavBar;
+export default withTheme(DeskNavBar);

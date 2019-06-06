@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import NavBarItem from './nav_bar_item';
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeSection: 'home',
-      open: false
-    };
-  }
+  state = {
+    activeSection: 'home',
+    open: false,
+  };
 
   handleClick(section) {
     if (section === 'nav-menu' && this.state.open) {
