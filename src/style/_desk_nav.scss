@@ -67,9 +67,7 @@
   width: 45px;
   height: 45px;
   padding: 10px;
-  background-color: $white;
   display: none;
-  border: 4px solid $black;
   @include respond-above($medium) {
     display: block;
   }

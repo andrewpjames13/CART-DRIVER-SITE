@@ -133,7 +133,15 @@ class DeskNavBar extends Component {
             </StyledRouterLink>
           </Fragment>
         }
-        <button style={{ fill: this.props.Theme.black }} className={`desk-svg-container ${this.state.open ? 'open' : ''}`} onClick={this.handleClick}>
+        <button
+          style={{
+            fill: this.props.Theme.black,
+            backgroundColor: this.props.Theme.white,
+            border: `4px solid ${this.props.Theme.black}`,
+          }}
+          className={`desk-svg-container ${this.state.open ? 'open' : ''}`}
+          onClick={this.handleClick}
+        >
           <svg className="deskNavHam" x="0px" y="0px" viewBox="0 0 24 24">
             <rect className="rects" y="2" width="24" height="4"/>
             <rect className="rects" y="10" width="24" height="4"/>

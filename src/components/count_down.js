@@ -1,6 +1,8 @@
 /*jshint esversion: 6 */
 import React, { PureComponent } from 'react';
 import ReactInterval from 'react-interval';
+import styled from 'styled-components';
+import withTheme from 'components/withTheme';
 
 class CountDown extends PureComponent {
   constructor(props) {
@@ -37,6 +39,10 @@ class CountDown extends PureComponent {
   }
 
   render() {
+    const H6 = styled.h6`
+      text-shadow: 2px 2px 8px ${this.props.Theme.black};
+    `;
+
     return(
       <div className="countDown">
         <ReactInterval
@@ -44,16 +50,16 @@ class CountDown extends PureComponent {
           enabled={true}
           callback={() => this.startIt()}
          />
-        <h6 className="bold open-times clock-letters">{this.state.openCloseTxt}</h6>
-        <h6 className="bold clock-numbers open-times">{this.state.hours}</h6>
-        <h6 className="bold open-times clock-letters">HR</h6>
-        <h6 className="bold clock-numbers open-times">{this.state.minutes}</h6>
-        <h6 className="bold open-times clock-letters">MIN</h6>
-        <h6 className="bold clock-numbers open-times">{this.state.seconds}</h6>
-        <h6 className="bold open-times clock-letters">SEC</h6>
+        <H6 className="bold open-times clock-letters">{this.state.openCloseTxt}</H6>
+        <H6 className="bold clock-numbers open-times">{this.state.hours}</H6>
+        <H6 className="bold open-times clock-letters">HR</H6>
+        <H6 className="bold clock-numbers open-times">{this.state.minutes}</H6>
+        <H6 className="bold open-times clock-letters">MIN</H6>
+        <H6 className="bold clock-numbers open-times">{this.state.seconds}</H6>
+        <H6 className="bold open-times clock-letters">SEC</H6>
       </div>
     );
   }
 }
 
-export default CountDown;
+export default withTheme(CountDown);

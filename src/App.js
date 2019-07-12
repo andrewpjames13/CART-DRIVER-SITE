@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 import { bindActionCreators } from 'redux';
+import styled from 'styled-components';
+import withTheme from 'components/withTheme';
 import NavBar from './components/nav_bar/nav_bar';
 import DeskNavBar from './components/desk_nav_bar';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -53,6 +55,13 @@ class App extends PureComponent {
   }
 
   render() {
+    const H6 = styled.h6`
+      text-shadow: 2px 2px 8px ${this.props.Theme.black};
+    `;
+    const H5 = styled.h5`
+      text-shadow: 2px 2px 8px ${this.props.Theme.black};
+    `;
+
     return (
       <Fragment>
         <HomeScreen
@@ -71,7 +80,7 @@ class App extends PureComponent {
                 render={() => (
                   <Fragment>
                     <CountDown />
-                    <h6 className="bold open-times">OPEN 12PM - 12AM SEVEN DAYS A WEEK</h6>
+                    <H6 className="bold open-times">OPEN 12PM - 12AM SEVEN DAYS A WEEK</H6>
                   </Fragment>
                 )}
               />
@@ -81,7 +90,7 @@ class App extends PureComponent {
                 render={() => (
                   <Fragment>
                     <CountDown />
-                    <h6 className="bold open-times">OPEN 12PM - 12AM SEVEN DAYS A WEEK</h6>
+                    <H6 className="bold open-times">OPEN 12PM - 12AM SEVEN DAYS A WEEK</H6>
                   </Fragment>
                 )}
               />
@@ -89,7 +98,7 @@ class App extends PureComponent {
                 exact
                 path="/home"
                 render={() => (
-                  <h5 className="homeText">Denver's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
+                  <H5 className="homeText">Denver's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</H5>
                 )}
               />
             </Switch>
@@ -100,21 +109,21 @@ class App extends PureComponent {
               exact
               path="/lohi"
               render={() => (
-                <h5 className="homeText">LoHi's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
+                <H5 className="homeText">LoHi's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</H5>
               )}
             />
             <Route
               exact
               path="/rino"
               render={() => (
-                <h5 className="homeText">RiNo's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
+                <H5 className="homeText">RiNo's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</H5>
               )}
             />
             <Route
               exact
               path="/"
               render={() => (
-                <h5 className="homeText">RiNo's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</h5>
+                <H5 className="homeText">RiNo's home for sharing wood-fired pizzas, fresh oysters, seasonal market plates, cocktails, and conversation.</H5>
               )}
             />
             <Route
@@ -122,7 +131,7 @@ class App extends PureComponent {
               path="/home"
               render={() => (
                 <Fragment>
-                  <h5 className="homeText">Select your location</h5>
+                  <H5 className="homeText">Select your location</H5>
                   <div className="home-btn-container">
                     <Link to="/rino" className="btn">
                       Rino
@@ -163,4 +172,4 @@ function mapStateToProps() {
   return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withTheme(connect(mapStateToProps, mapDispatchToProps)(App));
