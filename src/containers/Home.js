@@ -6,7 +6,6 @@ import fetchStoryblok from 'actions/FetchStoryblok';
 import { bindActionCreators } from 'redux';
 import withTheme from 'components/withTheme';
 import DeskNavBar from 'components/desk_nav_bar';
-import 'react-confirm-alert/src/react-confirm-alert.css';
 import HomeScreen from 'components/home_screen';
 
 class Home extends PureComponent {

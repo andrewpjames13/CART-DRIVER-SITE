@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 import Home from 'containers/Home';
 import Rino from 'containers/Rino';
 import LoHi from 'containers/LoHi';
-import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class App extends PureComponent {
   render() {
