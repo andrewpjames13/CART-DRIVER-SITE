@@ -8995,7 +8995,7 @@ prop-types@^15.5.4:
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
-prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
@@ -9264,13 +9264,6 @@ react-google-maps@^9.4.5:
     recompose "^0.26.0"
     scriptjs "^2.5.8"
     warning "^3.0.0"
-
-react-interval@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/react-interval/-/react-interval-2.0.2.tgz#eb52690c79fde7125beaab6258e4d630d3f1f2ce"
-  integrity sha512-mdE3ZBcB0LQ5rMe/K1zstmIKJ4g23D3RCdRQjqxS2YVUMTMISNea9sIA5qy+7MOqwlYXF9bNGtoUfkrkrewwVw==
-  dependencies:
-    prop-types "^15.6.0"
 
 react-is@^16.3.2, react-is@^16.6.0:
   version "16.6.1"
