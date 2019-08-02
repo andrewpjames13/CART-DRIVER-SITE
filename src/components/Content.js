@@ -2,21 +2,20 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Element } from 'react-scroll';
-import * as actions from 'actions';
+import styled from 'styled-components';
 import setTheme from 'actions/SetTheme';
 import PhotoGrid from 'components/photo_grid';
 import Press from 'components/press';
 import About from 'components/about';
 import Contact from 'components/contact';
 import HeadLine from 'components/head_line';
+import Map from 'components/Map';
 
 class Content extends Component {
-  constructor(props) {
-    super(props);
-    this.props.fetchData()
-  }
-
-  menuItems(data, classes = 'menu-item tiny-100') {
+  menuItems = (data, classes = 'menu-item tiny-100') => {
+    const Price = styled.h5`
+      &:after { color: ${this.props.Theme.black} }
+    `;
     const items = data.MenuItems.map(item => (
       <div key={item._uid} className={classes}>
         <div className="tiny-80">
@@ -24,17 +23,20 @@ class Content extends Component {
           <ul>{item.descriptionItems.map(i => <li key={i._uid}>{i.item}</li>)}</ul>
         </div>
         <div className="tiny-20" style={{ color: this.props.Theme.primary }}>
-          {item.price && <h5 className="item-price">{item.price}</h5>}
+          {item.price && <Price className="item-price">{item.price}</Price>}
         </div>
       </div>
     ))
     return items;
   }
 
-  menu(data) {
+  menu = (data) => {
     return (
       <div className="tiny-100">
-        <div className="menu-section">
+        <div
+          className="menu-section"
+          style={{ color: this.props.Theme.black }}
+        >
           <HeadLine title={data.Title} />
           {this.menuItems(data)}
           {data.description && <p className="section-description" style={{ color: this.props.Theme.primary }}>{data.description}</p>}
@@ -43,9 +45,12 @@ class Content extends Component {
     );
   }
 
-  renderHappyHourMenu(data) {
+  renderHappyHourMenu = (data) => {
     return (
-      <div className="menu-section">
+      <div
+        className="menu-section"
+        style={{ color: this.props.Theme.black }}
+      >
         <HeadLine title={data.Title} />
         {this.menuItems(data, ' menu-section tiny-100 small-50')}
         <div className="tiny-100">
@@ -76,6 +81,8 @@ class Content extends Component {
     const [menuFour] = this.props.data.content.filter(item => item.context === 'menu-4');
     const [about] = this.props.data.content.filter(item => item.component === 'About');
     const [press] = this.props.data.content.filter(item => item.component === 'Press');
+    const [Tour] = this.props.data.content.filter(item => item.component === '3D Tour');
+    const [MapComp] = this.props.data.content.filter(item => item.component === 'Map');
 
     return (
       <Fragment>
@@ -97,7 +104,7 @@ class Content extends Component {
                 className="menu-image tiny-100"
                 style={{ backgroundImage: `url('images/menu/antipasti-menu-min.jpg')`}}
               />
-            {menuThree && this.menu(menuThree)}
+              {menuThree && this.menu(menuThree)}
               <div
                 className="menu-image tiny-100"
                 style={{ backgroundImage: `url('images/menu/cocktails-menu-min.jpg')`}}
@@ -121,7 +128,17 @@ class Content extends Component {
           </Element>
           <Element name="contact" className="element contact">
             <Contact />
-            <iframe title="Rino Tour" width='100%' height='640' allowFullScreen src='https://tourmkr.com/F1UJ4bBgxl/7209046p,2738354m,62.99h,89.85t'></iframe>
+            <div className="contact-section">
+              <Map
+                containerElement={ <div style={{height: '70vh', width: '100%'}} /> }
+                mapElement={ <div style={{height: '70vh', width: '100%'}} /> }
+                lat={parseFloat(MapComp.latitude)}
+                lng={parseFloat(MapComp.longitude)}
+              />
+            </div>
+            {Tour && Tour.url && (
+              <iframe title="Rino Tour" width='100%' height='640' allowFullScreen src={Tour.url}></iframe>
+            )}
           </Element>
         </div>
       </Fragment>
@@ -131,7 +148,6 @@ class Content extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    fetchData: actions.fetchData,
     setTheme: setTheme,
   }, dispatch)
 }

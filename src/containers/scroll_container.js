@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { scrollSpy } from 'react-scroll';
+import withTheme from 'components/withTheme';
 
 class ScrollContainer extends Component {
   constructor(props) {
@@ -44,4 +45,4 @@ class ScrollContainer extends Component {
   }
 };
 
-export default ScrollContainer;
+export default withTheme(ScrollContainer);

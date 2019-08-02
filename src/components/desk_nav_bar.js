@@ -50,33 +50,6 @@ class DeskNavBar extends Component {
             <StyledRouterLink to="/lohi" className={`two ${listClasses}`}>
               LoHi
             </StyledRouterLink>
-            <StyledLink
-              className={`three ${listClasses}`}
-              to="about"
-              spy={true}
-              smooth={true}
-              duration={500}
-              >
-              About
-            </StyledLink>
-            <StyledLink
-              className={`four ${listClasses}`}
-              to="press"
-              spy={true}
-              smooth={true}
-              duration={500}
-              >
-              Press
-            </StyledLink>
-            <StyledLink
-              className={`five ${listClasses}`}
-              to="contact"
-              spy={true}
-              smooth={true}
-              duration={500}
-              >
-              Contact
-            </StyledLink>
           </Fragment>
           :
           <Fragment>
@@ -125,12 +98,15 @@ class DeskNavBar extends Component {
               >
               Menu
             </StyledLink>
-            <StyledRouterLink
+            <StyledLink
               className={`one ${listClasses}`}
-              to="/"
+              to="home"
+              spy={true}
+              smooth={true}
+              duration={500}
               >
               Home
-            </StyledRouterLink>
+            </StyledLink>
           </Fragment>
         }
         <button
