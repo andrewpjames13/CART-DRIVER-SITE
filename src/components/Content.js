@@ -129,7 +129,7 @@ class Content extends Component {
             </Element>
           )}
           <Element name="contact" className="element contact">
-            <Contact />
+            <Contact {...this.props.contactProps} />
             <div className="contact-section">
               <Map
                 containerElement={ <div style={{height: '70vh', width: '100%'}} /> }

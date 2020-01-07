@@ -19,7 +19,7 @@ const Contact = props => {
       <div className="contact-section--content" style={{ color: props.Theme.black }}>
         <HeadLine title="Contact" noBorder />
         <p>
-          <Link href="tel:3032923553">303.292.3553</Link>
+          <Link href={`tel:${props.phoneNumber}`}>{props.phoneNumber}</Link>
           <br/>
           <Link href="mailto:info@cart-driver.com?Subject=I%20Need%20Some%20Info">info@cart-driver.com</Link>
         </p>
@@ -33,7 +33,7 @@ const Contact = props => {
               	c7.2,0,40.9,0,40.9,0V160.7z"/>
             </Svg>
           </a>
-          <a href="https://www.instagram.com/cart_driver/" target="_blank">
+          <a href={props.instagramUrl} target="_blank">
             <Svg x="0px" y="0px" viewBox="0 0 512 512">
               <path id="instagram-square-icon" d="M367.6,150.2V180c0,4.8-3.9,8.6-8.6,8.6h-29.1c-4.8,0-8.6-3.9-8.6-8.6v-29.8
               	c0-4.8,3.9-8.6,8.6-8.6H359C363.8,141.6,367.6,145.4,367.6,150.2z M256,297c21.9,0,39.7-17.8,39.7-39.7c0-21.9-17.8-39.7-39.7-39.7
@@ -57,4 +57,6 @@ export default withTheme(Contact);
 Contact.defaultProps = {
   street: '2500 Larimer St #100',
   area: 'Denver CO 80205',
+  phoneNumber: '303.292.3553',
+  instagramUrl: 'https://www.instagram.com/cart_driver/',
 }

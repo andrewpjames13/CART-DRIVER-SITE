@@ -24,7 +24,16 @@ class LoHi extends PureComponent {
       <Fragment>
         <HomeScreen data={this.props.data} />
         <ScrollContainer>
-          <Content data={this.props.data} menuPhotos={['images/menu/antipasti-menu-min-lohi.jpg', 'images/menu/pizza-menu-min-lohi.jpg', 'images/menu/cocktails-menu-min-lohi.jpg']} />
+          <Content
+            data={this.props.data}
+            menuPhotos={['images/menu/antipasti-menu-min-lohi.jpg', 'images/menu/pizza-menu-min-lohi.jpg', 'images/menu/cocktails-menu-min-lohi.jpg']}
+            contactProps={{
+              phoneNumber: '(720) 501-2264',
+              street: '2239 West 30th Ave',
+              area: 'Denver, CO 80211',
+              instagramUrl: 'https://www.instagram.com/cart_driver_lohi/',
+            }}
+          />
         </ScrollContainer>
         <DeskNavBar />
         <NavBar />
