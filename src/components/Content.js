@@ -123,9 +123,11 @@ class Content extends Component {
           <Element name="teamPhotos" className="element">
             <PhotoGrid {...team} />
           </Element>
-          <Element name="press" className="element press">
-            <Press title={press.title} pressItems={press.pressItems}/>
-          </Element>
+          {press && (
+            <Element name="press" className="element press">
+              <Press title={press.title} pressItems={press.pressItems}/>
+            </Element>
+          )}
           <Element name="contact" className="element contact">
             <Contact />
             <div className="contact-section">
