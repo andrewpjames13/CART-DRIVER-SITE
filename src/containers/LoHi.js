@@ -24,7 +24,7 @@ class LoHi extends PureComponent {
       <Fragment>
         <HomeScreen data={this.props.data} />
         <ScrollContainer>
-          <Content data={this.props.data} />
+          <Content data={this.props.data} menuPhotos={['images/menu/antipasti-menu-min-lohi.jpg', 'images/menu/pizza-menu-min-lohi.jpg', 'images/menu/cocktails-menu-min-lohi.jpg']} />
         </ScrollContainer>
         <DeskNavBar />
         <NavBar />

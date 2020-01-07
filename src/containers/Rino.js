@@ -24,7 +24,7 @@ class Rino extends PureComponent {
       <Fragment>
         <HomeScreen data={this.props.data} />
         <ScrollContainer>
-          <Content data={this.props.data} />
+          <Content data={this.props.data} menuPhotos={['images/menu/pizza-menu-min.jpg', 'images/menu/antipasti-menu-min.jpg', 'images/menu/cocktails-menu-min.jpg']} />
         </ScrollContainer>
         <DeskNavBar />
         <NavBar />

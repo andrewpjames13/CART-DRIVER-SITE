@@ -95,19 +95,19 @@ class Content extends Component {
               {menuOne && this.menu(menuOne)}
               <div
                 className="menu-image tiny-100"
-                style={{ backgroundImage: `url('images/menu/pizza-menu-min.jpg')`}}
+                style={{ backgroundImage: `url(${this.props.menuPhotos[0]})`}}
               />
-            {menuTwo && this.menu(menuTwo)}
+              {menuTwo && this.menu(menuTwo)}
             </div>
             <div className="tiny-100 small-50">
               <div
                 className="menu-image tiny-100"
-                style={{ backgroundImage: `url('images/menu/antipasti-menu-min.jpg')`}}
+                style={{ backgroundImage: `url(${this.props.menuPhotos[1]})`}}
               />
               {menuThree && this.menu(menuThree)}
               <div
                 className="menu-image tiny-100"
-                style={{ backgroundImage: `url('images/menu/cocktails-menu-min.jpg')`}}
+                style={{ backgroundImage: `url(${this.props.menuPhotos[2]})`}}
               />
             </div>
             <div className="tiny-100">

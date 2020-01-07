@@ -17,7 +17,8 @@ const HomeScreen = ({ children, topContent, home, Theme, data }) => {
         background: Theme.black,
       }}
     >
-      <div className="home-container image" style={{ backgroundImage: 'url(images/cart-driver-table-party-min.jpg)'}}/>
+      <div className="home-container image" />
+      {/*<div className="home-container image" style={{ backgroundImage: 'url(images/cart-driver-table-party-min.jpg)'}}/>*/}
       <div className="home-radial-grad" />
       <div className="tiny-100 home-content">
         <div className="home-topContent">
@@ -28,6 +29,17 @@ const HomeScreen = ({ children, topContent, home, Theme, data }) => {
           <H5 className="homeText">
             {hero.slogan}
           </H5>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              margin: '40px 0',
+            }}
+          >
+            {hero.hours && <H5 style={{ marginRight: '40px' }}>{hero.hours}</H5>}
+            {hero.phoneNumber && <H5 style={{ marginRight: '40px' }}>{hero.phoneNumber}</H5>}
+            {hero.address && <H5>{hero.address}</H5>}
+          </div>
           {children}
         </div>
       </div>
