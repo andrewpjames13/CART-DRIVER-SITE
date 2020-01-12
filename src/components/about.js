@@ -10,7 +10,7 @@ const About = ({ data, Theme }) => (
   >
     <div className="hidden-tiny small-50 about-image">
       <div className="image-container">
-        <img src="images/cart-driver-hand.svg" alt="cart-driver-hand" />
+        {data.image && <img src={data.image} alt="cart-driver-hand" />}
       </div>
     </div>
     <div className="tiny-100 small-50">
