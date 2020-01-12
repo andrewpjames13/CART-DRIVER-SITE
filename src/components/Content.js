@@ -82,6 +82,7 @@ class Content extends Component {
     const [menuFive] = this.props.data.content.filter(item => item.context === 'menu-5');
     const [about] = this.props.data.content.filter(item => item.component === 'About');
     const [press] = this.props.data.content.filter(item => item.component === 'Press');
+    const [contact] = this.props.data.content.filter(item => item.component === 'Contact');
     const [Tour] = this.props.data.content.filter(item => item.component === '3D Tour');
     const [MapComp] = this.props.data.content.filter(item => item.component === 'Map');
 
@@ -131,7 +132,7 @@ class Content extends Component {
             </Element>
           )}
           <Element name="contact" className="element contact">
-            <Contact {...this.props.contactProps} />
+            {contact && <Contact {...contact} />}
             <div className="contact-section">
               <Map
                 containerElement={ <div style={{height: '70vh', width: '100%'}} /> }
