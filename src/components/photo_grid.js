@@ -18,7 +18,7 @@ class PhotoGrid extends PureComponent {
     });
     return(
       <div className="photo-grid-section">
-        <HeadLine title={this.props.title}/>
+        <HeadLine title={this.props.title} noBorder />
         <div className="photo-scroll">
           {this.props.photos.map((photo, index) => (
             <button
