@@ -117,13 +117,13 @@ class Content extends Component {
             </div>
           </Element>
           <Element name="photos" className="element">
-            <PhotoGrid {...restaurant} />
+            {restaurant && <PhotoGrid {...restaurant} />}
           </Element>
           <Element name="about" className="element about">
-            <About data={about} />
+            {about && <About data={about} />}
           </Element>
           <Element name="teamPhotos" className="element">
-            <PhotoGrid {...team} />
+            {team && <PhotoGrid {...team} />}
           </Element>
           {press && (
             <Element name="press" className="element press">

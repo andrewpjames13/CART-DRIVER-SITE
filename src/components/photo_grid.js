@@ -4,6 +4,12 @@ import withTheme from 'components/withTheme';
 import HeadLine from './head_line';
 import classNames from 'classnames';
 
+function transformImage(image, option) {
+  var imageService = '//img2.storyblok.com/'
+  var path = image.replace('//a.storyblok.com', '')
+  return imageService + option + path
+}
+
 class PhotoGrid extends PureComponent {
   state = { selectedImage: '' };
 
@@ -24,8 +30,8 @@ class PhotoGrid extends PureComponent {
             <button
               className="photo-button"
               key={index}
-              onClick={ () => {this.handlePhotoClick(photo.image)}}
-              style={{ backgroundImage: `url(${photo.image})`}}
+              onClick={ () => {this.handlePhotoClick(transformImage(photo.image, 'filters:quality(70)'))}}
+              style={{ backgroundImage: `url("${transformImage(photo.image, 'filters:quality(30)')}")`}}
             />
           ))}
         </div>
