@@ -79,6 +79,7 @@ class Content extends Component {
     const [menuTwo] = this.props.data.content.filter(item => item.context === 'menu-2');
     const [menuThree] = this.props.data.content.filter(item => item.context === 'menu-3');
     const [menuFour] = this.props.data.content.filter(item => item.context === 'menu-4');
+    const [menuFive] = this.props.data.content.filter(item => item.context === 'menu-5');
     const [about] = this.props.data.content.filter(item => item.component === 'About');
     const [press] = this.props.data.content.filter(item => item.component === 'Press');
     const [Tour] = this.props.data.content.filter(item => item.component === '3D Tour');
@@ -109,6 +110,7 @@ class Content extends Component {
                 className="menu-image tiny-100"
                 style={{ backgroundImage: `url(${this.props.menuPhotos[2]})`}}
               />
+              {menuFive && this.menu(menuFive)}
             </div>
             <div className="tiny-100">
               {menuFour && this.renderHappyHourMenu(menuFour)}
