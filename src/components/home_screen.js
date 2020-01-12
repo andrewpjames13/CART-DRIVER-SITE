@@ -33,12 +33,13 @@ const HomeScreen = ({ children, topContent, home, Theme, data }) => {
             style={{
               display: 'flex',
               justifyContent: 'center',
+              flexWrap: 'wrap',
               margin: '40px 0',
             }}
           >
-            {hero.hours && <H5 style={{ marginRight: '40px' }}>{hero.hours}</H5>}
-            {hero.phoneNumber && <H5 style={{ marginRight: '40px' }}>{hero.phoneNumber}</H5>}
-            {hero.address && <H5>{hero.address}</H5>}
+            {hero.hours && <H5 style={{ margin: '5px 20px' }}>{hero.hours}</H5>}
+            {hero.phoneNumber && <H5 style={{ margin: '5px 20px' }}>{hero.phoneNumber}</H5>}
+            {hero.address && <H5 style={{ margin: '5px 20px' }}>{hero.address}</H5>}
           </div>
           {children}
         </div>
