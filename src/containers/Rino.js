@@ -27,7 +27,7 @@ class Rino extends PureComponent {
           <Content data={this.props.data} menuPhotos={['images/menu/pizza-menu-min.jpg', 'images/menu/antipasti-menu-min.jpg', 'images/menu/cocktails-menu-min.jpg']} />
         </ScrollContainer>
         <DeskNavBar />
-        <NavBar />
+        <NavBar data={this.props.data} />
       </Fragment>
     );
   }

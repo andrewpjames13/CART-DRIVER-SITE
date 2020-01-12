@@ -30,7 +30,7 @@ class LoHi extends PureComponent {
           />
         </ScrollContainer>
         <DeskNavBar />
-        <NavBar />
+        <NavBar data={this.props.data} />
       </Fragment>
     );
   }

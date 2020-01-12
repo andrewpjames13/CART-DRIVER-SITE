@@ -24,7 +24,12 @@ class NavBarItem extends Component {
 
     if (section.svgPath) {
       el = (
-        <NavBarItemIcon section={section} onClick={this.handleClick.bind(this)} activeSection={this.props.activeSection} />
+        <NavBarItemIcon
+          section={section}
+          onClick={this.handleClick.bind(this)}
+          activeSection={this.props.activeSection}
+          phoneNumber={this.props.phoneNumber}
+        />
       );
     } else {
       el = (

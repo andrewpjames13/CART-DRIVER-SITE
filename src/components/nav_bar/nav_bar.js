@@ -57,8 +57,19 @@ class NavBar extends Component {
       'open': this.state.open
     });
 
+    if (!this.props.data || this.props.data.loading) return null;
+    const [contact] = this.props.data.content.filter(item => item.component === 'Contact');
+
     const navBarItems = sections.map((section) => {
-      return <NavBarItem key={section.name} section={section} onClick={this.handleClick.bind(this)} activeSection={this.state.activeSection}/>
+      return (
+        <NavBarItem
+          key={section.name}
+          section={section}
+          onClick={this.handleClick.bind(this)}
+          activeSection={this.state.activeSection}
+          phoneNumber={contact && contact.phoneNumber}
+        />
+      );
     });
 
     return (

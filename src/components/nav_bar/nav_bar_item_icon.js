@@ -21,7 +21,7 @@ class NavBarItemIcon extends Component {
 
     if (section.name === 'call' ) {
       return (
-        <a href="tel:303.292.3553" className="tiny-20 nav-item">
+        <a href={`tel:${this.props.phoneNumber}`} className="tiny-20 nav-item">
           <div className="call-me">
             <img role="presentation" src="images/callCircle.png" />
             <div className="svg-container">
