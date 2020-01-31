@@ -4,9 +4,15 @@
   justify-content: center;
   height: 80vh;
   position: relative;
+  background-color: $black;
 
   &.homePage {
     height: 100vh;
+    .home-content {
+      @include respond-above($small) {
+        margin-bottom: 11vh;
+      };
+    }
   }
 
   .home-radial-grad {
@@ -51,7 +57,7 @@
     }
 
     .home-bottomContent {
-      min-height: 125px;
+      min-height: 150px;
     }
   }
 }

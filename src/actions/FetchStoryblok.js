@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { FETCH_STORYBLOK_CACHE_VERSION } from '../constants/ActionTypes';
+import setTheme from './SetTheme';
 
 function fetchRequest(requestAction) {
   return { type: requestAction };
@@ -39,7 +40,9 @@ export default function fetchStoryblok(
         { headers: { 'Content-Type': 'application/json' } },
       ).then((resp) => {
         const results = [...resp.data.story.content.body];
+        const [data] = results.filter(item => item.component === 'Theme');
         dispatch(fetchSuccess(successAction, results));
+        if (data) dispatch(setTheme(data));
       }).catch(error => dispatch(fetchFailure(failureAction, error)));
     }
 
@@ -54,7 +57,9 @@ export default function fetchStoryblok(
       axios.get(`${url}&cv=${cv}`, { headers: { 'Content-Type': 'application/json' } })
         .then((resp) => {
           const results = [...resp.data.story.content.body];
+          const [data] = results.filter(item => item.component === 'Theme');
           dispatch(fetchSuccess(successAction, results));
+          if (data) dispatch(setTheme({ ...data, name: resp.data.story.name }));
         }).catch(error => dispatch(fetchFailure(failureAction, error)))
     )).catch(error => dispatch(fetchFailure(failureAction, error)));
   };

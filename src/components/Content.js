@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
-import setTheme from 'actions/SetTheme';
 import PhotoGrid from 'components/photo_grid';
 import Press from 'components/press';
 import About from 'components/about';
@@ -62,13 +60,6 @@ class Content extends PureComponent {
         </div>
       </div>
     );
-  }
-
-  componentDidUpdate() {
-    if(this.props.Theme.loading && !this.props.data.loading) {
-      const [data] = this.props.data.content.filter(item => item.component === 'Theme');
-      this.props.setTheme(data);
-    }
   }
 
   render() {
@@ -147,12 +138,6 @@ class Content extends PureComponent {
   }
 };
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    setTheme: setTheme,
-  }, dispatch)
-}
-
 function mapStateToProps(state) {
   return {
     pressItems: state.pressItems,
@@ -162,4 +147,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default connect(mapStateToProps)(Content);

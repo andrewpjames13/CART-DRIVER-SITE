@@ -13,11 +13,7 @@ import ScrollContainer from 'containers/scroll_container';
 class LoHi extends PureComponent {
   constructor(props) {
     super(props);
-    if (
-      !props.data
-      || !props.data.content
-      || (props.data.content.length === 0 && !props.data.loading)
-    ) props.fetchStoryblok('lohi');
+    props.fetchStoryblok('lohi');
   }
 
   render() {
