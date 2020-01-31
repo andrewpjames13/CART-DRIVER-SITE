@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
+import transformImage from 'helpers/transformImage';
 import PhotoGrid from 'components/photo_grid';
 import Press from 'components/press';
 import About from 'components/about';
@@ -77,7 +78,11 @@ class Content extends PureComponent {
     const [contact] = this.props.data.content.filter(item => item.component === 'Contact');
     const [Tour] = this.props.data.content.filter(item => item.component === '3D Tour');
     const [MapComp] = this.props.data.content.filter(item => item.component === 'Map');
-
+    const [MenuPhotos] = this.props.data.content.filter(item => item.component === 'MenuPhotos');
+    const backgroundImage = (index) => {
+      if (MenuPhotos) return `"${transformImage(MenuPhotos.photos[index].image, '1000x0/filters:quality(100)')}"`;
+      return this.props.menuPhotos[index];
+    }
     return (
       <>
         <Element name="menu" className="element">
@@ -85,19 +90,19 @@ class Content extends PureComponent {
             {menuOne && this.menu(menuOne)}
             <div
               className="menu-image tiny-100"
-              style={{ backgroundImage: `url(${this.props.menuPhotos[0]})`}}
+              style={{ backgroundImage: `url(${backgroundImage(0)})`}}
               />
             {menuTwo && this.menu(menuTwo)}
           </div>
           <div className="tiny-100 small-50">
             <div
               className="menu-image tiny-100"
-              style={{ backgroundImage: `url(${this.props.menuPhotos[1]})`}}
+              style={{ backgroundImage: `url(${backgroundImage(1)})`}}
               />
             {menuThree && this.menu(menuThree)}
             <div
               className="menu-image tiny-100"
-              style={{ backgroundImage: `url(${this.props.menuPhotos[2]})`}}
+              style={{ backgroundImage: `url(${backgroundImage(2)})`}}
               />
             {menuFive && this.menu(menuFive)}
           </div>
