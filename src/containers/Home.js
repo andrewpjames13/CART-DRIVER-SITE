@@ -24,8 +24,8 @@ class Home extends PureComponent {
     `;
 
     return (
-      <Fragment>
-        <HomeScreen data={this.props.data}>
+      <>
+        <HomeScreen data={this.props.data} home>
           <div style={{ marginTop: '20px' }}>
             <H5 className="homeText">Select your location</H5>
             <div className="home-btn-container">
@@ -35,7 +35,7 @@ class Home extends PureComponent {
           </div>
         </HomeScreen>
         <DeskNavBar home />
-      </Fragment>
+      </>
     );
   }
 }

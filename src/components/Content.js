@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Element } from 'react-scroll';
@@ -9,9 +9,10 @@ import Press from 'components/press';
 import About from 'components/about';
 import Contact from 'components/contact';
 import HeadLine from 'components/head_line';
+
 import Map from 'components/Map';
 
-class Content extends Component {
+class Content extends PureComponent {
   menuItems = (data, classes = 'menu-item tiny-100') => {
     const Price = styled.h5`
       &:after { color: ${this.props.Theme.black} }
@@ -87,66 +88,61 @@ class Content extends Component {
     const [MapComp] = this.props.data.content.filter(item => item.component === 'Map');
 
     return (
-      <Fragment>
-        <Element name="home" className="element">
-          <div className="home-ph"></div>
+      <>
+        <Element name="menu" className="element">
+          <div className="tiny-100 small-50">
+            {menuOne && this.menu(menuOne)}
+            <div
+              className="menu-image tiny-100"
+              style={{ backgroundImage: `url(${this.props.menuPhotos[0]})`}}
+              />
+            {menuTwo && this.menu(menuTwo)}
+          </div>
+          <div className="tiny-100 small-50">
+            <div
+              className="menu-image tiny-100"
+              style={{ backgroundImage: `url(${this.props.menuPhotos[1]})`}}
+              />
+            {menuThree && this.menu(menuThree)}
+            <div
+              className="menu-image tiny-100"
+              style={{ backgroundImage: `url(${this.props.menuPhotos[2]})`}}
+              />
+            {menuFive && this.menu(menuFive)}
+          </div>
+          <div className="tiny-100">
+            {menuFour && this.renderHappyHourMenu(menuFour)}
+          </div>
         </Element>
-        <div className="scroll-body">
-          <Element name="menu" className="element">
-            <div className="tiny-100 small-50">
-              {menuOne && this.menu(menuOne)}
-              <div
-                className="menu-image tiny-100"
-                style={{ backgroundImage: `url(${this.props.menuPhotos[0]})`}}
-              />
-              {menuTwo && this.menu(menuTwo)}
-            </div>
-            <div className="tiny-100 small-50">
-              <div
-                className="menu-image tiny-100"
-                style={{ backgroundImage: `url(${this.props.menuPhotos[1]})`}}
-              />
-              {menuThree && this.menu(menuThree)}
-              <div
-                className="menu-image tiny-100"
-                style={{ backgroundImage: `url(${this.props.menuPhotos[2]})`}}
-              />
-              {menuFive && this.menu(menuFive)}
-            </div>
-            <div className="tiny-100">
-              {menuFour && this.renderHappyHourMenu(menuFour)}
-            </div>
-          </Element>
-          <Element name="photos" className="element">
-            {restaurant && <PhotoGrid {...restaurant} />}
-          </Element>
-          <Element name="about" className="element about">
-            {about && <About data={about} />}
-          </Element>
-          <Element name="teamPhotos" className="element">
-            {team && <PhotoGrid {...team} />}
-          </Element>
+        <Element name="photos" className="element">
+          {restaurant && <PhotoGrid {...restaurant} />}
+        </Element>
+        <Element name="about" className="element about">
+          {about && <About data={about} />}
+        </Element>
+        <Element name="teamPhotos" className="element">
+          {team && <PhotoGrid {...team} />}
+        </Element>
+        <Element name="press" className="element press">
           {press && (
-            <Element name="press" className="element press">
-              <Press title={press.title} pressItems={press.pressItems}/>
-            </Element>
+            <Press title={press.title} pressItems={press.pressItems}/>
           )}
-          <Element name="contact" className="element contact">
-            {contact && <Contact {...contact} />}
-            <div className="contact-section">
-              <Map
-                containerElement={ <div style={{height: '70vh', width: '100%'}} /> }
-                mapElement={ <div style={{height: '70vh', width: '100%'}} /> }
-                lat={parseFloat(MapComp.latitude)}
-                lng={parseFloat(MapComp.longitude)}
+        </Element>
+        <Element name="contact" className="element contact">
+          {contact && <Contact {...contact} />}
+          <div className="contact-section">
+            <Map
+              containerElement={ <div style={{height: '70vh', width: '100%'}} /> }
+              mapElement={ <div style={{height: '70vh', width: '100%'}} /> }
+              lat={parseFloat(MapComp.latitude)}
+              lng={parseFloat(MapComp.longitude)}
               />
-            </div>
-            {Tour && Tour.url && (
-              <iframe title="Rino Tour" width='100%' height='640' allowFullScreen src={Tour.url}></iframe>
-            )}
-          </Element>
-        </div>
-      </Fragment>
+          </div>
+          {Tour && Tour.url && (
+            <iframe title="Rino Tour" width='100%' height='640' allowFullScreen src={Tour.url}></iframe>
+          )}
+        </Element>
+      </>
     );
   }
 };

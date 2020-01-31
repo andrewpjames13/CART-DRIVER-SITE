@@ -2,13 +2,8 @@
 import React, { PureComponent } from 'react';
 import withTheme from 'components/withTheme';
 import HeadLine from './head_line';
+import transformImage from 'helpers/transformImage';
 import classNames from 'classnames';
-
-function transformImage(image, option) {
-  var imageService = '//img2.storyblok.com/'
-  var path = image.replace('//a.storyblok.com', '')
-  return imageService + option + path
-}
 
 class PhotoGrid extends PureComponent {
   state = { selectedImage: '' };
@@ -30,8 +25,8 @@ class PhotoGrid extends PureComponent {
             <button
               className="photo-button"
               key={index}
-              onClick={ () => {this.handlePhotoClick(transformImage(photo.image, 'filters:quality(70)'))}}
-              style={{ backgroundImage: `url("${transformImage(photo.image, 'filters:quality(30)')}")`}}
+              onClick={ () => {this.handlePhotoClick(transformImage(photo.image, 'filters:quality(100)'))}}
+              style={{ backgroundImage: `url("${transformImage(photo.image, '800x0/filters:quality(100)')}")`}}
             />
           ))}
         </div>

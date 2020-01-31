@@ -1,7 +1,8 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import fetchStoryblok from 'actions/FetchStoryblok';
 import { bindActionCreators } from 'redux';
+import { Element } from 'react-scroll';
 import withTheme from 'components/withTheme';
 import NavBar from 'components/nav_bar/nav_bar';
 import DeskNavBar from 'components/desk_nav_bar';
@@ -21,8 +22,10 @@ class LoHi extends PureComponent {
 
   render() {
     return (
-      <Fragment>
-        <HomeScreen data={this.props.data} />
+      <>
+        <Element name="home">
+          <HomeScreen data={this.props.data} />
+        </Element>
         <ScrollContainer>
           <Content
             data={this.props.data}
@@ -31,7 +34,7 @@ class LoHi extends PureComponent {
         </ScrollContainer>
         <DeskNavBar />
         <NavBar data={this.props.data} />
-      </Fragment>
+      </>
     );
   }
 }
