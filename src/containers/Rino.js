@@ -13,7 +13,8 @@ import ScrollContainer from 'containers/scroll_container';
 class Rino extends PureComponent {
   constructor(props) {
     super(props);
-    props.fetchStoryblok('rino');
+    const preview = props.location.search.match(/preview/) !== null
+    props.fetchStoryblok('rino', preview);
   }
 
   render() {

@@ -13,7 +13,8 @@ import ScrollContainer from 'containers/scroll_container';
 class LoHi extends PureComponent {
   constructor(props) {
     super(props);
-    props.fetchStoryblok('lohi');
+    const preview = props.location.search.match(/preview/) !== null
+    props.fetchStoryblok('lohi', preview);
   }
 
   render() {

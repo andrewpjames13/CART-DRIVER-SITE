@@ -25,6 +25,7 @@ export default function fetchStoryblok(
     const token = preview
       ? process.env.REACT_APP_STORYBLOK_PREVIEW_KEY
       : process.env.REACT_APP_STORYBLOK_PUBLIC_KEY;
+      // : 'FzX9oO2iPBUrkQ7pe5WNawtt';
     const version = preview ? 'draft' : 'published';
     const url = `https://api.storyblok.com/v1/cdn/stories/${pageName}?token=${token}&version=${version}`;
     const bigPage = pageName.toUpperCase();

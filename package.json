@@ -10,10 +10,11 @@
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-google-maps": "^9.4.5",
+    "react-markdown": "^4.3.1",
     "react-router-dom": "^4.1.2",
     "react-scripts": "2.1.1",
-    "redux-thunk": "^2.2.0",
     "react-scroll": "^1.4.5",
+    "redux-thunk": "^2.2.0",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {

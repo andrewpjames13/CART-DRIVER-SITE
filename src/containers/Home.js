@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -15,7 +15,10 @@ class Home extends PureComponent {
       !props.data
       || !props.data.content
       || (props.data.content.length === 0 && !props.data.loading)
-    ) props.fetchStoryblok('home');
+    ) {
+      const preview = props.location.search.match(/preview/) !== null
+      props.fetchStoryblok('home', preview);
+    }
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+// import ReactMarkdown from 'react-markdown';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
 import transformImage from 'helpers/transformImage';
@@ -10,6 +11,29 @@ import Contact from 'components/contact';
 import HeadLine from 'components/head_line';
 
 import Map from 'components/Map';
+
+const DivStyled = styled.div`
+  text-align: center;
+  padding: 60px 20px;
+  @media all and (min-width: 768px){
+    padding: 80px 20px 130px;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h4 {
+    {/*color: ${({ styled }) => styled.theme.secondary || styled.theme.black }*/}
+    font-size: 35px;
+    font-weight: 300;
+    max-width: 1000px;
+    {/*line-height: 55px;
+    letter-spacing: 0.01rem;*/}
+    @media all and (min-width: 768px){
+      font-size: 55px;
+    }
+  }
+`;
 
 class Content extends PureComponent {
   menuItems = (data, classes = 'menu-item tiny-100') => {
@@ -66,6 +90,7 @@ class Content extends PureComponent {
   render() {
     if (!this.props.data || this.props.data.loading) return null;
     if (this.props.Theme.loading) return null;
+    const [howItWorks] = this.props.data.content.filter(item => item.component === 'how it works');
     const [team] = this.props.data.content.filter(item => item.context === 'team' && item.component === 'PhotoGrid');
     const [restaurant] = this.props.data.content.filter(item => item.context === 'restaurant' && item.component === 'PhotoGrid');
     const [menuOne] = this.props.data.content.filter(item => item.context === 'menu-1');
@@ -83,8 +108,18 @@ class Content extends PureComponent {
       if (MenuPhotos) return `"${transformImage(MenuPhotos.photos[index].image, '1000x0/filters:quality(100)')}"`;
       return this.props.menuPhotos[index];
     }
+
     return (
       <>
+        {howItWorks && howItWorks.text.length > 0 && (
+          <DivStyled styled={{ theme: this.props.Theme }}>
+            {/*<ReactMarkdown
+              source={howItWorks.body}
+              escapeHtml={false}
+            />*/}
+            <h4>{howItWorks.text}</h4>
+          </DivStyled>
+        )}
         <Element name="menu" className="element">
           <div className="tiny-100 small-50">
             {menuOne && this.menu(menuOne)}
