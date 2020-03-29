@@ -37,7 +37,7 @@ class Home extends PureComponent {
             </div>
           </div>
         </HomeScreen>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
           <img
             alt="Lohi Togo menu"
             src="/images/CartDriverLohiToGoMenu.png"
