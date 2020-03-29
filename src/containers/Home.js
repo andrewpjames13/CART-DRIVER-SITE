@@ -28,15 +28,25 @@ class Home extends PureComponent {
 
     return (
       <>
-        <HomeScreen data={this.props.data} home>
+        <HomeScreen data={this.props.data}>
           <div style={{ marginTop: '20px' }}>
             <H5 className="homeText">Select your location</H5>
             <div className="home-btn-container">
-              <Link to="/rino" className="btn">Rino</Link>
+              <Link to="/rino" className="btn" style={{ opacity: '.5' }}>Rino</Link>
               <Link to="/lohi" className="btn">LoHi</Link>
             </div>
           </div>
         </HomeScreen>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <img
+            alt="Lohi Togo menu"
+            src="/images/CartDriverLohiToGoMenu.png"
+            style={{
+              width: '100%',
+              maxWidth: '1200px',
+            }}
+            />
+        </div>
         <DeskNavBar home />
       </>
     );
