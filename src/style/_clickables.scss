@@ -41,3 +41,13 @@
     &:after { width: 100%; }
   }
 }
+
+.homeStyle {
+  &:hover {
+    .btn {
+      color: $white;
+
+      &:after { width: 100%; }
+    }
+  }
+}

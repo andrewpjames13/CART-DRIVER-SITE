@@ -1,6 +1,8 @@
 /*jshint esversion: 6 */
 import React, { PureComponent } from 'react';
+import withTheme from 'components/withTheme';
 import HeadLine from './head_line';
+import transformImage from 'helpers/transformImage';
 import classNames from 'classnames';
 
 class PhotoGrid extends PureComponent {
@@ -17,27 +19,27 @@ class PhotoGrid extends PureComponent {
     });
     return(
       <div className="photo-grid-section">
-        <HeadLine title={this.props.title}/>
+        <HeadLine title={this.props.title} noBorder />
         <div className="photo-scroll">
           {this.props.photos.map((photo, index) => (
             <button
               className="photo-button"
               key={index}
-              onClick={ () => {this.handlePhotoClick(photo.photoSrc)}}
-              style={{ backgroundImage: `url(${photo.photoSrc})`}}
+              onClick={ () => {this.handlePhotoClick(transformImage(photo.image, 'filters:quality(100)'))}}
+              style={{ backgroundImage: `url("${transformImage(photo.image, '800x0/filters:quality(100)')}")`}}
             />
           ))}
         </div>
         <button className={classes} onClick={this.closePhotoLightBox}>
           <img className="display-photo" src={this.state.selectedImage} role="presentation" />
-          <p className="close bold">CLICK ON PHOTO TO CLOSE</p>
+          <p className="close bold" style={{ color: this.props.Theme.primary }}>CLICK ON PHOTO TO CLOSE</p>
         </button>
       </div>
     );
   }
 }
 
-export default PhotoGrid;
+export default withTheme(PhotoGrid);
 
 PhotoGrid.defaultProps = {
   title: 'Photos',

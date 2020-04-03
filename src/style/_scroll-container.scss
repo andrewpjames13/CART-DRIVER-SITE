@@ -1,11 +1,5 @@
 .scroll-container {
-  position: absolute;
-  left: 50%;
-  height: auto;
-  max-width: 100%;
-  min-width: 90%;
-  transform: translateX(-50%);
-  overflow: hidden;
+  width: 100%;
 
   .home-ph {
     height: 88vh;

@@ -6,7 +6,6 @@
   overflow: hidden;
   @include respond-above($small) {
     height: auto;
-    background-color: $black;
     margin: $layoutSpacing 0;
     padding: 0;
 
@@ -58,8 +57,8 @@
       height: 25vw;
       float: left;
       margin: 0;
-      opacity: 0.8;
-      transition: opacity 500ms ease-in-out;
+      opacity: 0.9;
+      transition: opacity 200ms ease-in-out;
 
       &:last-of-type { margin-right: 0; }
     };
@@ -100,7 +99,6 @@
         position: absolute;
         bottom: 2%;
         width: 100%;
-        color: $red;
         font-size: 20px;
         opacity: 0.4;
 

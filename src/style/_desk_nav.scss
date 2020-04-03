@@ -4,20 +4,18 @@
   right: -24vw;
   width: 15vw;
   height: 50px;
-  background-color: $white;
   text-align: center;
   padding-top: 13px;
-  border: 4px solid $black;
   opacity: 0;
   transition: all 0.3s ease-in-out;
   display: none;
+  z-index: 2;
 
   &:after {
     width: 0%;
     height: 100%;
     top: 0;
     left: 0;
-    background: $red;
     content: '';
     position: absolute;
     z-index: -1;
@@ -25,8 +23,6 @@
   }
 
   &:hover {
-    color: $white;
-
     &:after { width: 100%; }
   }
 
@@ -66,15 +62,14 @@
 }
 
 .desk-svg-container {
+  z-index: 2;
   position: fixed;
   top: 16px;
   right: 16px;
   width: 45px;
   height: 45px;
   padding: 10px;
-  background-color: $white;
   display: none;
-  border: 4px solid $black;
   @include respond-above($medium) {
     display: block;
   }
@@ -86,7 +81,7 @@
   svg {
     width: 100%;
     height: 100%;
-    fill: $black;
+    fill: inherit;
   }
 
   .deskNavHam {
