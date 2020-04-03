@@ -13,9 +13,9 @@ const Closed = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  width: 150px;
+  width: 120px;
   @media all and (min-width: 768px){
-    width: 250px;
+    width: 170px;
   }
 `;
 
@@ -62,10 +62,10 @@ class Home extends PureComponent {
                 />
               </Link>
               <Link to="/lohi" className="homeStyle" style={{ position: 'relative' }}>
-                <div className="btn">LoHi</div>
-                <Open
-                  src="/images/Open.png"
-                  alt="lohi location is open for take out"
+                <div className="btn" style={{ opacity: '.2' }}>LoHi</div>
+                <Closed
+                  src="/images/Closed.png"
+                  alt="lohi location is temporarily closed"
                 />
               </Link>
             </div>
