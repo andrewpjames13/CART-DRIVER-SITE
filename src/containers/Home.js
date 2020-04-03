@@ -19,14 +19,14 @@ const Closed = styled.img`
   }
 `;
 
-const Open = styled.img`
+const Support = styled.img`
   position: absolute;
-  top: 50px;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 150px;
+  width: 325px;
   @media all and (min-width: 768px){
-    width: 250px;
+    width: 400px;
   }
 `;
 
@@ -68,6 +68,13 @@ class Home extends PureComponent {
                   alt="lohi location is temporarily closed"
                 />
               </Link>
+              <a href="https://www.toasttab.com/cart-driver-west-ave/giftcards" className="homeStyle" style={{ position: 'relative', marginTop: 20 }}>
+                <div className="btn" style={{ marginTop: 50, marginBottom: 80 }}>Gift Cards</div>
+                <Support
+                  src="/images/support.png"
+                  alt="you can support us with gift cards"
+                />
+              </a>
             </div>
           </div>
         </HomeScreen>
