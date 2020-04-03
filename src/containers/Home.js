@@ -8,6 +8,28 @@ import withTheme from 'components/withTheme';
 import DeskNavBar from 'components/desk_nav_bar';
 import HomeScreen from 'components/home_screen';
 
+const Closed = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 150px;
+  @media all and (min-width: 768px){
+    width: 250px;
+  }
+`;
+
+const Open = styled.img`
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  @media all and (min-width: 768px){
+    width: 250px;
+  }
+`;
+
 class Home extends PureComponent {
   constructor(props) {
     super(props);
@@ -32,8 +54,20 @@ class Home extends PureComponent {
           <div style={{ marginTop: '20px' }}>
             <H5 className="homeText">Select your location</H5>
             <div className="home-btn-container">
-              <Link to="/rino" className="btn" style={{ opacity: '.5' }}>Rino</Link>
-              <Link to="/lohi" className="btn">LoHi</Link>
+              <Link to="/rino" className="homeStyle" style={{ position: 'relative' }}>
+                <div className="btn" style={{ opacity: '.2' }}>RiNo</div>
+                <Closed
+                  src="/images/Closed.png"
+                  alt="rino location is temporarily closed"
+                />
+              </Link>
+              <Link to="/lohi" className="homeStyle" style={{ position: 'relative' }}>
+                <div className="btn">LoHi</div>
+                <Open
+                  src="/images/Open.png"
+                  alt="lohi location is open for take out"
+                />
+              </Link>
             </div>
           </div>
         </HomeScreen>
