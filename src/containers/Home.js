@@ -55,25 +55,27 @@ class Home extends PureComponent {
             <H5 className="homeText">Select your location</H5>
             <div className="home-btn-container">
               <Link to="/rino" className="homeStyle" style={{ position: 'relative' }}>
-                <div className="btn" style={{ opacity: '.2' }}>RiNo</div>
-                <Closed
+                <div className="btn">RiNo</div>
+                {/*<div className="btn" style={{ opacity: '.2' }}>RiNo</div>*/}
+                {/*<Closed
                   src="/images/Closed.png"
                   alt="rino location is temporarily closed"
-                />
+                />*/}
               </Link>
               <Link to="/lohi" className="homeStyle" style={{ position: 'relative' }}>
-                <div className="btn" style={{ opacity: '.2' }}>LoHi</div>
-                <Closed
+                <div className="btn">LoHi</div>
+                {/*<div className="btn" style={{ opacity: '.2' }}>LoHi</div>*/}
+                {/*<Closed
                   src="/images/Closed.png"
                   alt="lohi location is temporarily closed"
-                />
+                />*/}
               </Link>
               <a href="https://www.toasttab.com/cart-driver-west-ave/giftcards" className="homeStyle" style={{ position: 'relative', marginTop: 20 }}>
                 <div className="btn" style={{ marginTop: 50, marginBottom: 80 }}>Gift Cards</div>
-                <Support
+                {/*<Support
                   src="/images/support.png"
                   alt="you can support us with gift cards"
-                />
+                />*/}
               </a>
             </div>
           </div>
