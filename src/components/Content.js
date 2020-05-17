@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-// import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 import { Element } from 'react-scroll';
 import styled from 'styled-components';
 import transformImage from 'helpers/transformImage';
@@ -13,7 +13,6 @@ import HeadLine from 'components/head_line';
 import Map from 'components/Map';
 
 const DivStyled = styled.div`
-  text-align: center;
   padding: 60px 20px;
   @media all and (min-width: 768px){
     padding: 80px 20px 130px;
@@ -22,17 +21,6 @@ const DivStyled = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  h4 {
-    {/*color: ${({ styled }) => styled.theme.secondary || styled.theme.black }*/}
-    font-size: 35px;
-    font-weight: 300;
-    max-width: 1000px;
-    {/*line-height: 55px;
-    letter-spacing: 0.01rem;*/}
-    @media all and (min-width: 768px){
-      font-size: 55px;
-    }
-  }
 `;
 
 class Content extends PureComponent {
@@ -44,7 +32,7 @@ class Content extends PureComponent {
       <div key={item._uid} className={classes}>
         <div className="tiny-80">
           <h5 style={{ color: this.props.Theme.primary }}>{item.name}</h5>
-          <ul>{item.descriptionItems.map(i => <li key={i._uid}>{i.item}</li>)}</ul>
+          <ul style={{ listStyle: 'none' }}>{item.descriptionItems.map(i => <li key={i._uid}>{i.item}</li>)}</ul>
         </div>
         <div className="tiny-20" style={{ color: this.props.Theme.primary }}>
           {item.price && <Price className="item-price">{item.price}</Price>}
@@ -56,7 +44,7 @@ class Content extends PureComponent {
 
   menu = (data) => {
     return (
-      <div className="tiny-100">
+      <div className="tiny-100" key={data._uid}>
         <div
           className="menu-section"
           style={{ color: this.props.Theme.black }}
@@ -93,53 +81,53 @@ class Content extends PureComponent {
     const [howItWorks] = this.props.data.content.filter(item => item.component === 'how it works');
     const [team] = this.props.data.content.filter(item => item.context === 'team' && item.component === 'PhotoGrid');
     const [restaurant] = this.props.data.content.filter(item => item.context === 'restaurant' && item.component === 'PhotoGrid');
-    const [menuOne] = this.props.data.content.filter(item => item.context === 'menu-1');
-    const [menuTwo] = this.props.data.content.filter(item => item.context === 'menu-2');
-    const [menuThree] = this.props.data.content.filter(item => item.context === 'menu-3');
     const [menuFour] = this.props.data.content.filter(item => item.context === 'menu-4');
-    const [menuFive] = this.props.data.content.filter(item => item.context === 'menu-5');
     const [about] = this.props.data.content.filter(item => item.component === 'About');
     const [press] = this.props.data.content.filter(item => item.component === 'Press');
     const [contact] = this.props.data.content.filter(item => item.component === 'Contact');
     const [Tour] = this.props.data.content.filter(item => item.component === '3D Tour');
     const [MapComp] = this.props.data.content.filter(item => item.component === 'Map');
-    const [MenuPhotos] = this.props.data.content.filter(item => item.component === 'MenuPhotos');
-    const backgroundImage = (index) => {
-      if (MenuPhotos) return `"${transformImage(MenuPhotos.photos[index].image, '1000x0/filters:quality(100)')}"`;
-      return this.props.menuPhotos[index];
-    }
+    const [menuLayout] = this.props.data.content.filter(item => item.component === 'Menu Layout')
 
     return (
       <>
         {howItWorks && howItWorks.text.length > 0 && (
           <DivStyled styled={{ theme: this.props.Theme }}>
-            {/*<ReactMarkdown
-              source={howItWorks.body}
+            <ReactMarkdown
+              className="disc"
+              source={howItWorks.text}
               escapeHtml={false}
-            />*/}
-            <h4>{howItWorks.text}</h4>
+            />
           </DivStyled>
         )}
         <Element name="menu" className="element">
           <div className="tiny-100 small-50">
-            {menuOne && this.menu(menuOne)}
-            <div
-              className="menu-image tiny-100"
-              style={{ backgroundImage: `url(${backgroundImage(0)})`}}
-              />
-            {menuTwo && this.menu(menuTwo)}
+            {menuLayout.left.map((data) => {
+              if (data.component === 'Photo') {
+                return (
+                  <div
+                    key={data._uid}
+                    className="menu-image tiny-100"
+                    style={{ backgroundImage: `url("${transformImage(data.image, '1000x0/filters:quality(100)')}")`}}
+                  />
+                )
+              }
+              return this.menu(data)
+            })}
           </div>
           <div className="tiny-100 small-50">
-            <div
-              className="menu-image tiny-100"
-              style={{ backgroundImage: `url(${backgroundImage(1)})`}}
-              />
-            {menuThree && this.menu(menuThree)}
-            <div
-              className="menu-image tiny-100"
-              style={{ backgroundImage: `url(${backgroundImage(2)})`}}
-              />
-            {menuFive && this.menu(menuFive)}
+            {menuLayout.right.map((data) => {
+              if (data.component === 'Photo') {
+                return (
+                  <div
+                    key={data._uid}
+                    className="menu-image tiny-100"
+                    style={{ backgroundImage: `url("${transformImage(data.image, '1000x0/filters:quality(100)')}")`}}
+                  />
+                )
+              }
+              return this.menu(data)
+            })}
           </div>
           <div className="tiny-100">
             {menuFour && this.renderHappyHourMenu(menuFour)}

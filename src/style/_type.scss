@@ -74,7 +74,7 @@ h6 {
   @include respond-above($large){ font-size: 4vw };
   @include respond-above(2000px){ font-size: 3vw };
  }
-p, li {
+p {
   letter-spacing: 0.05rem;
   font-size: 1em;
   line-height: 1.2rem;
