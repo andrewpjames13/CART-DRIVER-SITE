@@ -101,34 +101,27 @@ class Content extends PureComponent {
           </DivStyled>
         )}
         <Element name="menu" className="element">
-          <div className="tiny-100 small-50">
-            {menuLayout.left.map((data) => {
-              if (data.component === 'Photo') {
-                return (
-                  <div
-                    key={data._uid}
-                    className="menu-image tiny-100"
-                    style={{ backgroundImage: `url("${transformImage(data.image, '1000x0/filters:quality(100)')}")`}}
-                  />
-                )
-              }
-              return this.menu(data)
-            })}
-          </div>
-          <div className="tiny-100 small-50">
-            {menuLayout.right.map((data) => {
-              if (data.component === 'Photo') {
-                return (
-                  <div
-                    key={data._uid}
-                    className="menu-image tiny-100"
-                    style={{ backgroundImage: `url("${transformImage(data.image, '1000x0/filters:quality(100)')}")`}}
-                  />
-                )
-              }
-              return this.menu(data)
-            })}
-          </div>
+          {Object.keys(menuLayout).map((key, index) => {
+            if (key === 'left' || key === 'right') {
+              return  (
+                <div key={key} className="tiny-100 small-50">
+                  {menuLayout[key].map((data) => {
+                    if (data.component === 'Photo') {
+                      return (
+                        <div
+                          key={data._uid}
+                          className="menu-image tiny-100"
+                          style={{ backgroundImage: `url("${transformImage(data.image, '1000x0/filters:quality(100)')}")`}}
+                          />
+                      )
+                    }
+                    return this.menu(data)
+                  })}
+                </div>
+              )
+            }
+            return null
+          })}
           <div className="tiny-100">
             {menuFour && this.renderHappyHourMenu(menuFour)}
           </div>
