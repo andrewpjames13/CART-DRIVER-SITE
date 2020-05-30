@@ -3,6 +3,12 @@
   margin-bottom: 20px;
   padding: $layoutSpacing $layoutSpacing 0 $layoutSpacing;
 
+  li {
+    letter-spacing: 0.05rem;
+    font-size: 1em;
+    line-height: 1.2rem;
+  }
+  
   .section-description {
     margin-bottom: 10px;
   }
