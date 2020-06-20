@@ -45,7 +45,7 @@
 
     .homeText {
       font-size: 4vw;
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       margin-top: 10px;
       padding: 0 10px;
@@ -54,6 +54,16 @@
       @include respond-above($small) {
         font-size: 25px;
         margin-top: 0px;
+      };
+    }
+
+    .homeInfo {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      @include respond-above($small) {
+        margin: 40px 0;
       };
     }
 

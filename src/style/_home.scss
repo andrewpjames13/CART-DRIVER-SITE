@@ -1,7 +1,7 @@
 .home-btn-container .btn {
-  margin: 20px 15px 0;
+  margin: 0 15px 20px;
   @include respond-above($small) {
-    margin: 30px 15px 0;
+    margin: 0 15px 30px;
   }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import withTheme from 'components/withTheme';
+import Button from 'components/Button';
 
 const HomeScreen = ({ children, topContent, home, Theme, data }) => {
   const loading = !data || data.loading;
@@ -8,6 +9,7 @@ const HomeScreen = ({ children, topContent, home, Theme, data }) => {
   if (!loading) {
     [hero] = data.content.filter(item => item.component === 'Hero');
   }
+
   const H5 = styled.h5`
     text-shadow: 2px 2px 8px ${Theme.black};
   `;
@@ -28,19 +30,19 @@ const HomeScreen = ({ children, topContent, home, Theme, data }) => {
               <H5 className="homeText">
                 {hero.slogan}
               </H5>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  flexWrap: 'wrap',
-                  margin: '40px 0',
-                }}
-              >
+              <div className="homeInfo">
                 {hero.hours && <H5 style={{ margin: '5px 20px' }}>{hero.hours}</H5>}
                 {hero.phoneNumber && <H5 style={{ margin: '5px 20px' }}>{hero.phoneNumber}</H5>}
                 {hero.address && <H5 style={{ margin: '5px 20px' }}>{hero.address}</H5>}
               </div>
               {children}
+              {hero && hero.Buttons && (
+                <div className="home-btn-container">
+                  {hero.Buttons.map(({ text, href }) => (
+                    <Button key={href} href={href}>{text}</Button>
+                  ))}
+                </div>
+              )}
             </>
           }
         </div>
