@@ -1,5 +1,5 @@
 /*jshint esversion: 6 */
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
@@ -41,18 +41,18 @@ class DeskNavBar extends Component {
     `;
 
     return (
-      <Fragment>
+      <>
         { this.props.home ?
-          <Fragment>
+          <>
             <StyledRouterLink to="/rino" className={`one ${listClasses}`}>
               RiNo
             </StyledRouterLink>
             <StyledRouterLink to="/lohi" className={`two ${listClasses}`}>
               LoHi
             </StyledRouterLink>
-          </Fragment>
+          </>
           :
-          <Fragment>
+          <>
             <StyledLink
               className={`six ${listClasses}`}
               to="contact"
@@ -107,7 +107,7 @@ class DeskNavBar extends Component {
               >
               Home
             </StyledLink>
-          </Fragment>
+          </>
         }
         <button
           style={{
@@ -127,7 +127,7 @@ class DeskNavBar extends Component {
             <path d="M24,20.2L15.7,12l8.2-8.3L20.2,0L12,8.3L3.7,0.1L0,3.8L8.3,12l-8.2,8.3L3.8,24l8.2-8.3l8.3,8.2L24,20.2z"/>
           </svg>
         </button>
-      </Fragment>
+      </>
     );
   }
 };
