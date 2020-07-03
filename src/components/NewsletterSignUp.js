@@ -27,17 +27,42 @@ const Close = styled.button`
   height: 20px;
 `
 
+const Ul = styled.ul`
+  listStyle: none;
+  display: flex;
+
+  @media all and (min-width: 768px){
+    display: block;
+  }
+`
+
+const Body = styled.p`
+  font-size: 13px;
+  @media all and (min-width: 768px){
+    font-size: 16px
+  }
+`
+
+const Header = styled.h2`
+  font-size: 10px;
+  @media all and (min-width: 768px){
+    font-size: 25px
+  }
+`
+
 const NewsletterSignUp = ({ Theme }) => {
   const location = useLocation();
   const [modalIsOpen, setIsOpen] = useState(false);
+  console.log(window.innerHeight)
   const customStyles = {
     content: {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%,-50%)',
       minWidth: '300px',
-      minHeight: '675px',
+      minHeight: window.innerHeight > 670 ? '610px' : '90vh',
       backgroundColor: '#f4f3ed',
+      padding: '0 20px'
     },
     overlay: {
       backgroundColor: 'rgba(0,0,0,.5)',
@@ -82,8 +107,8 @@ const NewsletterSignUp = ({ Theme }) => {
               </svg>
             </Close>
             <div id="mc_embed_signup_scroll">
-             <h2>Subscribe to our newsletter</h2>
-             <p>We'll keep you posted on Cart-Driver news, menus, recipes, parties, and more!</p>
+             <Header>Subscribe to our newsletter</Header>
+             <Body>We'll keep you posted on Cart-Driver news, menus, recipes, parties, and more!</Body>
              <div className="indicates-required"><span className="asterisk">*</span> indicates required</div>
             <div className="mc-field-group">
               <label htmlFor="mce-EMAIL">Email Address  <span className="asterisk">*</span></label>
@@ -110,10 +135,10 @@ const NewsletterSignUp = ({ Theme }) => {
             </div>
             <div className="mc-field-group input-group">
                 <strong>Locations </strong>
-                <ul style={{ listStyle: 'none' }}>
-                  <li><input ref={() => { checkTheBox('lohi', 'mce-group[292661]-292661-0') }} type="checkbox" value="1" name="group[292661][1]" id="mce-group[292661]-292661-0"/><label htmlFor="mce-group[292661]-292661-0">LoHi</label></li>
-                  <li><input ref={() => { checkTheBox('rino', 'mce-group[292661]-292661-1') }} type="checkbox" value="2" name="group[292661][2]" id="mce-group[292661]-292661-1"/><label htmlFor="mce-group[292661]-292661-1">RiNo</label></li>
-                </ul>
+                <Ul>
+                  <li style={{ marginRight: '10px' }}><input ref={() => { checkTheBox('lohi', 'mce-group[292661]-292661-0') }} type="checkbox" value="1" name="group[292661][1]" id="mce-group[292661]-292661-0"/><label htmlFor="mce-group[292661]-292661-0">LoHi</label></li>
+                  <li style={{ marginRight: '10px' }}><input ref={() => { checkTheBox('rino', 'mce-group[292661]-292661-1') }} type="checkbox" value="2" name="group[292661][2]" id="mce-group[292661]-292661-1"/><label htmlFor="mce-group[292661]-292661-1">RiNo</label></li>
+                </Ul>
             </div>
             {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
             <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true"><input type="text" name="b_c657c922445300faf66bfca99_f6f38e1eab" tabIndex="-1"/></div>
