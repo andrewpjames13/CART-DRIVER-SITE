@@ -53,7 +53,6 @@ const Header = styled.h2`
 const NewsletterSignUp = ({ Theme }) => {
   const location = useLocation();
   const [modalIsOpen, setIsOpen] = useState(false);
-  console.log(window.innerHeight)
   const customStyles = {
     content: {
       top: '50%',

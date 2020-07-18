@@ -148,6 +148,8 @@ class Content extends PureComponent {
               mapElement={ <div style={{height: '70vh', width: '100%'}} /> }
               lat={parseFloat(MapComp.latitude)}
               lng={parseFloat(MapComp.longitude)}
+              zoom={parseFloat(MapComp.zoom)}
+              deliveryRadius={parseFloat(MapComp.deliveryRadius)}
               />
           </div>
           {Tour && Tour.url && (
