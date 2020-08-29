@@ -152,6 +152,7 @@ class Content extends PureComponent {
               deliveryRadius={parseFloat(MapComp.deliveryRadius)}
               />
           </div>
+          {/*<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1ZCLMcjqG3a2Kte_FA28cNgskKrevofCa" width="100%" height="640"></iframe>*/}
           {Tour && Tour.url && (
             <iframe title="Rino Tour" width='100%' height='640' allowFullScreen src={Tour.url}></iframe>
           )}

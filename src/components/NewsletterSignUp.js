@@ -49,7 +49,7 @@ const Header = styled.h2`
     font-size: 25px
   }
 `
-
+const desktop = window.innerWidth > 670
 const NewsletterSignUp = ({ Theme }) => {
   const location = useLocation();
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -58,8 +58,8 @@ const NewsletterSignUp = ({ Theme }) => {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%,-50%)',
-      minWidth: '300px',
-      minHeight: window.innerHeight > 670 ? '610px' : '90vh',
+      minWidth: desktop ? '50vw' : '100vw',
+      minHeight: desktop ? '52vh' : '100vh',
       backgroundColor: '#f4f3ed',
       padding: '0 20px'
     },
@@ -76,7 +76,7 @@ const NewsletterSignUp = ({ Theme }) => {
   }
 
   useEffect(() => {
-    setIsOpen(true)
+    if (desktop) setIsOpen(true)
   }, [])
 
   return (
