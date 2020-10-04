@@ -129,15 +129,13 @@ const NewsletterSignUp = ({ Theme }) => {
               <div style={{ marginRight: 10 }}>
                 <label htmlFor="mce-BIRTHDAY-month">Birth Month</label>
                 <div className="datefield">
-                  <span className="subfield monthfield">
-                    <input className="birthday " type="text" pattern="[0-9]*" placeholder="MM" size="2" maxLength="2" name="mce-BIRTHDAY-month" id="mce-BIRTHDAY-month" style={{ width: 50 }} /></span>
+                  <input className="birthday " type="text" pattern="[0-9]*" placeholder="MM" size="2" maxLength="2" name="mce-BIRTHDAY-month" id="mce-BIRTHDAY-month" style={{ width: 50 }} />
                 </div>
               </div>
               <div>
                 <label htmlFor="mce-BIRTHDAY-day">Birth Day </label>
                 <div className="datefield">
-                  <span className="subfield dayfield">
-                    <input className="birthday " type="text" pattern="[0-9]*" placeholder="DD" size="2" maxLength="2" name="mce-BIRTHDAY-day" id="mce-BIRTHDAY-day" style={{ width: 50 }} /></span>
+                  <input className="birthday " type="text" pattern="[0-9]*" placeholder="DD" size="2" maxLength="2" name="mce-BIRTHDAY-day" id="mce-BIRTHDAY-day" style={{ width: 50 }} />
                   </div>
               </div>
             </div>

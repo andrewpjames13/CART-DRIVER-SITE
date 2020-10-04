@@ -26,14 +26,14 @@ const Contact = props => {
         <p>{props.street} <br/> {props.area}</p>
         <p>For all lunch and dinner buyouts, special events, or large groups, please email <Link href="mailto:events@cart-driver.com?Subject=I%20Want%20To%20Party%20At%20Cart-Driver">events@cart-driver.com</Link></p>
         <div className="contact-section--social">
-          <a href="https://www.facebook.com/Cart-Driver-Denver-724432647583531/" target="_blank">
+          <a href="https://www.facebook.com/Cart-Driver-Denver-724432647583531/" target="_blank" aria-label="Facebook link">
             <Svg x="0px" y="0px" viewBox="0 0 512 512">
               <path id="facebook-square-icon" d="M50.5,50v412h412V50H50.5z M324.2,160.7c0,0-22.9,0-32,0c-11.3,0-13.6,4.6-13.6,16.3
               	c0,9.7,0,28.2,0,28.2h45.6l-4.4,49.6h-41.2v148h-59.1V255.4h-30.7v-50.2h30.7c0,0,0-7.2,0-39.5c0-37.1,19.8-56.5,63.8-56.5
               	c7.2,0,40.9,0,40.9,0V160.7z"/>
             </Svg>
           </a>
-          <a href={props.instagramUrl} target="_blank">
+          <a href={props.instagramUrl} target="_blank" aria-label="instagram link">
             <Svg x="0px" y="0px" viewBox="0 0 512 512">
               <path id="instagram-square-icon" d="M367.6,150.2V180c0,4.8-3.9,8.6-8.6,8.6h-29.1c-4.8,0-8.6-3.9-8.6-8.6v-29.8
               	c0-4.8,3.9-8.6,8.6-8.6H359C363.8,141.6,367.6,145.4,367.6,150.2z M256,297c21.9,0,39.7-17.8,39.7-39.7c0-21.9-17.8-39.7-39.7-39.7

@@ -27,7 +27,7 @@ class PhotoGrid extends PureComponent {
         <div className="photo-scroll">
           {this.props.photos.map((photo, index) => (
             <button
-              aria-label={photo.ariaLabel}
+              aria-label={`expand ${photo.alt}`}
               className="photo-button"
               key={index}
               onClick={ () => {this.handlePhotoClick(transformImage(photo.image, 'filters:quality(100)'))}}
