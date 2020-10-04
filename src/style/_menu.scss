@@ -8,7 +8,7 @@
     font-size: 1em;
     line-height: 1.2rem;
   }
-  
+
   .section-description {
     margin-bottom: 10px;
   }
@@ -77,4 +77,15 @@
   .section-description {
     padding-left: 30px;
   }
+}
+
+button#mic-access-tool-general-button.mic-access-tool-general-button {
+  top: 0;
+  left: 0px;
+  bottom: unset;
+  @include respond-above($small) {
+    top: unset;
+    bottom: 7px;
+    left: 7px;
+  };
 }
