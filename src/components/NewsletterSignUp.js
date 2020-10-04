@@ -82,6 +82,7 @@ const NewsletterSignUp = ({ Theme }) => {
   return (
     <>
       <NewsLetterButton
+        aria-label="open newsletter pop up"
         style={{
           fill: Theme.black,
           backgroundColor: Theme.white,
@@ -100,7 +101,10 @@ const NewsletterSignUp = ({ Theme }) => {
       >
         <div id="mc_embed_signup" style={{ clear: 'left' }}>
           <form style={{ padding: 0 }} action="https://cart-driver.us8.list-manage.com/subscribe/post?u=c657c922445300faf66bfca99&amp;id=f6f38e1eab" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
-            <Close onClick={() => setIsOpen(false)}>
+            <Close
+              aria-label="close newsletter pop up"
+              onClick={() => setIsOpen(false)}
+            >
               <svg style={{ width: '20px' }} x="0px" y="0px" viewBox="0 0 24 24">
                 <path d="M24,20.2L15.7,12l8.2-8.3L20.2,0L12,8.3L3.7,0.1L0,3.8L8.3,12l-8.2,8.3L3.8,24l8.2-8.3l8.3,8.2L24,20.2z"/>
               </svg>

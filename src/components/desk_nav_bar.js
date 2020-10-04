@@ -110,6 +110,7 @@ class DeskNavBar extends Component {
           </>
         }
         <button
+          aria-label="open menu"
           style={{
             fill: this.props.Theme.black,
             backgroundColor: this.props.Theme.white,

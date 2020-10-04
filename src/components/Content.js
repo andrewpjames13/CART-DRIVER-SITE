@@ -108,7 +108,8 @@ class Content extends PureComponent {
                   {menuLayout[key].map((data) => {
                     if (data.component === 'Photo') {
                       return (
-                        <div
+                        <img
+                          alt={data.alt}
                           key={data._uid}
                           className="menu-image tiny-100"
                           style={{ backgroundImage: `url("${transformImage(data.image, '1000x0/filters:quality(100)')}")`}}
