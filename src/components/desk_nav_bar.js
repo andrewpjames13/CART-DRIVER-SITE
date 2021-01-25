@@ -43,14 +43,18 @@ class DeskNavBar extends Component {
     return (
       <>
         { this.props.home ?
-          <>
-            <StyledRouterLink to="/rino" className={`one ${listClasses}`}>
-              RiNo
-            </StyledRouterLink>
-            <StyledRouterLink to="/lohi" className={`two ${listClasses}`}>
-              LoHi
-            </StyledRouterLink>
-          </>
+          <ul>
+            <li>
+              <StyledRouterLink to="/rino" className={`one ${listClasses}`}>
+                RiNo
+              </StyledRouterLink>
+            </li>
+            <li>
+              <StyledRouterLink to="/lohi" className={`two ${listClasses}`}>
+                LoHi
+              </StyledRouterLink>
+            </li>
+          </ul>
           :
           <>
             <StyledLink
