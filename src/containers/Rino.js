@@ -4,7 +4,7 @@ import fetchStoryblok from 'actions/FetchStoryblok';
 import { bindActionCreators } from 'redux';
 import { Element } from 'react-scroll';
 import withTheme from 'components/withTheme';
-import NavBar from 'components/nav_bar/nav_bar';
+// import NavBar from 'components/nav_bar/nav_bar';
 import Content from 'components/Content';
 import HomeScreen from 'components/home_screen';
 import ScrollContainer from 'containers/scroll_container';
@@ -25,7 +25,7 @@ class Rino extends PureComponent {
         <ScrollContainer>
           <Content data={this.props.data} menuPhotos={['images/menu/pizza-menu-min.jpg', 'images/menu/antipasti-menu-min.jpg', 'images/menu/cocktails-menu-min.jpg']} />
         </ScrollContainer>
-        <NavBar data={this.props.data} />
+        {/*<NavBar data={this.props.data} />*/}
       </>
     );
   }
