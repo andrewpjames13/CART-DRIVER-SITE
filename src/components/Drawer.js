@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'react-scroll';
 import { NavLink as RouterLink } from 'react-router-dom';
 import useEventListener from 'hooks/useEventListener'
@@ -40,36 +40,28 @@ const Menu = styled.div`
   `}
 `
 
-const StyledRouterLink = styled(RouterLink)`
+const clickableStyles = css`
   color: ${({ styled }) => styled.theme.black};
   font-size: 22px;
   font-weight: 700;
   font-family: 'Source Sans Pro', sans-serif;
+  text-align: left;
   &:hover { color: ${({ styled }) => styled.theme.primary} }
+`
+const StyledRouterLink = styled(RouterLink)`
+  ${clickableStyles}
 `;
 
 const StyledA = styled.a`
-  color: ${({ styled }) => styled.theme.black};
-  font-size: 22px;
-  font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
-  &:hover { color: ${({ styled }) => styled.theme.primary} }
+  ${clickableStyles}
 `;
 
 const StyledButton = styled.button`
-  color: ${({ styled }) => styled.theme.black};
-  font-size: 22px;
-  font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
-  &:hover { color: ${({ styled }) => styled.theme.primary} }
+  ${clickableStyles}
 `;
 
 const StyledLink = styled(Link)`
-color: ${({ styled }) => styled.theme.black};
-font-size: 22px;
-font-weight: 700;
-font-family: 'Source Sans Pro', sans-serif;
-&:hover { color: ${({ styled }) => styled.theme.primary} }
+  ${clickableStyles}
 `;
 
 const Clickable = ({ href, target, styled, children, to, ariaLabel, onClick }) => {

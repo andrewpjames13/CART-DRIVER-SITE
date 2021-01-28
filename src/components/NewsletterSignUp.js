@@ -6,10 +6,10 @@ import withTheme from 'components/withTheme';
 
 const Close = styled.button`
   position: absolute;
-  top: 0px;
+  top: 20px;
   right: 0px;
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
 `
 
 const Ul = styled.ul`
@@ -70,7 +70,7 @@ const NewsletterSignUp = ({ Theme, modalIsOpen, setModalOpen }) => {
         ariaHideApp={false}
       >
         <div id="mc_embed_signup" style={{ clear: 'left' }}>
-          <form style={{ padding: 0 }} action="https://cart-driver.us8.list-manage.com/subscribe/post?u=c657c922445300faf66bfca99&amp;id=f6f38e1eab" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
+          <form style={{ padding: 20, paddingTop: 40 }} action="https://cart-driver.us8.list-manage.com/subscribe/post?u=c657c922445300faf66bfca99&amp;id=f6f38e1eab" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
             <Close
               aria-label="close newsletter pop up"
               onClick={() => setModalOpen(false)}
@@ -124,6 +124,9 @@ const NewsletterSignUp = ({ Theme, modalIsOpen, setModalOpen }) => {
             <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true"><input type="text" name="b_c657c922445300faf66bfca99_f6f38e1eab" tabIndex="-1"/></div>
             <div className="clear">
               <button type="submit" value="Subscribe" name="subscribe" className="btn" style={{ width: '100%' }}>Subscribe</button>
+            </div>
+            <div className="clear">
+              <button type="button" value="Close" name="close" className="btn" style={{ width: '100%', marginTop: 20, marginBottom: 20 }} onClick={() => setModalOpen(false)}>Close</button>
             </div>
             </div>
           </form>
