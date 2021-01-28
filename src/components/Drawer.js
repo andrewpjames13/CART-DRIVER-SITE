@@ -82,74 +82,98 @@ const Clickable = ({ href, target, styled, children, to, ariaLabel, onClick }) =
 }
 
 const LocationNav = ({ theme }) => (
-  <ul style={{ paddingLeft: 18, paddingBottom: 8, listStyleType: 'none' }}>
-    <li>
-      <StyledLink
-        to="home"
-        spy={true}
-        smooth={true}
-        duration={500}
-        styled={{ theme }}
+  <>
+    <ul style={{ paddingLeft: 18, paddingBottom: 8, listStyleType: 'none' }}>
+      <li>
+        <StyledLink
+          to="home"
+          spy={true}
+          smooth={true}
+          duration={500}
+          styled={{ theme }}
+          >
+          Home
+        </StyledLink>
+      </li>
+      <li>
+        <StyledLink
+          to="menu"
+          spy={true}
+          smooth={true}
+          duration={500}
+          styled={{ theme }}
+          >
+          Menu
+        </StyledLink>
+      </li>
+      <li>
+        <StyledLink
+          to="photos"
+          spy={true}
+          smooth={true}
+          duration={500}
+          styled={{ theme }}
+          >
+          Photos
+        </StyledLink>
+      </li>
+      <li>
+        <StyledLink
+          to="about"
+          spy={true}
+          smooth={true}
+          duration={500}
+          styled={{ theme }}
+          >
+          About
+        </StyledLink>
+      </li>
+      <li>
+        <StyledLink
+          to="press"
+          spy={true}
+          smooth={true}
+          duration={500}
+          styled={{ theme }}
+          >
+          Press
+        </StyledLink>
+      </li>
+      <li>
+        <StyledLink
+          to="contact"
+          spy={true}
+          smooth={true}
+          duration={500}
+          styled={{ theme }}
+          >
+          Contact
+        </StyledLink>
+      </li>
+    </ul>
+    <ul style={{ paddingLeft: 18, paddingBottom: 8, paddingTop: 8, listStyleType: 'none' }}>
+      <li>
+        <Clickable
+          href='https://www.toasttab.com/cart-driver-west-ave/giftcards'
+          target="_blank"
+          styled={{ theme }}
+          ariaLabel='Order online link'
         >
-        Home
-      </StyledLink>
-    </li>
-    <li>
-      <StyledLink
-        to="menu"
-        spy={true}
-        smooth={true}
-        duration={500}
-        styled={{ theme }}
+          Order Online
+        </Clickable>
+      </li>
+      <li>
+        <Clickable
+          href='https://www.toasttab.com/cart-driver-west-ave/giftcards'
+          target="_blank"
+          styled={{ theme }}
+          ariaLabel='Book a reservation link'
         >
-        Menu
-      </StyledLink>
-    </li>
-    <li>
-      <StyledLink
-        to="photos"
-        spy={true}
-        smooth={true}
-        duration={500}
-        styled={{ theme }}
-        >
-        Photos
-      </StyledLink>
-    </li>
-    <li>
-      <StyledLink
-        to="about"
-        spy={true}
-        smooth={true}
-        duration={500}
-        styled={{ theme }}
-        >
-        About
-      </StyledLink>
-    </li>
-    <li>
-      <StyledLink
-        to="press"
-        spy={true}
-        smooth={true}
-        duration={500}
-        styled={{ theme }}
-        >
-        Press
-      </StyledLink>
-    </li>
-    <li>
-      <StyledLink
-        to="contact"
-        spy={true}
-        smooth={true}
-        duration={500}
-        styled={{ theme }}
-        >
-        Contact
-      </StyledLink>
-    </li>
-  </ul>
+          Book a Reservation
+        </Clickable>
+      </li>
+    </ul>
+  </>
 )
 
 const Drawer = ({ theme }) => {
