@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import fetchStoryblok from 'actions/FetchStoryblok';
 import { bindActionCreators } from 'redux';
 import withTheme from 'components/withTheme';
-import DeskNavBar from 'components/desk_nav_bar';
 import HomeScreen from 'components/home_screen';
 
 class Home extends PureComponent {
@@ -32,7 +31,6 @@ class Home extends PureComponent {
             <H5 className="homeText">Select your location</H5>
           </div>
         </HomeScreen>
-        <DeskNavBar home />
       </>
     );
   }
