@@ -80,12 +80,7 @@
 }
 
 button#mic-access-tool-general-button.mic-access-tool-general-button {
-  top: 0;
-  left: 0px;
-  bottom: unset;
-  @include respond-above($small) {
-    top: unset;
-    bottom: 7px;
-    left: 7px;
-  };
+  top: unset;
+  bottom: 7px;
+  left: 7px;
 }
