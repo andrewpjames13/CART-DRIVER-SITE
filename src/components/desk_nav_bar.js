@@ -113,7 +113,7 @@ class DeskNavBar extends Component {
             </StyledLink>
           </>
         }
-        <button
+        {/*<button
           aria-label="open menu"
           style={{
             fill: this.props.Theme.black,
@@ -131,7 +131,7 @@ class DeskNavBar extends Component {
           <svg className="deskNavX"x="0px" y="0px" viewBox="0 0 24 24">
             <path d="M24,20.2L15.7,12l8.2-8.3L20.2,0L12,8.3L3.7,0.1L0,3.8L8.3,12l-8.2,8.3L3.8,24l8.2-8.3l8.3,8.2L24,20.2z"/>
           </svg>
-        </button>
+        </button>*/}
       </>
     );
   }
