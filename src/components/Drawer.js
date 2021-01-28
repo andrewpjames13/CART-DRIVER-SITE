@@ -6,18 +6,33 @@ import useEventListener from 'hooks/useEventListener'
 import Logo from 'components/Logo'
 import NewsletterSignUp from 'components/NewsletterSignUp'
 import { Route } from 'react-router-dom'
+import media from 'helpers/mediaQueries'
 
 const Menu = styled.div`
   padding: 10px 20px;
   position: fixed;
   height: 100%;
   top: 0;
-  right: -30vw;
-  width: 30vw;
+  transition: right 0.25s ease-out;
+  right: -75vw;
+  width: 75vw;
+
+  ${media.tablet`
+    right: -385px;
+    width: 385px;
+
+    ${({ styled }) => styled.open && `
+      right: 0;
+      -webkit-box-shadow: 1px 0px 18px 5px rgba(0,0,0,0.41);
+      box-shadow: 1px 0px 18px 5px rgba(0,0,0,0.41);
+    `}
+  `}
+
   background-color: ${({ styled }) => styled.theme.white};
+
   border-left: 6px solid ${({ styled }) => styled.theme.black};
   z-index: 10;
-  transition: right 0.25s ease-out;
+
   ${({ styled }) => styled.open && `
     right: 0;
     -webkit-box-shadow: 1px 0px 18px 5px rgba(0,0,0,0.41);

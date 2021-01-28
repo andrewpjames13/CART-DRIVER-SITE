@@ -6,10 +6,6 @@
   width: 45px;
   height: 45px;
   padding: 10px;
-  display: none;
-  @include respond-above($medium) {
-    display: block;
-  }
 
   &:hover {
     cursor: pointer;
