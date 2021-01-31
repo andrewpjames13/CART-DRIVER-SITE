@@ -22,6 +22,13 @@ const RichText = styled.div`
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
   }
+  b { font-weight: 500 }
+  h1 {
+    font-size: 38px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    margin-top: 40px;
+  }
 `
 
 class Post extends PureComponent {
