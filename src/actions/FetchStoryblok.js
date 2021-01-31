@@ -19,7 +19,7 @@ function fetchCacheVersionSuccess(cacheVersion) {
 }
 
 export default function fetchStoryblok(
-  pageName, preview = false,
+  pageName, preview = false
 ) {
   return (dispatch, getState) => {
     const token = preview
@@ -27,7 +27,8 @@ export default function fetchStoryblok(
       : process.env.REACT_APP_STORYBLOK_PUBLIC_KEY;
       // : 'mzC2aTMbzxht7rmdcYk4hQtt';
     const version = preview ? 'draft' : 'published';
-    const url = `https://api.storyblok.com/v1/cdn/stories/${pageName}?token=${token}&version=${version}`;
+    let url = `https://api.storyblok.com/v1/cdn/stories/${pageName}?token=${token}&version=${version}`;
+    if (pageName === 'blog') url = `https://api.storyblok.com/v1/cdn/stories/?token=${token}&version=${version}&starts_with=post`
     const bigPage = pageName.toUpperCase();
     const requestAction = `FETCH_STORYBLOK_${bigPage}_REQUEST`;
     const successAction = `FETCH_STORYBLOK_${bigPage}_SUCCESS`;
@@ -57,7 +58,7 @@ export default function fetchStoryblok(
     }).then(cv => (
       axios.get(`${url}&cv=${cv}`, { headers: { 'Content-Type': 'application/json' } })
         .then((resp) => {
-          const results = [...resp.data.story.content.body];
+          const results = resp.data.stories || [...resp.data.story.content.body];
           const [data] = results.filter(item => item.component === 'Theme');
           dispatch(fetchSuccess(successAction, results));
           if (data) dispatch(setTheme({ ...data, name: resp.data.story.name }));

@@ -158,32 +158,41 @@ const LocationNav = ({ theme }) => (
         </StyledLink>
       </li>
     </ul>
-    <ul style={{ paddingLeft: 18, paddingBottom: 8, paddingTop: 8, listStyleType: 'none' }}>
-      <li>
-        <Clickable
-          href='https://www.toasttab.com/cart-driver-west-ave/giftcards'
-          target="_blank"
-          styled={{ theme }}
-          ariaLabel='Order online link'
-        >
-          Order Online
-        </Clickable>
-      </li>
-      <li>
-        <Clickable
-          href='https://www.toasttab.com/cart-driver-west-ave/giftcards'
-          target="_blank"
-          styled={{ theme }}
-          ariaLabel='Book a reservation link'
-        >
-          Book a Reservation
-        </Clickable>
-      </li>
-    </ul>
   </>
 )
 
-const Drawer = ({ theme }) => {
+const NavigationLinks = ({ theme, route, data }) => {
+  let filteredData = []
+
+  if (data && data.content) {
+    filteredData = data.content.filter(item => {
+      const href = item[`${route}Href`]
+      return href && href.length > 0
+    })
+  }
+
+  return (
+    <>
+      {filteredData.map((item) => {
+        const href = item[`${route}Href`]
+        return (
+          <li key={href}>
+            <Clickable
+              href={href}
+              target="_blank"
+              styled={{ theme }}
+              ariaLabel={`${item.Text} Card Link`}
+              >
+              {item.Text}
+            </Clickable>
+          </li>
+        )
+      })}
+    </>
+  )
+}
+
+const Drawer = ({ theme, data }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [modalIsOpen, setModalOpen] = useState(false);
 
@@ -224,7 +233,7 @@ const Drawer = ({ theme }) => {
            <path d="M24,20.2L15.7,12l8.2-8.3L20.2,0L12,8.3L3.7,0.1L0,3.8L8.3,12l-8.2,8.3L3.8,24l8.2-8.3l8.3,8.2L24,20.2z"/>
          </svg>
        </button>
-       <RouterLink to="/" onClick={handleClick} aria-label="navigate to home page">
+       <RouterLink to="/" aria-label="navigate to home page">
         <Logo fill={theme.black} />
        </RouterLink>
        <h6 style={{ fontSize: 22, fontWeight: 300, paddingLeft: 18, paddingTop: 30 }}>Locations</h6>
@@ -255,16 +264,15 @@ const Drawer = ({ theme }) => {
          </Route>
        </ul>
        <ul style={{ padding: 18, listStyleType: 'none' }}>
-         <li>
-           <Clickable
-             href='https://www.toasttab.com/cart-driver-west-ave/giftcards'
-             target="_blank"
-             styled={{ theme }}
-             ariaLabel='Gift Card Link'
-           >
-            Gift Card
-           </Clickable>
-         </li>
+         <Route exact path="/lohi">
+           <NavigationLinks theme={theme} route='lohi' data={data} />
+         </Route>
+         <Route exact path="/rino">
+           <NavigationLinks theme={theme} route='rino' data={data} />
+         </Route>
+         <Route exact path="/">
+           <NavigationLinks theme={theme} route='home' data={data} />
+         </Route>
          <li>
            <Clickable
              onClick={() => setModalOpen(state => !state)}
