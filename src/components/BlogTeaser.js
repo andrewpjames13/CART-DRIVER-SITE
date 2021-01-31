@@ -1,7 +1,7 @@
 import React from 'react';
 import withTheme from 'components/withTheme';
 import moment from 'moment'
-
+import transformImage from 'helpers/transformImage';
 
 const BlogTeaser = ({ Theme, title, image, createdAt, post }) => {
   const Img = ({ style }) => (
@@ -14,7 +14,7 @@ const BlogTeaser = ({ Theme, title, image, createdAt, post }) => {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url("${transformImage(image, '800x0/filters:quality(100)')}")`,
         ...style
       }}
     />
