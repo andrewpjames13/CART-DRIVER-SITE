@@ -29,10 +29,6 @@ class Blog extends PureComponent {
   }
 
   render() {
-    console.log(this.props.data)
-    console.log(this.props.Theme)
-    if (!this.props.data || this.props.data.loading) return null
-    console.log(moment(this.props.data.content[0].created_at).format("MMM Do YYYY"))
     return (
       <>
         <div
@@ -49,41 +45,39 @@ class Blog extends PureComponent {
             <Logo fill={this.props.Theme.black} />
           </div>
         </div>
-        <div
-          style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center'
-          }}
-        >
-          <ul style={{ maxWidth: '800px', paddingTop: 150, paddingBottom: 100, paddingLeft: 20, paddingRight: 20, listStyleType: 'none' }}>
-            {this.props.data.content.map(post => (
-              <li key={post.content._uid} style={{ marginBottom: 100 }}>
-                <RouterLink to={`/blog/${post.slug}`} styled={{ theme: this.props.Theme }}>
-                  <h1 style={{ fontSize: 38, fontWeight: 'bold', color: this.props.Theme.black }}>{post.content.title}</h1>
-                  <h6 style={{ fontSize: 20, marginTop: 8, marginBottom: 8, color: this.props.Theme.black }}>{moment(this.props.data.content[0].created_at).format("MMM Do YYYY")}</h6>
-                  {/*<p>{post.content.intro}</p>*/}
-                  <div
-                    style={{
-                      width: '100%',
-                      height: 350,
-                      overflow: 'hidden',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                    >
-                    <img
-                      src={post.content.image}
+        {!this.props.data || this.props.data.loading || !this.props.data.content ? (<p>Loading...</p>) : (
+          <div
+            style={{
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center'
+            }}
+            >
+            <ul style={{ maxWidth: '800px', width: '100%', paddingTop: 150, paddingBottom: 100, paddingLeft: 20, paddingRight: 20, listStyleType: 'none' }}>
+              {this.props.data.content.map(post => (
+                <li key={post.content._uid} style={{ marginBottom: 100 }}>
+                  <RouterLink to={`/blog/${post.slug}`} styled={{ theme: this.props.Theme }}>
+                    <h1 style={{ fontSize: 38, fontWeight: 'bold', color: this.props.Theme.black }}>{post.content.title}</h1>
+                    <h6 style={{ fontSize: 20, marginTop: 8, marginBottom: 8, color: this.props.Theme.black }}>{moment(this.props.data.content[0].created_at).format("MMM Do YYYY")}</h6>
+                    {/*<p>{post.content.intro}</p>*/}
+                    <div
                       alt={post.content.title}
-                      style={{ width: '100%' }}
+                      style={{
+                        width: '100%',
+                        height: 350,
+                        overflow: 'hidden',
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundImage: `url(${post.content.image})`
+                      }}
                       />
-                  </div>
-                </RouterLink>
-              </li>
-            ))}
-          </ul>
-        </div>
+                  </RouterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </>
     );
   }

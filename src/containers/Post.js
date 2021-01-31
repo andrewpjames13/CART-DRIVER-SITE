@@ -14,12 +14,13 @@ class Post extends PureComponent {
       || (props.data.content.length === 0 && !props.data.loading)
     ) {
       const preview = props.location.search.match(/preview/) !== null
-      props.fetchStoryblok('posts/my-first-post', preview);
+
+      props.fetchStoryblok(props.match.params.slug, preview, true);
     }
   }
 
   render() {
-    console.log(this.props.data)
+    console.log(this.props.data, '********')
     return (
       <>
         <h1>Post</h1>
