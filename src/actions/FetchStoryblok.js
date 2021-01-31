@@ -44,7 +44,7 @@ export default function fetchStoryblok(
     const failureAction = `FETCH_STORYBLOK_${bigPage}_FAILURE`;
     const { cacheVersion } = getState().Storyblok;
     dispatch(fetchRequest(requestAction));
-    console.log('ABOUT TO FETCH')
+
     if (cacheVersion && !post) {
       return axios.get(
         `${url}&cv=${cacheVersion}`,
