@@ -1,12 +1,32 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import fetchStoryblok from 'actions/FetchStoryblok';
 import { bindActionCreators } from 'redux';
 import withTheme from 'components/withTheme';
+import BlogTeaser from 'components/BlogTeaser';
+import StoryblokClient from 'storyblok-js-client'
+import styled from 'styled-components';
+
+let Storyblok = new StoryblokClient({
+  accessToken: process.env.REACT_APP_STORYBLOK_PUBLIC_KEY
+})
+
+const RichText = styled.div`
+  margin-top: 40px;
+
+  p {
+    margin-bottom: 16px;
+    font-size: 1.2em;
+    letter-spacing: unset;
+    line-height: 1.5rem;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+  }
+`
 
 class Post extends PureComponent {
   constructor(props) {
+
     super(props);
     if (
       !props.data
@@ -20,15 +40,14 @@ class Post extends PureComponent {
   }
 
   render() {
-    console.log(this.props.data, '********')
     if (!this.props.data || this.props.data.loading || !this.props.data.content) return null
     const [post] = this.props.data.content
-    console.log(post.content.long_text, 'POST!!!!!!')
     return (
       <div
         style={{ maxWidth: '800px', width: '100%', paddingTop: 150, paddingBottom: 100, paddingLeft: 20, paddingRight: 20, listStyleType: 'none' }}
       >
         <BlogTeaser post title={post.content.title} image={post.content.image} createdAt={this.props.data.content[0].created_at} />
+        <RichText dangerouslySetInnerHTML={{ __html: Storyblok.richTextResolver.render(post.content.long_text) }} />
       </div>
     );
   }

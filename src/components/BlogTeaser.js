@@ -21,7 +21,7 @@ const BlogTeaser = ({ Theme, title, image, createdAt, post }) => {
   )
   return (
     <>
-      {post && <Img style={{ marginBottom: 16 }} />}
+      {post && <Img style={{ marginBottom: 30 }} />}
       <h1 style={{ fontSize: 38, fontWeight: 'bold', color: Theme.black }}>{title}</h1>
       <h6 style={{ fontSize: 20, marginTop: 8, marginBottom: 8, color: Theme.black }}>{moment(createdAt).format("MMM Do YYYY")}</h6>
       {/*<p>{post.content.intro}</p>*/}

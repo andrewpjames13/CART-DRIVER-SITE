@@ -16,6 +16,7 @@
     "react-scripts": "2.1.1",
     "react-scroll": "^1.4.5",
     "redux-thunk": "^2.2.0",
+    "storyblok-js-client": "^3.3.1",
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
