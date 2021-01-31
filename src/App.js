@@ -4,7 +4,6 @@ import Home from 'containers/Home';
 import Rino from 'containers/Rino';
 import LoHi from 'containers/LoHi';
 import Blog from 'containers/Blog';
-import Post from 'containers/Post';
 import withTheme from 'components/withTheme';
 import Drawer from 'components/Drawer'
 import { connect } from 'react-redux';
@@ -27,8 +26,7 @@ class App extends React.Component {
     return (
       <>
         <Switch>
-          <Route exact path="/blog" component={Blog} />
-          <Route exact path="/blog/:slug" component={Post} />
+          <Route path="/blog" component={Blog} />
           <Route exact path="/lohi" component={LoHi} />
           <Route exact path="/rino" component={Rino} />
           <Route exact path="/" component={Home} />

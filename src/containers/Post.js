@@ -21,10 +21,15 @@ class Post extends PureComponent {
 
   render() {
     console.log(this.props.data, '********')
+    if (!this.props.data || this.props.data.loading || !this.props.data.content) return null
+    const [post] = this.props.data.content
+    console.log(post.content.long_text, 'POST!!!!!!')
     return (
-      <>
-        <h1>Post</h1>
-      </>
+      <div
+        style={{ maxWidth: '800px', width: '100%', paddingTop: 150, paddingBottom: 100, paddingLeft: 20, paddingRight: 20, listStyleType: 'none' }}
+      >
+        <BlogTeaser post title={post.content.title} image={post.content.image} createdAt={this.props.data.content[0].created_at} />
+      </div>
     );
   }
 }
@@ -34,7 +39,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { data: state.Storyblok }
+  return { data: state.Storyblok.post }
 }
 
 export default withTheme(connect(mapStateToProps, mapDispatchToProps)(Post));
