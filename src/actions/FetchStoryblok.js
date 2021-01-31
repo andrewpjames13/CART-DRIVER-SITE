@@ -18,6 +18,14 @@ function fetchCacheVersionSuccess(cacheVersion) {
   return { type: FETCH_STORYBLOK_CACHE_VERSION, cacheVersion };
 }
 
+function handleResp(resp, pageName, post) {
+  let results = resp.data.story && resp.data.story.content.body && [...resp.data.story.content.body]
+  if (pageName === 'blog') results = resp.data.stories
+  if (post) results = [resp.data.story]
+  const [data] = results.filter(item => item.component === 'Theme');
+  return { results, data }
+}
+
 export default function fetchStoryblok(
   pageName, preview = false, post = false
 ) {
@@ -36,14 +44,13 @@ export default function fetchStoryblok(
     const failureAction = `FETCH_STORYBLOK_${bigPage}_FAILURE`;
     const { cacheVersion } = getState().Storyblok;
     dispatch(fetchRequest(requestAction));
-
-    if (cacheVersion) {
+    console.log('ABOUT TO FETCH')
+    if (cacheVersion && !post) {
       return axios.get(
         `${url}&cv=${cacheVersion}`,
         { headers: { 'Content-Type': 'application/json' } },
       ).then((resp) => {
-        const results = [...resp.data.story.content.body];
-        const [data] = results.filter(item => item.component === 'Theme');
+        const { results, data } = handleResp(resp, pageName, post)
         dispatch(fetchSuccess(successAction, results));
         if (data) dispatch(setTheme(data));
       }).catch(error => dispatch(fetchFailure(failureAction, error)));
@@ -59,10 +66,7 @@ export default function fetchStoryblok(
     }).then(cv => (
       axios.get(`${url}&cv=${cv}`, { headers: { 'Content-Type': 'application/json' } })
         .then((resp) => {
-          let results = resp.data.story && resp.data.story.content.body && [...resp.data.story.content.body]
-          if (pageName === 'blog') results = resp.data.stories
-          if (post) results = [resp.data.story]
-          const [data] = results.filter(item => item.component === 'Theme');
+          const { results, data } = handleResp(resp, pageName, post)
           dispatch(fetchSuccess(successAction, results));
           if (data) dispatch(setTheme({ ...data, name: resp.data.story.name }));
         }).catch(error => dispatch(fetchFailure(failureAction, error)))

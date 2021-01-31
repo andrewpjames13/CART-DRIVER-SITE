@@ -6,7 +6,7 @@ import withTheme from 'components/withTheme';
 import Logo from 'components/Logo';
 import Post from 'containers/Post';
 import BlogList from 'containers/BlogList';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 
 class Blog extends PureComponent {
   render() {
@@ -23,7 +23,9 @@ class Blog extends PureComponent {
           }}
           >
           <div style={{ width: 300 }}>
-            <Logo fill={this.props.Theme.black} />
+            <NavLink to="/" aria-label="navigate to home page">
+              <Logo fill={this.props.Theme.black} />
+            </NavLink>
           </div>
         </div>
         <div

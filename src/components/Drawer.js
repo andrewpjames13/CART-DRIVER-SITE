@@ -282,6 +282,15 @@ const Drawer = ({ theme, data }) => {
             Subscribe to Newsletter
            </Clickable>
          </li>
+         {/*<li>
+           <Clickable
+             href="/blog"
+             styled={{ theme }}
+             ariaLabel='open newsletter pop up'
+           >
+            Blog
+           </Clickable>
+         </li>*/}
        </ul>
      </Menu>
      <NewsletterSignUp modalIsOpen={modalIsOpen} setModalOpen={setModalOpen} />
