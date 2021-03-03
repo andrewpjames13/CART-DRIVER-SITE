@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  min-height: 80vh;
+  padding: 60px 0;
   position: relative;
   background-color: $black;
 

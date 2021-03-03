@@ -31,7 +31,7 @@ const Menu = styled.div`
   background-color: ${({ styled }) => styled.theme.white};
 
   border-left: 6px solid ${({ styled }) => styled.theme.black};
-  z-index: 10;
+  z-index: 15;
 
   ${({ styled }) => styled.open && `
     right: 0;
@@ -294,6 +294,7 @@ const Drawer = ({ theme, data }) => {
        </ul>
      </Menu>
      <NewsletterSignUp modalIsOpen={modalIsOpen} setModalOpen={setModalOpen} />
+     {isMenuOpen && <div style={{ position: 'fixed', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: 'black', opacity: '0.5', zIndex: 10 }} />}
    </>
   )
 }

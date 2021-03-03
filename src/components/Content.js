@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import ReactMarkdown from 'react-markdown';
-import { Element } from 'react-scroll';
+import { Element, scroller } from 'react-scroll';
 import styled from 'styled-components';
 import transformImage from 'helpers/transformImage';
 import PhotoGrid from 'components/photo_grid';
@@ -9,6 +9,7 @@ import Press from 'components/press';
 import About from 'components/about';
 import Contact from 'components/contact';
 import HeadLine from 'components/head_line';
+import Select from 'components/Select';
 
 import Map from 'components/Map';
 
@@ -22,6 +23,10 @@ const DivStyled = styled.div`
   align-items: center;
   flex-direction: column;
 `;
+
+const jumpFormatter = (str) => {
+  return str.replace(/\s+/g, '-').toLowerCase()
+}
 
 class Content extends PureComponent {
   menuItems = (data, classes = 'menu-item tiny-100') => {
@@ -44,7 +49,7 @@ class Content extends PureComponent {
 
   menu = (data) => {
     return (
-      <div className="tiny-100" key={data._uid}>
+      <Element name={jumpFormatter(data.Title)} className="tiny-100" key={data._uid}>
         <div
           className="menu-section"
           style={{ color: this.props.Theme.black }}
@@ -53,7 +58,7 @@ class Content extends PureComponent {
           {this.menuItems(data)}
           {data.description && <p className="section-description" style={{ color: this.props.Theme.primary }}>{data.description}</p>}
         </div>
-      </div>
+      </Element>
     );
   }
 
@@ -100,7 +105,16 @@ class Content extends PureComponent {
             />
           </DivStyled>
         )}
-        <Element name="menu" className="element">
+        <Element name="menu" className="element" id='menu'>
+          <Select>
+            <optgroup label="Drink">
+              <option>First</option>
+            </optgroup>
+            <optgroup label="Food">
+              <option>Second</option>
+              <option>Third</option>
+            </optgroup>
+          </Select>
           {Object.keys(menuLayout).map((key, index) => {
             if (key === 'left' || key === 'right') {
               return  (
