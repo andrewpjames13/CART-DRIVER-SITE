@@ -24,7 +24,7 @@ const DivStyled = styled.div`
   flex-direction: column;
 `;
 
-const jumpFormatter = (str) => {
+export const jumpFormatter = (str) => {
   return str.replace(/\s+/g, '-').toLowerCase()
 }
 
@@ -106,15 +106,7 @@ class Content extends PureComponent {
           </DivStyled>
         )}
         <Element name="menu" className="element" id='menu'>
-          <Select>
-            <optgroup label="Drink">
-              <option>First</option>
-            </optgroup>
-            <optgroup label="Food">
-              <option>Second</option>
-              <option>Third</option>
-            </optgroup>
-          </Select>
+          <Select data={menuLayout} />
           {Object.keys(menuLayout).map((key, index) => {
             if (key === 'left' || key === 'right') {
               return  (

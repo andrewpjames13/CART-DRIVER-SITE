@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { scroller } from 'react-scroll';
 import Sticky from 'react-stickynode';
 import withTheme from 'components/withTheme';
 import styled from 'styled-components';
+import { jumpFormatter } from './Content'
 
 const Container = styled.div`
   height: 75px;
@@ -25,28 +26,60 @@ const StyledSelect = styled.select`
   `}
 `
 
-const Select = ({ children, onChange, Theme }) => {
+const Select = ({ onChange, Theme, data }) => {
+  const [food, setFood] = useState([])
+  const [drink, setDrink] = useState([])
   const handleOnChange = (e) => {
-    console.log(e.target.value)
-    scroller.scrollTo('to-take-home', {
-      duration: 1500,
+    scroller.scrollTo(jumpFormatter(e.target.value), {
+      duration: 1000,
       delay: 100,
       smooth: true,
       offset: -50,
     })
   }
 
+
+  useEffect(() => {
+    data.left.forEach(dat => {
+      if (dat.menuSelect && dat.menuSelect === 'food') {
+        setFood(state => [...state, dat.Title])
+      }
+      if (dat.menuSelect && dat.menuSelect === 'drink') {
+        setDrink(state => [...state, dat.Title])
+      }
+    })
+    data.right.forEach(dat => {
+      if (dat.menuSelect && dat.menuSelect === 'food') {
+        setFood(state => [...state, dat.Title])
+      }
+      if (dat.menuSelect && dat.menuSelect === 'drink') {
+        setDrink(state => [...state, dat.Title])
+      }
+    })
+  }, [data.left.length, data.right.length])
+
   return (
-    <>
-      <Sticky enabled={true} top={0} activeClass='activeDropShadow' bottomBoundary='#menu'>
-        <Container style={{ backgroundColor: Theme.white }}>
-          <StyledSelect onChange={handleOnChange} theme={Theme}>
-            <option value="">Jump to a menu</option>
-            {children}
-          </StyledSelect>
-        </Container>
-      </Sticky>
-    </>
+    <Sticky enabled={true} top={0} activeClass='activeDropShadow' bottomBoundary='#menu'>
+      <Container style={{ backgroundColor: Theme.white }}>
+        <StyledSelect onChange={handleOnChange} theme={Theme}>
+          <option value="">Jump to a menu</option>
+          {drink.length > 0 && (
+            <optgroup label="Drink">
+              {drink.map(d => (
+                <option key={`${d}-drink`}>{d}</option>
+              ))}
+            </optgroup>
+          )}
+          {food.length > 0 && (
+            <optgroup label="Food">
+              {food.map(d => (
+                <option key={`${d}-food`}>{d}</option>
+              ))}
+            </optgroup>
+          )}
+        </StyledSelect>
+      </Container>
+    </Sticky>
   )
 }
 
