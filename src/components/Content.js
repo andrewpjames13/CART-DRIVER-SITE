@@ -25,7 +25,7 @@ const DivStyled = styled.div`
 `;
 
 export const jumpFormatter = (str) => {
-  return str.replace(/\s+/g, '-').toLowerCase()
+  return str.trim().replace(/\s+/g, '-').toLowerCase()
 }
 
 class Content extends PureComponent {
