@@ -25,7 +25,6 @@ class LoHi extends PureComponent {
         <ScrollContainer>
           <Content
             data={this.props.data}
-            menuPhotos={['images/menu/antipasti-menu-min-lohi.jpg', 'images/menu/pizza-menu-min-lohi.jpg', 'images/menu/cocktails-menu-min-lohi.jpg']}
           />
         </ScrollContainer>
         {/*<NavBar data={this.props.data} />*/}
