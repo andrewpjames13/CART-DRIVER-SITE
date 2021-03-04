@@ -9,11 +9,6 @@
 
   &.homePage {
     height: 100vh;
-    // .home-content {
-    //   @include respond-above($small) {
-    //     margin-bottom: 11vh;
-    //   };
-    // }
   }
 
   .home-radial-grad {
@@ -34,13 +29,7 @@
   .home-content {
     padding: 0 5%;
     z-index: 1;
-    background-color: $black;
     text-align: center;
-    @include background-gradient(0.5);
-
-    @include respond-above($small) {
-      @include background-gradient(0.8);
-    };
 
     svg { width: 95%; }
 

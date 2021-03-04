@@ -19,10 +19,9 @@ const HomeScreen = ({ children, topContent, home, Theme, data }) => {
     <div
       className={`home-container ${home ? 'homePage': ''}`}
       style={{
-        color: Theme.white,
+        color: Theme.white
       }}
     >
-      <div className="home-radial-grad" />
       <div className="tiny-100 home-content">
         <Logo fill={Theme.white} />
         <div className="home-bottomContent">

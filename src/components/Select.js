@@ -60,7 +60,7 @@ const Select = ({ onChange, Theme, data }) => {
 
   return (
     <Sticky enabled={true} top={0} activeClass='activeDropShadow' bottomBoundary='#menu'>
-      <Container style={{ backgroundColor: Theme.white }}>
+      <Container style={{ backgroundColor: '#231f20' }}>
         <StyledSelect onChange={handleOnChange} theme={Theme}>
           <option value="">Jump to a menu</option>
           {drink.length > 0 && (
