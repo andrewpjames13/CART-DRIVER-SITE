@@ -64,7 +64,7 @@ const Select = ({ onChange, Theme, data }) => {
         <StyledSelect onChange={handleOnChange} theme={Theme}>
           <option value="">Jump to a menu</option>
           {drink.length > 0 && (
-            <optgroup label="Drink">
+            <optgroup label="Drinks">
               {drink.map(d => (
                 <option key={`${d}-drink`}>{d}</option>
               ))}
