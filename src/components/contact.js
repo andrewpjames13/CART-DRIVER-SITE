@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import withTheme from 'components/withTheme';
 import HeadLine from './head_line';
+import StoryblokClient from 'storyblok-js-client'
+
+let Storyblok = new StoryblokClient({
+  accessToken: process.env.REACT_APP_STORYBLOK_PUBLIC_KEY
+})
 
 const Contact = props => {
   const Link = styled.a`
@@ -14,6 +19,13 @@ const Contact = props => {
     &:hover { fill: ${props.Theme.primary }}
   `;
 
+  const RichText = styled.div`
+    a {
+      color: ${props.Theme.primary};
+      &:hover { color: ${props.Theme.black }}
+    }
+  `
+
   return (
     <div className="contact-section">
       <div className="contact-section--content" style={{ color: props.Theme.black }}>
@@ -24,7 +36,8 @@ const Contact = props => {
           <Link href="mailto:info@cart-driver.com?Subject=I%20Need%20Some%20Info">info@cart-driver.com</Link>
         </p>
         <p>{props.street} <br/> {props.area}</p>
-        <p>For all lunch and dinner buyouts, special events, or large groups, please email <Link href="mailto:events@cart-driver.com?Subject=I%20Want%20To%20Party%20At%20Cart-Driver">events@cart-driver.com</Link></p>
+        <RichText dangerouslySetInnerHTML={{ __html: Storyblok.richTextResolver.render(props.contactDescription) }}>
+        </RichText>
         <div className="contact-section--social">
           <a href="https://www.facebook.com/Cart-Driver-Denver-724432647583531/" target="_blank" aria-label="Facebook link">
             <Svg x="0px" y="0px" viewBox="0 0 512 512">
